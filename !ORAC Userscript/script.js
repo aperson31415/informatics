@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         ORAC Tag Manager
 // @namespace    http://tampermonkey.net/
-// @version      v3.2.0
+// @version      v3.2.1
 // @description  Adds additional tags to orac problems (shows some hidden problems, adds starter tag, allows for bookmarking problems urself)
 // @author       a_person31415
 // @match        https://orac2.info/hub/personal/
+// @match        https://orac.amt.edu.au/hub/personal/
 // @match        https://orac2.info/problem/*
+// @match        https://orac.amt.edu.au/problem/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=orac2.info
 // @grant        GM_setValue
 // @grant        GM_getValue
