@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ORAC Tag Manager
 // @namespace    http://tampermonkey.net/
-// @version      v3.0.1
+// @version      v3.0.2
 // @description  Custom tags in orac, hidden problems.
 // @author       a_person31415
 // @match        https://orac2.info/hub/personal/*
@@ -17,7 +17,7 @@
 (function() {
     'use strict';
 
-    const TAG_ORDER = ["starter", "training", "aio", "aiio", "alpha", "fario", "seln", "cpp-practice", "custom-tags"];
+    const TAG_ORDER = ["starter", "training", "aio", "acio", "aiio", "alpha", "fario", "seln", "cpp-practice", "custom-tags"];
 
     GM_addStyle(`
         .badge-tag { margin-right: 4px; cursor: pointer; border: 1px solid #ccc; background-color: #f8f9fa; color: #333; }
@@ -207,6 +207,13 @@
                 let starter_sets = ["starter", "starterset1", "starterset1challenge", "starterset2", "starterset2challenge", "starterset3", "starterset3challenge"];
                 starter_sets.forEach((set_name) => {
                     document.querySelector(`[data-target="#problem-set-`+set_name+`"]`).parentElement.classList.add("set-tag-starter");
+                    document.querySelector(`[data-target="#problem-set-`+set_name+`"]`).children[0].children[0].children[1].children[0].children[1].setAttribute("data-original-title", "Tags: starter");
+                });
+
+                let acio_sets = ["acio25"];
+                acio_sets.forEach((set_name) => {
+                    document.querySelector(`[data-target="#problem-set-`+set_name+`"]`).parentElement.classList.add("set-tag-acio");
+                    document.querySelector(`[data-target="#problem-set-`+set_name+`"]`).children[0].children[0].children[1].children[0].children[1].setAttribute("data-original-title", "Tags: acio");
                 });
 
                 let badgePromises = set.problems.map(async (p) => {
