@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         ORAC Tag Manager
+// @name         ORAC Userscript
 // @namespace    http://tampermonkey.net/
-// @version      v2.8.0
-// @description  Custom tags in orac, hidden problems.
+// @version      v2.9.3
+// @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering
 // @author       a_person31415
 // @match        https://orac2.info/hub/personal/*
 // @match        https://orac.amt.edu.au/hub/personal/*
@@ -14,6 +14,7 @@
 // @grant        GM_addStyle
 // @grant        GM_listValues
 // @grant        GM_deleteValue
+// @grant        unsafeWindow
 // ==/UserScript==
 
 (function() {
@@ -39,6 +40,16 @@
         .koolbutton {border: none; border-radius: .5rem; outline: none; cursor: pointer; user-select: none;}
         .koolbutton:focus {outline: none;}
         .koolbutton:hover {opacity: 0.8;}
+
+        .slider-container { display: flex; align-items: center; width: 350px; height: 40px; }
+        #rangevalue { font-size: 14px; font-weight: bold; color: #4CAF50; white-space: nowrap; min-width: 80px; }
+        .slider-track { position: absolute; height: 5px; width: 100%; background: #ddd; top: 50%; transform: translateY(-50%); border-radius: 5px; z-index: 1; }
+        .slider-range { position: absolute; height: 5px; background: #4CAF50; top: 50%; transform: translateY(-50%); border-radius: 5px; z-index: 2; }
+        
+        input[type=range] { position: absolute; width: 100%; height: 30px; top: 50%; transform: translateY(-50%); left: 0; margin: 0; pointer-events: none; -webkit-appearance: none; background: transparent; z-index: 3; }
+        input[type=range]::-webkit-slider-thumb { pointer-events: all; width: 16px; height: 16px; border-radius: 50%; background: #4CAF50; cursor: pointer; -webkit-appearance: none; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        input[type=range]::-moz-range-thumb { pointer-events: all; width: 16px; height: 16px; border-radius: 50%; background: #4CAF50; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        input[type=range]:focus { outline: none; }
     `);
 
     function tag_element(content, parent = document) {
@@ -48,7 +59,7 @@
         return elem;
     }
 
-    if(window.location.href.includes("problem")) {
+    if(window.location.href.includes("problem") && !window.location.href.includes("hof") && !window.location.href.includes("submission")) {
         let score_badge = document.querySelector(".badge.hub-badge");
         if (score_badge) {
             // Save current score/style immediately to its own key
@@ -163,7 +174,12 @@
             let rev_tagcontent = GM_getValue("rev_tags", {});
             if (tag_content[tag_name]?.includes(window.location.href)) {
                 tag_content[tag_name] = tag_content[tag_name].filter(loc => loc != window.location.href);
-                if(tag_content[tag_name].length == 0) delete tag_content[tag_name];
+                if(tag_content[tag_name].length == 0) {
+                    let should_deltag = confirm("Fully remove tag '" + tag_name + "'?");
+                    if (should_deltag) {
+                        delete tag_content[tag_name];
+                    }
+                }
                 rev_tagcontent[window.location.href] = rev_tagcontent[window.location.href].filter(tag => tag != tag_name);
                 GM_setValue("tags", tag_content);
                 GM_setValue("rev_tags", rev_tagcontent);
@@ -210,6 +226,34 @@
         }
 
 
+    }
+
+    if (window.location.href.includes("personal")) {
+        unsafeWindow.toggleSetTagSelected = function(elem) {
+            if (elem.classList.contains("selected-tag")) {
+                elem.classList.remove("selected-tag");
+                localStorage.removeItem('selected-tag');
+            } else {
+                elem.classList.add("selected-tag");
+                localStorage.setItem('selected-tag', elem.textContent.trim());
+            }
+            reloadHidden();
+        };
+    } else if(window.location.href.includes("hof")) {
+        unsafeWindow.toggleLanguageFilter = function(elem, language) {
+            elem.classList.toggle('selected-tag');
+
+            // Filter submissions
+            if (!elem.classList.contains('selected-tag')) {
+                language = null;
+            }
+            const solvers = document.getElementById('solversList').getElementsByClassName('solver');
+            for (let i = 0; i < solvers.length; i++) {
+                solvers[i].hidden = (language && !solvers[i].classList.contains(language));
+            }
+
+            hideLastComma();
+        }
     }
 
     if (window.location.href.includes("personal")) {
@@ -285,7 +329,6 @@
 
             tags_cont.innerHTML = `<span class="tags-description">Tags:</span>`;
             TAG_ORDER.forEach(name => {
-                console.log(name);
                 if (!(NEW_TAGS.includes(name))) {
                     if (!(ORIGINAL_TAGS.includes(name))) {
                         return;
@@ -492,6 +535,8 @@
             return true;
         }
 
+        //solves
+
         function load_solves() {
             (async () => {
                 let sets = document.querySelectorAll(".collapse.show.set-problems");
@@ -591,5 +636,77 @@
         });
         $(".custom-control.custom-switch.mb-sm-1")[1].after(label_solves);
         $(".custom-control.custom-switch.mb-sm-1")[1].after(btn_solves);
+
+        // Difficulty selection
+        let diff_choicecont = document.createElement("div");
+        diff_choicecont.classList.add(".tags-container");
+
+        let diff_choicelabel = document.createElement("span");
+        diff_choicelabel.classList.add(".tags-description");
+        diff_choicelabel.innerText = "Difficulty:";
+
+        diff_choicecont.appendChild(diff_choicelabel);
+
+        // Slider
+
+        let slidercont = document.createElement("div"); slidercont.classList.add("slider-container");
+        let slidertrack = document.createElement("div"); slidertrack.classList.add("slider-track");
+        let sliderrange = document.createElement("div"); sliderrange.classList.add("slider-range"); sliderrange.id = "slider-range";
+        let minslide = document.createElement("input"); minslide.id = "minRange"; minslide.setAttribute("type", "range"); minslide.setAttribute("min", "0"); minslide.setAttribute("max", "8"); minslide.setAttribute("value", "0");
+        let maxslide = document.createElement("input"); maxslide.id = "maxRange"; maxslide.setAttribute("type", "range"); maxslide.setAttribute("min", "0"); maxslide.setAttribute("max", "8"); maxslide.setAttribute("value", "8");
+        let sliderdisplay = document.createElement("span"); sliderdisplay.id = "rangevalue"; sliderdisplay.innerText = "0 &#9733; - 8 &#9733;";
+
+        let sliderWrapper = document.createElement("div"); 
+        sliderWrapper.style = "position:relative; width:200px; height:30px; margin-left:10px;";
+        sliderWrapper.append(slidertrack, sliderrange, minslide, maxslide);
+        slidercont.append(sliderdisplay, sliderWrapper);
+        $(".tags-container").after(slidercont);
+        updateSlider();
+
+        function filterDiff() {
+            updateSlider();
+            $(".problemset-display").forEach((set) => {
+                let max_allowed = parseInt(maxslide.value);
+                let min_allowed = parseInt(minslide.value);
+                let curr_min = parseInt(set.querySelector("table .difficulty-column").getAttribute("min_stars"));
+                let curr_max = parseInt(set.querySelector("table .difficulty-column").getAttribute("max_stars"));
+
+                if(!(curr_min >= min_allowed && curr_min <= max_allowed && curr_max >= min_allowed && curr_max <= max_allowed)) {
+                    set.style.display = "none";
+                } else {
+                    if (!set.hidden) {
+                        set.style.display = "block";
+                    }
+                }
+            });
+        }
+
+        function updateSlider() {
+            let minVal = parseInt(minslide.value);
+            let maxVal = parseInt(maxslide.value);
+
+            if (minVal > maxVal) {
+                minVal = maxVal;
+                minslide.value = minVal;
+            }
+            if (maxVal < minVal) {
+                maxVal = minVal;
+                maxslide.value = maxVal;
+            }
+
+            sliderdisplay.innerHTML = `<span style="color: #212529; font-weight: 400; font-size: 1rem;">Difficulty: </span>`;
+            sliderdisplay.appendChild(star_display(minVal));
+            sliderdisplay.innerHTML += `<span style="color: #212529; font-weight: 400; font-size: 1rem;"> - </span>`;
+            sliderdisplay.appendChild(star_display(maxVal));
+
+            // Update green range highlight
+            const percentMin = (minVal / minslide.max) * 100;
+            const percentMax = (maxVal / maxslide.max) * 100;
+            sliderrange.style.left = percentMin + "%";
+            sliderrange.style.width = (percentMax - percentMin) + "%";
+        }
+
+        minslide.addEventListener('input', filterDiff);
+        maxslide.addEventListener('input', filterDiff);
     }
 })();
