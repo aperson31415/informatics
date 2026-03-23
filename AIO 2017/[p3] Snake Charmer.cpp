@@ -1,4 +1,4 @@
-// Completely not my code
+// Completely not my code which is why its insanely fast compared to other solutions
 
 #include <bits/stdc++.h>
  
