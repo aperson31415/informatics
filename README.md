@@ -62,4 +62,4 @@ A tool located in the top folder of this repository which, as injected as a user
 This is a project being worked on right now, to cover some advanced AIO problems, and topics needed to solve them. This also extends into AIIO problems and topics. I hope to also make a userscript to integrate this into orac2.info.
 
 ## AIO Notes (kactl.pdf)
-A bunch of notes for AIO, but not really for AIO, just solving problems on ORAC, which usually dont include topics such as bits/heavy math.
+A bunch of notes for AIO, but not really for AIO, just solving problems on ORAC, which usually dont include topics such as bits/heavy math. btw, no guarantees that these algorithms actually work... I got/made then like in 30 mins so I'll test and update them later
