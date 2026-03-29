@@ -61,5 +61,6 @@ A tool located in the top folder of this repository which, as injected as a user
 ## Advanced AIO Tutorials
 This is a project being worked on right now, to cover some advanced AIO problems, and topics needed to solve them. This also extends into AIIO problems and topics. I hope to also make a userscript to integrate this into orac2.info.
 
-## AIO Notes (kactl.pdf)
-A bunch of notes for AIO, but not really for AIO, just solving problems on ORAC, which usually dont include topics such as bits/heavy math. btw, no guarantees that these algorithms actually work... I got/made then like in 30 mins so I'll test and update them later
+## CP Notes (orac_notes.pdf)
+CP notes which were originally for AIO, but made too long and with too many advanced topics.
+Closer to AIO, I might make some notes.
