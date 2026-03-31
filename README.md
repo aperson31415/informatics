@@ -7,8 +7,8 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <details>
 <summary>Click to expand</summary>
 
-  
-  Solutions added so far: 115
+  Solutions added so far: Unknown (not bothered to count)
+  Problems I've solved: 120
 
 Starter
   - Starter Problems: All
@@ -45,9 +45,9 @@ AIIO
   - P4s: None :(
 
 Other Starter Sets
-  - Training Set I: All
-  - Training Set II: All except King Arthur :(
-  - C++ Starter Set: All
+  - Training Set I: p1-8
+  - Training Set II: p1-4
+  - C++ Starter Set: p1-5
 
 Alpha Contest
   - P1s: All
