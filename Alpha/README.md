@@ -1,0 +1,1 @@
+Alpha contest has some interesting but kinda easy problems, so not really wanting to solve
