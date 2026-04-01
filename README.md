@@ -8,7 +8,8 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 123
+  Problems I've solved: 124
+  
 
 Starter
   - Starter Problems: All
@@ -51,7 +52,7 @@ Other Starter Sets
 
 Alpha Contest
   - P1s: All
-  - P2s:
+  - P2s: 2024
   - P3s:
   - P4s:
 
