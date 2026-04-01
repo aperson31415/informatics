@@ -8,11 +8,11 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 120
+  Problems I've solved: 123
 
 Starter
   - Starter Problems: All
-  - AIO Starter Sets & Challenges: All (However these are included in separate folders from the original AIO they were in)
+  - AIO Starter Sets & Challenges: All (However these are included in separate folders from the original AIO they were in (some might be in AIC folder inside training folder tho))
   - Introductory AIO Problems I (Are there more of these types?): All (However these are also included in separate folders from the original AIO they were in)
 
 AIO
