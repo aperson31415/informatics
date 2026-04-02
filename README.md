@@ -45,10 +45,11 @@ AIIO
   - P3s: 2012
   - P4s: None :(
 
-Other Starter Sets
+Other Sets
   - Training Set I: p1-8
   - Training Set II: p1-4
   - C++ Starter Set: p1-5
+  - AIC: 3x
 
 Alpha Contest
   - P1s: All
@@ -66,8 +67,10 @@ FARIO
 A tool located in the top folder of this repository which, as injected as a userscript, shows some old, hidden orac2.info problems, organises problems better, and allows you to mark problems with your own tags.
 
 ## Advanced AIO Tutorials
-This is a project being worked on right now, to cover some advanced AIO problems, and topics needed to solve them. This also extends into AIIO problems and topics. I hope to also make a userscript to integrate this into orac2.info.
+This is a project being worked on right now, to cover some advanced AIO problems, and topics needed to solve them. This also extends into AIIO problems and topics. I hope to also make [now include inside] a userscript to integrate this into orac2.info.
 
-## CP Notes (orac_notes.pdf)
+## CP Notes (info notes.pdf)
 CP notes which were originally for AIO, but made too long and with too many advanced topics.
-Closer to AIO, I might make some notes.
+Except for the over-board bashing techniques, I've found that these notes are good for solving alpha/aiio problems.
+
+Closer to AIO, I might make some notes more focused on aio.
