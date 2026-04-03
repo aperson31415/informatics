@@ -1,0 +1,19 @@
+{
+    "problemset_name": {
+        "tags":["..."],
+        "difficulty":["min", "max"],
+        "problems":[
+            {
+                "name":"...",
+                "difficulty":"...",
+                "solved?":true,
+                "statement":"...",
+                "editorial":"blablabla",
+                "solutions":{
+                    "lang":"sol"
+                },
+                "updated":"date"
+            }
+        ]
+    }
+}
