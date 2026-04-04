@@ -8,7 +8,7 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 132
+  Problems I've solved: 133
   
 
 Starter
@@ -30,7 +30,7 @@ AIO
   - AIO 2015: p1-4
   - AIO 2014: p1
   - AIO 2013: p1-2
-  - AIO 2012: p1
+  - AIO 2012: p1, p3
   - AIO 2011: p1, 2, 4
   - AIO 2010: p1-2, 4-5
   - AIO 2009: p1-4
@@ -59,6 +59,10 @@ Alpha Contest
 
 FARIO
   - None Yet
+
+Selection Exams (No solutions given)
+  - 2003: p1, 2
+  - 1999: p1
 
 </details>
 
