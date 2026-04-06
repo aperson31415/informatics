@@ -4,7 +4,7 @@
             "What is the minimum amount of flowers needed for there to be a valid arrangement of flowers?",
             "How can you change the amount from the previous solution, into needing one, two, three, or more flowers?",
             "How can we make sure that none of the pairs of vases contain equal numbers of flowers?",
-            "Solution: You need at least 6 flowers to make it possible, with 1 2 3, as these numbers are the smallest possible. <br>When you need 6 + n flowers, just increase the third vase's capacity by n. <br> Doing this obviously follows the first and second criteria. Since we only increase the <b>last</b> vase's capacity every time, we guarantee that the first 2 vases' capacities are kept distinct, and that the 3rd vase's capacitiy is always strictly greater than the other 2."
+            "Solution: You need at least 6 flowers to make it possible, with 1 2 3, as these numbers are the smallest possible. When you need 6 + n flowers, just increase the third vase's capacity by n. <br><br> Doing this obviously follows the first and second criteria. Since we only increase the last vase's capacity every time, we guarantee that the first 2 vases' capacities are kept distinct, and that the 3rd vase's capacitiy is always strictly greater than the other 2."
         ],
         "solutions":{
             "py": [
