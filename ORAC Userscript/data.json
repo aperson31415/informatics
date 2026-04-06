@@ -1,4 +1,102 @@
 {
+    "332": {
+        "hints": {
+            "Full Solution":["umm just get two numbers, add them ig"]
+        },
+        "updated":"6 April 2026"
+    },
+    "330": {
+        "hints": {
+            "Full Solution":["There are r*s seats, so if people <= r*s, everyone sits, so output `r*s 0`.<br> If people > r*s, r*s people sit, and people - r*s people stand."]
+        },
+        "updated":"6 April 2026"
+    },
+    "329": {
+        "hints": {
+            "Full Solution":["This solution uses something called modulo. It is usually the operator `%` in most programming languages. a % b gives you the remainder of a / b. If a % b is 0, output a/b. Else, output the floor of a/b, and then a % b."]
+        },
+        "updated":"6 April 2026"
+    },
+    "331": {
+        "hints": {
+            "Solution":["Just stimulate all of the days, until the number of fruits modulo 11 is 0. Modulo is explained in the solution to sitting or standing."]
+        },
+        "updated":"6 April 2026"
+    },
+    "324": {
+        "hints": {
+            "Hint":["Use a for loop"]
+        },
+        "updated":"6 April 2026"
+    },
+    "328": {
+        "hints": {
+            "Hint 1":["To find the minimum and maximum, you can use a for loop"],
+            "Hint 2":["Find the mean after you have all of the numbers"]
+        },
+        "updated":"6 April 2026"
+    },
+    "340": {
+        "hints": {
+            "Solution":["Keep a variable called curr_water. Keep inputting the numbers, until your curr_water >= c"]
+        },
+        "updated":"6 April 2026"
+    },
+    "325": {
+        "hints": {
+            "Hint":["Use a dictionary (or map for c++)"]
+        },
+        "updated":"6 April 2026"
+    },
+    "338": {
+        "hints": {
+            "Hint":["Use a dictionary (or map for c++)"]
+        },
+        "updated":"6 April 2026"
+    },
+    "334": {
+        "hints": {
+            "Hint":["Use a for loop, keep track of the index you are at. If a number % 3 = 0 (modulo is explained in sitting or standing), then add the index to a list. <br> At the end, output the size of the list, then the numebrs in the list."]
+        },
+        "updated":"6 April 2026"
+    },
+    "333": {
+        "hints": {
+            "Hint 1": ["How can you store the number of friends each person has"],
+            "Hint 2": ["Then, how do you track the people/person who has the most number of friends"],
+            "Solution":[
+                "Use an array, or dictionary/map to keep track of friend counts.",
+                "Then, after getting all input, create a variable called max_friends, and an array called max_holders. For each element in the array / key in the dictionary/map, check if their friends are bigger than max_friends. If bigger, empty out max_holders, and add the current person to it. If the current person's friend count equals max_friends, add max_friends to max_holder.",
+                "After this, sort the indexes in max_holders, and output them."
+            ]
+        },
+        "updated":"6 April 2026"
+    },
+    "1415": {
+        "hints": {
+            "Hint 1":["How do you check if a string with even length is a palindrome"],
+            "Hint 2":["How do you check if a string with odd length is a palindrome"],
+            "Hint 3":["If a string is 1 letter out of place, how do you fix it to make it a palindrome"],
+            "Hint 4":["Referring back to hint 3, how do you make sure that it is the alphabetically smallest palindrome"],
+            "Hint 5":["So then, how do you change multiple letters"],
+            "Solution":[
+                "Go through the string from front to back, and back to front, at the same time.",
+                "If the pair of letters you get is the same, then you can move on.",
+                "If the pair of letters is different, change both letters to the alphabetically smallest of both of them.",
+                "Finally, once the 2 searches touch each other or intersect, output the modified string."
+            ]
+        },
+        "updated":"6 April 2026"
+    },
+    "336": {
+        "hints": {
+            "Hint 1":["Just considering 1d lines, how do you check intersection"],
+            "Hint 2":["Now, extend this into 2d. How do you check for intersection on the y axis, then x axis. After you find these numbers, what is the total intersection?"]
+        },
+        "updated":"6 April 2026"
+    },
+    
+
     "3": {
         "hints": {
             "Hint 1": ["What is the minimum amount of flowers needed for there to be a valid arrangement of flowers?"],
@@ -8,19 +106,6 @@
                 "You need at least 6 flowers to make it possible, with 1 2 3, as these numbers are the smallest possible. When you need 6 + n flowers, just increase the third vase's capacity by n.",
                 "<br><br> Doing this obviously follows the first and second criteria. Since we only increase the last vase's capacity every time, we guarantee that the first 2 vases' capacities are kept distinct, and that the 3rd vase's capacitiy is always strictly greater than the other 2."
             ]
-        },
-        "solutions":{
-            "Python": [
-                "n = int(input())",
-                "if n < 6: print('0 0 0')",
-                "else: print('1 2 ' + str(n - 3))"
-            ]
-        },
-        "updated":"6 April 2026"
-    },
-    "332": {
-        "hints": {
-            "Full Solution":"umm just get two numbers, add them ig"
         },
         "updated":"6 April 2026"
     }
