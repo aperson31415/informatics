@@ -8,7 +8,7 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 134
+  Problems I've solved: 136
   
 
 Starter
