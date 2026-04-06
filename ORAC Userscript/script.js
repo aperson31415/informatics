@@ -99,6 +99,20 @@
     }
 
     if(window.location.href.includes("problem") && window.location.href.includes("submissions")) {
+        let aliases = {
+            "py": "python",
+            "Py": "python",
+            "python": "python",
+            "Python": "python",
+            "C++": "cpp",
+            "c++": "cpp",
+            "txt": "plaintext",
+            "Txt": "plaintext",
+            "text": "plaintext",
+            "Text": "plaintext",
+            "Java": "java",
+            "java": "java"
+        };
         let parent = document.querySelectorAll(".container-xl")[2];
         let title = document.createElement("h2");
         title.innerText = "Hints";
@@ -129,7 +143,7 @@
                 // Code
                 for(let i = 0; i < Object.keys(problem_data.solutions).length; i++) {
                     let codeelem = problem_data.solutions[Object.keys(problem_data.solutions)[i]];
-                    let code = `<pre><code class="language-py hljs python" id="customsol`+i+`">`;
+                    let code = `<pre><code class="language-` + aliases[Object.keys(problem_data.solutions)[i]] + ` hljs ` + aliases[Object.keys(problem_data.solutions)[i]] + `" id="customsol`+i+`">`;
                     for(let j = 0; j < codeelem.length; j++) {
                         code += codeelem[j] + "\n";
                     }
