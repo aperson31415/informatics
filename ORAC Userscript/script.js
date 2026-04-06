@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ORAC Userscript
 // @namespace    http://tampermonkey.net/
-// @version      v3.0.4
+// @version      v3.4.5
 // @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering, editorials
 // @author       a_person31415
 // @match        https://orac2.info/hub/personal/*
@@ -130,32 +130,32 @@
                 parent.appendChild(wompwomp);
             } else {
                 // Hints
-                for(let i = 0; i < Object.keys(problem_data.hints).length; i++) {
+                Object.keys(problem_data.hints).forEach((hint_key) => {
                     let content = "";
-                    for(let j = 0; j < problem_data.hints[Object.keys(problem_data.hints)[i]].length; j++) {
-                        content += problem_data.hints[Object.keys(problem_data.hints)[i]][j];
-                    }
-                    let curr_hint = styled_details(Object.keys(problem_data.hints)[i], content, "hint"+i);
+                    problem_data.hints[Object.keys(problem_data.hints)[i]].forEach((para) => {
+                        content += para;
+                    });
+                    let curr_hint = styled_details(hint_key, content, "hint"+hint_key);
                     curr_hint.appendChild(document.createElement("br"));
                     parent.appendChild(curr_hint);
-                }
-
+                });
+                
                 // Code
-                for(let i = 0; i < Object.keys(problem_data.solutions).length; i++) {
-                    let codeelem = problem_data.solutions[Object.keys(problem_data.solutions)[i]];
-                    let code = `<pre><code class="language-` + aliases[Object.keys(problem_data.solutions)[i]] + ` hljs ` + aliases[Object.keys(problem_data.solutions)[i]] + `" id="customsol`+i+`">`;
-                    for(let j = 0; j < codeelem.length; j++) {
-                        code += codeelem[j] + "\n";
-                    }
+                Object.keys(problem_data.solutions).forEach((lang) => {
+                    let codeelem = problem_data.solutions[lang];
+                    let code = `<pre><code class="language-` + aliases[lang] + ` hljs ` + aliases[lang] + `" id="customsol`+lang+`">`;
+                    codeelem.forEach((line) => {
+                        code += line + "\n";
+                    });
                     code += `</code></pre>`;
-                    let content = styled_details(Object.keys(problem_data.solutions)[i] + " solution", code, "sol" + Object.keys(problem_data.solutions)[i]);
+                    let content = styled_details(lang + " solution", code, "sol" + lang);
                     parent.appendChild(content);
-                    hljs.highlightBlock(document.getElementById("customsol"+i));
-                    hljs.lineNumbersBlock(document.getElementById("customsol"+i), {
+                    hljs.highlightBlock(document.getElementById("customsol"+lang));
+                    hljs.lineNumbersBlock(document.getElementById("customsol"+lang), {
                         singleLine: false,
                         startFrom: 1
                     });
-                }
+                });
 
                 document.getElementsByClassName("inline-code").forEach((elem) => {
                     hljs.highlightBlock(elem);
@@ -346,8 +346,6 @@
             }
             return solves;
         }
-
-
     }
 
     if (window.location.href.includes("personal")) {
