@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         ORAC Userscript
 // @namespace    http://tampermonkey.net/
-// @version      v2.9.6
-// @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering
+// @version      v3.0.4
+// @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering, editorials
 // @author       a_person31415
 // @match        https://orac2.info/hub/personal/*
 // @match        https://orac.amt.edu.au/hub/personal/*
@@ -58,6 +58,91 @@
         tr[data-visible="false"] {height: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; margin-top: 0 !important; margin-bottom: 0 !important; overflow: hidden !important; border: none; visibility: hidden;}
         tr[data-visible="false"] td {padding: 0 !important; margin: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; border: none !important;}
     `);
+
+    function styled_details(name, content, id) {
+        let buttonp = document.createElement("p");
+        let button = document.createElement("a");
+        button.className = "btn btn-primary collapsed";
+        button.setAttribute("data-toggle", "collapse");
+        button.setAttribute("href", "#" + id);
+        button.setAttribute("role", "button");
+        button.setAttribute("aria-expanded", "false");
+        button.innerText = name;
+        buttonp.appendChild(button);
+
+        let container = document.createElement("div");
+        container.classList.add("collapse");
+        container.id = id;
+        container.setAttribute("style", "");
+        let body = document.createElement("div");
+        body.className = "card card-body";
+        body.innerHTML = content;
+        container.appendChild(body);
+
+        let wrapper = document.createElement("span");
+        wrapper.appendChild(buttonp);
+        wrapper.appendChild(container);
+
+        return wrapper;
+    }
+
+    async function problemdata(id) {
+        const res = await fetch("https://raw.githubusercontent.com/aperson31415/informatics/refs/heads/main/ORAC%20Userscript/data.json");
+        const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+        const rawjson = doc.body.innerHTML;
+        const obj = JSON.parse(rawjson);
+        if(Object.keys(obj).includes(id) || Object.keys(obj).includes(id.toString())) {
+            return obj[id];
+        } else {
+            return null;
+        }
+    }
+
+    if(window.location.href.includes("problem") && window.location.href.includes("submissions")) {
+        let parent = document.querySelectorAll(".container-xl")[2];
+        let title = document.createElement("h2");
+        title.innerText = "Hints";
+        title.classList.add("mt-5");
+        parent.appendChild(title);
+
+        const url = new URL(window.location.href);
+        const problem_id = parseInt(url.pathname.split("/").filter(Boolean)[1]);
+
+        (async () => {
+            let problem_data = await problemdata(problem_id);
+            if(problem_data == null || problem_data == "" || problem_data == undefined || problem_data == []) {
+                let wompwomp = document.createElement("p");
+                wompwomp.innerText = "Sorry, no hints or solutions are available for this problem as of now. Try coming back to this problem later.";
+                parent.appendChild(wompwomp);
+            } else {
+                // Hints
+                for(let i = 0; i < problem_data.hints.length; i++) {
+                    let content = "";
+                    for(let j = 0; j < problem_data.hints[i].length; j++) {
+                        content += problem_data.hints[i][j];
+                    }
+                    let curr_hint = styled_details("Hint " + (i + 1), content, "hint"+i);
+                    curr_hint.appendChild(document.createElement("br"));
+                    parent.appendChild(curr_hint);
+                }
+
+                // Code
+                for(let i = 0; i < Object.keys(problem_data.solutions).length; i++) {
+                    let codeelem = problem_data.solutions[Object.keys(problem_data.solutions)[i]];
+                    let code = "";
+                    for(let j = 0; j < codeelem.length; j++) {
+                        code += codeelem[j] + "<br>";
+                    }
+                    let content = styled_details(Object.keys(problem_data.solutions)[i] + " solution", code, "sol" + Object.keys(problem_data.solutions)[i]);
+                    parent.appendChild(content);
+                }
+
+                let last_update = document.createElement("p");
+                last_update.innerText = "Last updated on " + problem_data.updated;
+                parent.appendChild(last_update);
+            }
+        })();
+    }
 
     function tag_element(content, parent = document) {
         let elem = parent.createElement("span");
