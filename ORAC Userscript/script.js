@@ -129,12 +129,18 @@
                 // Code
                 for(let i = 0; i < Object.keys(problem_data.solutions).length; i++) {
                     let codeelem = problem_data.solutions[Object.keys(problem_data.solutions)[i]];
-                    let code = "";
+                    let code = `<pre><code class="language-py hljs python" id="customsol`+i+`">`;
                     for(let j = 0; j < codeelem.length; j++) {
-                        code += codeelem[j] + "<br>";
+                        code += codeelem[j] + "\n";
                     }
+                    code += `</code></pre>`;
                     let content = styled_details(Object.keys(problem_data.solutions)[i] + " solution", code, "sol" + Object.keys(problem_data.solutions)[i]);
                     parent.appendChild(content);
+                    hljs.highlightBlock(document.getElementById("customsol"+i));
+                    hljs.lineNumbersBlock(document.getElementById("customsol"+i), {
+                        singleLine: false,
+                        startFrom: 1
+                    });
                 }
 
                 let last_update = document.createElement("p");
