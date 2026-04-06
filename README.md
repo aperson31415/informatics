@@ -70,6 +70,8 @@ Selection Exams (No solutions given)
 ## ORAC Userscript
 A tool located in the top folder of this repository which, as injected as a userscript, shows some old, hidden orac2.info problems, organises problems better, and allows you to mark problems with your own tags.
 
+Now, it comes with editorials for problems (most not added, but slowly and surely they will). However, you need to do 'something' in order to enable the showing of these editorials, to make sure that you have actually tried to solve the problem.
+
 ## Advanced AIO Tutorials
 This is a project being worked on right now, to cover some advanced AIO problems, and topics needed to solve them. This also extends into AIIO problems and topics. I hope to also make [now include inside] a userscript to integrate this into orac2.info.
 

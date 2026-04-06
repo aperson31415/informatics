@@ -59,6 +59,10 @@
         tr[data-visible="false"] td {padding: 0 !important; margin: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; border: none !important;}
     `);
 
+    function nospace(text) {
+        return text.replace(" ", "koolspace")
+    }
+
     function styled_details(name, content, id) {
         let buttonp = document.createElement("p");
         let button = document.createElement("a");
@@ -123,51 +127,66 @@
         const problem_id = parseInt(url.pathname.split("/").filter(Boolean)[1]);
 
         (async () => {
-            let problem_data = await problemdata(problem_id);
-            if(problem_data == null || problem_data == "" || problem_data == undefined || problem_data == []) {
+            // See if attempted, maybe might do more strict checking later with encoding.
+            if(document.querySelector(".table") == null || document.querySelector(".table") == undefined) {
                 let wompwomp = document.createElement("p");
-                wompwomp.innerText = "Sorry, no hints or solutions are available for this problem as of now. Try coming back to this problem later.";
+                wompwomp.innerText = "Please attempt this problem before looking at hints";
                 parent.appendChild(wompwomp);
             } else {
-                // Hints
-                Object.keys(problem_data.hints).forEach((hint_key) => {
-                    let content = "";
-                    problem_data.hints[Object.keys(problem_data.hints)[i]].forEach((para) => {
-                        content += para;
-                    });
-                    let curr_hint = styled_details(hint_key, content, "hint"+hint_key);
-                    curr_hint.appendChild(document.createElement("br"));
-                    parent.appendChild(curr_hint);
-                });
-                
-                // Code
-                Object.keys(problem_data.solutions).forEach((lang) => {
-                    let codeelem = problem_data.solutions[lang];
-                    let code = `<pre><code class="language-` + aliases[lang] + ` hljs ` + aliases[lang] + `" id="customsol`+lang+`">`;
-                    codeelem.forEach((line) => {
-                        code += line + "\n";
-                    });
-                    code += `</code></pre>`;
-                    let content = styled_details(lang + " solution", code, "sol" + lang);
-                    parent.appendChild(content);
-                    hljs.highlightBlock(document.getElementById("customsol"+lang));
-                    hljs.lineNumbersBlock(document.getElementById("customsol"+lang), {
-                        singleLine: false,
-                        startFrom: 1
-                    });
-                });
+                let problem_data = await problemdata(problem_id);
+                if(problem_data == null || problem_data == "" || problem_data == undefined || problem_data == []) {
+                    let wompwomp = document.createElement("p");
+                    wompwomp.innerText = "Sorry, no hints or solutions are available for this problem as of now. Try coming back to this problem later.";
+                    parent.appendChild(wompwomp);
+                } else {
+                    // Hints
+                    if(problem_data.hints != null && problem_data.hints != undefined) {
+                        Object.keys(problem_data.hints).forEach((hk) => {
+                            let hint_key = nospace(hk);
+                            let content = "";
+                            problem_data.hints[hk].forEach((para) => {
+                                content += `<p>` + para + `</p>`;
+                            });
+                            let curr_hint = styled_details(hk, content, "hint"+hint_key);
+                            curr_hint.appendChild(document.createElement("br"));
+                            parent.appendChild(curr_hint);
+                        });
+                    }
+                    
+                    // Code
+                    if(problem_data.solutions != null && problem_data.solutions != undefined) {
+                        Object.keys(problem_data.solutions).forEach((lg) => {
+                            let lang = nospace(lg);
+                            let codeelem = problem_data.solutions[lg];
+                            let code = `<pre><code class="language-` + aliases[lg] + ` hljs ` + aliases[lg] + `" id="customsol`+lang+`">`;
+                            codeelem.forEach((line) => {
+                                code += line + "\n";
+                            });
+                            code += `</code></pre>`;
+                            let content = styled_details(lg + " solution", code, "sol" + lang);
+                            parent.appendChild(content);
+                            hljs.highlightBlock(document.getElementById("customsol"+lang));
+                            hljs.lineNumbersBlock(document.getElementById("customsol"+lang), {
+                                singleLine: false,
+                                startFrom: 1
+                            });
+                        });
+                    }
 
-                document.getElementsByClassName("inline-code").forEach((elem) => {
-                    hljs.highlightBlock(elem);
-                    hljs.lineNumbersBlock(elem, {
-                        singleLine: false,
-                        startFrom: 1
-                    });
-                });
+                    if(document.querySelector(".inline-code") != [] && document.querySelector(".inline-code") != null && document.querySelector(".inline-code") != undefined) {
+                        document.getElementsByClassName("inline-code").forEach((elem) => {
+                            hljs.highlightBlock(elem);
+                            hljs.lineNumbersBlock(elem, {
+                                singleLine: false,
+                                startFrom: 1
+                            });
+                        });
+                    }
 
-                let last_update = document.createElement("p");
-                last_update.innerText = "Last updated on " + problem_data.updated;
-                parent.appendChild(last_update);
+                    let last_update = document.createElement("p");
+                    last_update.innerText = "Last updated on " + problem_data.updated;
+                    parent.appendChild(last_update);
+                }
             }
         })();
     }
