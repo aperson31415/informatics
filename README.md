@@ -8,7 +8,7 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 147
+  Problems I've solved: 148
   
 
 Starter
@@ -58,7 +58,7 @@ Alpha Contest
   - P4s: None :(
 
 FARIO
-  - P1s: 2004, 2008, 2009, 2010, 2011
+  - P1s: 2004, 2008, 2009, 2010, 2011, 2012
   - P2s: None :(
   - P3s: None :(
   - P4s: None :(
