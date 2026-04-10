@@ -1,0 +1,469 @@
+/* Christmas */
+/*Simple reset*/
+* {margin: 0; padding: 0;}
+
+body {
+    /*You can use any kind of background here.*/
+    background: #6b92b9;
+  margin: 0px;
+  width 40em;
+  height: 100%;
+}
+canvas {
+    display: block;
+    overflow: auto;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    //width: 100%;
+    //height: 100%;
+    z-index: 100;
+}
+/* Regular transmission begins here, so uncomment this block */
+
+/*body {
+  margin: 0px;
+  width 40em;
+  background-color: #eeeeee;
+} */
+
+.container-fluid, .row-fluid {
+    background-color: #ffffff;
+}
+
+.container-fluid {
+    padding: 25px;
+}
+
+.alert-attempted {
+  background-color: #f7ecb5;
+}
+
+.alert-attempted,
+.alert-attempted h4 {
+  color: #a47e3c;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu{
+    margin: 0;
+    display: block;    
+}
+
+div.fileinputs {
+    position: relative;
+}
+
+div.fakefile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+input.file {
+    position: relative;
+    text-align: right;
+    -moz-opacity:0 ;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+    z-index: 2;
+}
+
+div.mainContainer {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #ffffff;
+  min-height: 100%;
+}
+
+p, td, th, li {
+  text-indent: 0px;
+  color: #000000;
+}
+
+H1 {
+  font-size: 14pt;
+  font-weight: 600;
+  color: #000000;
+  padding: 0;
+  margin: 0px 10% 0px 0px;
+  border-bottom: solid #008000 1px;
+  border-bottom-width: 1px;
+  border-top: solid #FFFFFF 0px;
+  border-top-width: 0px;
+  border-left: solid #FFFFFF 0px;
+  border-left-width: 0px;
+  border-right: solid #FFFFFF 0px;
+  border-right-width: 0px;
+  border-color: #008000;
+  border-style: solid;
+}
+
+p.nouseindex {
+  background-color: #D8FFDD;
+  padding: 3px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-color: #008000;
+  border-style: solid;
+}
+
+div.news p, div.announce p {
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+div.news h3, div.announce h3 {
+  color: #502525;
+  margin: 0px;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-bottom-width: 1px;
+  border-color: #C98686;
+  border-style: solid;
+  background-color: #FFCCCC;
+}
+
+div.tokens p {
+  background-color: #FFFFC0;
+  border-width: 1px;
+  border-color: #EEC800;
+  border-style: solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+div.success p {
+  background-color: #C1FFB5;
+  border-width: 1px;
+  border-color: #8EBA8B;
+  border-style: solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+div.success b {
+  font-weight: bold;
+  color: #2E3C2D;
+}
+
+div.warn p, div.err p, div.err pre, div.bigerr p, div.warnblock {
+  background-color: #FCB1FF;
+  border-width: 1px;
+  border-color: #C98686;
+  border-style: solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+div.warn b, div.err p, div.bigerr p, div.warnblock b {
+  font-weight: bold;
+  color: #440000;
+}
+
+div.bigerr p {
+  font-size: large;
+}
+
+div.file pre, div.judgegrey pre {
+  background-color: #D8D8D8;
+  border-width: 1px;
+  border-color: #888888;
+  border-style: solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+div.judgecoloured pre {
+  background-color: #FFFFC0;
+  border-width: 1px;
+  border-color: #EEC800;
+  border-style: solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+table th.icon, table td.icon {
+  padding: 1ex 2ex 1ex 2ex;
+}
+
+table.stop {
+  background-color: #FCB1FF;
+  border-width: 1px;
+  border-color: #C98686;
+  border-style: solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+table.start {
+  background-color: #E8F8E6;
+  border-width: 1px;
+  border-color: #8EBA8B;
+  border-style: solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+table.stop th {
+  font-weight: bold;
+  color: #440000;
+}
+
+table.start th {
+  font-weight: bold;
+  color: #2E3C2D;
+}
+
+table.stop th.header, table.start th.header {
+  font-size: large;
+  padding: 0.7ex 1ex 1ex 1ex;
+}
+
+table.stop th.notes, table.start th.notes {
+  padding: 1ex 1ex 1ex 1ex;
+}
+
+table.login {
+  border-width: 1px;
+  border-color: #8EBA8B;
+  border-style: solid;
+  background-color: #E8F8E6;
+}
+
+table.login th.header {
+  color: #2E3C2D;
+  padding: 1ex 3px 3px 1ex;
+}
+
+table.login th.username {
+  color: #2E3C2D;
+  padding: 1ex 3px 3px 1ex;
+}
+
+table.login th.password {
+  color: #2E3C2D;
+  padding: 3px 3px 3px 1ex;
+}
+
+table.login td.username {
+  padding: 1ex 1ex 3px 3px;
+}
+
+table.login td.password {
+  padding: 3px 1ex 3px 3px;
+}
+
+table.login td.button {
+  padding: 3px 1ex 1ex 1ex;
+}
+
+table.list, table.sidelist, table.rank, table.success {
+  border: 0;
+  background-color: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.list td.first b, table.list th, table.sidelist td.first b, table.sidelist th {
+  font-weight: bold;
+  color: #3D3F53;
+}
+
+table.list th, table.rank th {
+  background-color: #E0E2F8;
+  padding: 2px 1ex 2px 1ex;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 0px;
+  border-right: 1px;
+  border-color: #B5BCF8;
+  border-style: solid;
+}
+
+table.sidelist th {
+  background-color: #E0E2F8;
+  padding: 2px 1ex 2px 1ex;
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: #B5BCF8;
+  border-style: solid;
+}
+
+table.list th.first, table.sidelist th.first, table.rank th.first {
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: #B5BCF8;
+  border-style: solid;
+}
+
+table.list td, table.sidelist td, table.rank td {
+  background-color: #F2F4F8;
+  padding: 2px 2px 2px 2px;
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 0px;
+  border-right: 1px;
+  border-color: #B5BCF8;
+  border-style: solid
+}
+
+table.list td.first, table.list td.expfirst, table.list td.successfirst, table.list td.warnfirst, table.list td.errfirst, table.rank td.first {
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: #B5BCF8;
+  border-style: solid
+}
+
+table.sidelist td.first, table.sidelist td.expfirst, table.sidelist td.successfirst, table.sidelist td.warnfirst, table.sidelist td.errfirst {
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 0px;
+  border-right: 1px;
+  border-color: #B5BCF8;
+  border-style: solid
+}
+
+table.list td.exp, table.list td.expfirst, table.sidelist td.exp, table.sidelist td.expfirst {
+  background-color: #E0F8E2;
+}
+
+table.list td.success, table.list td.successfirst, table.sidelist td.success, table.sidelist td.successfirst {
+  background-color: #C1FFB5;
+}
+
+table.list td.warn, table.list td.warnfirst, table.sidelist td.warn, table.sidelist td.warnfirst {
+  background-color: #FCB1FF;
+}
+
+table.list td.err, table.list td.errfirst, table.sidelist td.err, table.sidelist td.errfirst {
+  background-color: #FCB1FF;
+  color: #440000;
+}
+
+table.rank td, table.rank td.first, table.rank th, table.rank th.first {
+  border-color: #C1A881;
+}
+
+table.rank th {
+  font-weight: bold;
+  color: #4B4132;
+  background-color: #FFFFFF;
+}
+
+table.rank tr.gold td {
+  background-color: #F5FF8A;
+}
+
+table.rank tr.silver td {
+  background-color: #F0EAFF;
+}
+
+table.rank tr.bronze td {
+  background-color: #FFE7C3;
+}
+
+table.success th {
+  font-weight: bold;
+  color: #2E3C2D;
+  background-color: #C1FFB5;
+  padding: 2px 1ex 2px 1ex;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 0px;
+  border-right: 1px;
+  border-color: #8EBA8B;
+  border-style: solid;
+}
+
+table.success th.first {
+  font-weight: bold;
+  color: #2E3C2D;
+  background-color: #C1FFB5;
+  padding: 2px 1ex 2px 1ex;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: #8EBA8B;
+  border-style: solid;
+}
+
+table.success td {
+  background-color: #E8F8E6;
+  padding: 2px 2px 2px 2px;
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 0px;
+  border-right: 1px;
+  border-color: #8EBA8B;
+  border-style: solid
+}
+
+table.success td.first {
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: #8EBA8B;
+  border-style: solid
+}
+
+.MATH {
+	font-style: italic;
+}
+
+.textit {
+	font-style:italic;
+}
+
+.textbf {
+	font-weight:bold;
+}
+
+/*
+     FILE ARCHIVED ON 02:15:33 May 25, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 12:11:09 Apr 10, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  capture_cache.get: 0.607
+  load_resource: 96.129 (2)
+  PetaboxLoader3.datanode: 62.262 (2)
+*/
