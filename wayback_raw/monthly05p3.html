@@ -1,0 +1,119 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Nine Clocks</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Nine Clocks</h2></center>
+
+<p>
+<b>Input File:</b> <tt>clocks.in</tt><br>
+<b>Output File:</b> <tt>clocks.out</tt><br>
+<b>Time Limit:</b> 0.5 seconds
+</p>
+
+<p>
+There are nine clocks in a 3-by-3 array as shown in the diagram below.
+</p>
+
+<pre>|-------|    |-------|    |-------|
+|       |    |       |    |   |   |
+|---O   |    |---O   |    |   O   |
+|       |    |       |    |       |
+|-------|    |-------|    |-------|
+    A            B            C
+
+|-------|    |-------|    |-------|
+|       |    |       |    |       |
+|   O   |    |   O   |    |   O   |
+|   |   |    |   |   |    |   |   |
+|-------|    |-------|    |-------|
+    D            E            F
+
+|-------|    |-------|    |-------|
+|       |    |       |    |       |
+|   O   |    |   O---|    |   O   |
+|   |   |    |       |    |   |   |
+|-------|    |-------|    |-------|
+    G            H            I
+</pre>
+
+<p>
+The goal is to return all the dials to 12 o'clock with as few moves as possible.
+There are nine different allowed ways to turn the dials on the clocks.
+Each such way is called a <i>move</i>, and these moves are numbered 1,2,...,9.
+</p>
+
+<p>
+Each move involves selecting a subset of clocks and turning the
+dials 90 degrees clockwise on each of those clocks.  The clocks affected
+by each move are listed in the table below.
+</p>
+
+<pre>Move   Affected clocks
+
+ 1         ABDE
+ 2         ABC
+ 3         BCEF
+ 4         ADG
+ 5         BDEFH
+ 6         CFI
+ 7         DEGH
+ 8         GHI
+ 9         EFHI
+</pre>
+
+<h3>Input</h3>
+
+<p>
+The input file will contain three lines of three numbers each,
+representing the starting positions of the dials.  Each number will be
+0, 1, 2 or 3, representing 12 o'clock, 3 o'clock, 6 o'clock or 9 o'clock
+respectively.  The three numbers on each line will be separated by spaces.
+</p>
+
+<h3>Output</h3>
+
+<p>
+The output should consist of a shortest sequence of moves
+that returns all the dials to 12 o'clock.
+These moves should be output on a single line, with each
+move represented by an integer from 1 to 9 as explained above.
+The moves should be separated by spaces in the output file.
+If there are many possible solutions, you should output only one (any
+one will do).
+</p>
+
+<h3>Sample Input</h3>
+
+The nine clocks from the illustration above correspond to the following
+input file:
+
+<pre>3 3 0
+2 2 2 
+2 1 2
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>5 8 4 9
+</pre>
+
+<h3>Explanation</h3>
+
+<p>
+The four moves <tt>5&nbsp;8&nbsp;4&nbsp;9</tt> return all the dials to
+12 o'clock as illustrated below.
+</p>
+
+<pre>3 3 0         3 0 0         3 0 0          0 0 0         0 0 0
+2 2 2   5-&gt;   3 3 3   8-&gt;   3 3 3   4 -&gt;   0 3 3   9-&gt;   0 0 0 
+2 1 2         2 2 2         3 3 3          0 3 3         0 0 0
+</pre>
+
+</div></div>
+
+</body></html>

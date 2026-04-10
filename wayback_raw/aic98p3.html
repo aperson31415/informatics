@@ -1,0 +1,129 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Building Integers</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=19">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic98#aic98">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Building Integers</h2></center>
+
+<p>
+<b>Input File:</b> <tt>buildin.txt</tt><br>
+<b>Output File:</b> <tt>buildout.txt</tt><br>
+<b>Time Limit:</b> 0.4 seconds
+</p>
+
+<p>
+As a year three homework assignment, your younger sister has been asked to
+build numbers
+using only the symbols <tt>+&nbsp;x&nbsp;(&nbsp;)</tt> and <tt>1</tt>.
+However, being the technologically aware
+child that she is, she has written a computer program to do her
+homework for her. 
+</p>
+
+<p>
+After looking over her shoulder, you begin to wonder how to create any given number using
+the least number of such symbols.  Eventually, you too decide to write a computer program
+to solve this new problem. 
+</p>
+
+<p>
+Numbers can be built using only the symbols
+<tt>+&nbsp;x&nbsp;(&nbsp;)</tt> and <tt>1</tt>.  The order convention
+must be followed (i.e., multiplication is performed before addition unless
+the brackets
+tell you otherwise).  You may place digits next to each other to form
+larger numbers such as <tt>11</tt> and <tt>111</tt>. 
+</p>
+
+<p>
+Your task is to work out the least number of symbols required to create
+any given integer. 
+</p>
+
+<h3>Input</h3>
+
+<p>
+Input will consist of a list of integers, one on each line.  Each integer
+will be between
+1 and 2000 inclusive.  The list will be terminated by the integer 0.
+</p>
+
+<h3>Output</h3>
+
+<p>
+For each integer in the input list, you must output a
+way of creating the given integer
+using the smallest number of symbols.  If there is more than one smallest
+way of creating
+it, any such solution will do.  Your output for the given integer should be
+a single line of the form
+</p>
+<center>
+<em>given&nbsp;integer</em>&nbsp;=&nbsp;<em>method&nbsp;of&nbsp;construction</em>
+</center>
+<p>
+as illustrated in the sample output.  The output should contain no spaces.
+There should be no output for the final 0 in the input list.
+</p>
+
+<p>
+It is guaranteed that no construction will require more than 40 symbols.
+</p>
+
+<h3>Sample Input</h3>
+
+<pre>4
+23
+242
+0
+</pre>
+
+<h3>Sample Output</h3>
+
+<p>
+</p><pre>4=1+1+1+1
+23=11+11+1
+242=(11+11)*11
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+For each line of the input file:
+</p><ul>
+<li>A mathematically correct expansion that uses the minimum number of symbols
+will score 100%.</li>
+<li>A mathematically correct expansion that uses more symbols than necessary
+will score 100% minus 15% for each extra symbol used, down to a minimum
+score of 10%.</li>
+<li>A mathematically incorrect expansion will score 0%.</li>
+</ul>
+<p></p>
+
+<p>
+For instance, an expansion of <code>23=11*(1+1)+1</code> will score 55%, and an
+expansion of <code>23=11*(1+1)</code> will score 0%.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

@@ -1,0 +1,206 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Anagram Solver</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=18">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic98#aic98">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<p>
+</p><center><h2>Anagram Solver</h2></center>
+
+<p>
+<b>Input Files:</b> <tt>anagin.txt</tt>, <tt>words.txt</tt><br>
+<b>Output File:</b> <tt>anagout.txt</tt><br>
+<b>Time Limit:</b> 1.5 seconds
+</p>
+
+<p>
+As the Morality Observational Liaison Employee for your school, you have
+noticed that lately students have been passing more and more notes around
+class.  It is your task to intercept these notes and ensure that they do
+not smack of subversive activity.  There has been talk in the staff
+tea room of a student uprising within the school, and the
+teachers are in the grip of terror.  You are on the case.
+</p>
+
+<p>
+Recently, you have made a horrifying discovery.  You saw two
+students looking at you and laughing on sports day, and so you quickly
+and efficiently plucked the following note out of their hands: <em>"what
+an awful relay this"</em>.  You ran your fingers through your new perm
+as you studied the seemingly innocent note, and then it hit you.  They
+were using anagrams!  Upon rearranging the last two words, the note read
+<em>"what an awful hairstyle"</em>.  You blushed, scrunched up the note
+and hid behind a tree as you contemplated this shocking new discovery.
+</p>
+
+<p>
+There was only one solution.  Every note in your possession had to
+be carefully tested for the use of anagrams.  It would take far too long
+by hand, and you had never been good at English.  So you sat down to
+write a computer program that would look for key words that might have
+been encrypted within the students' notes.
+</p>
+
+<p>
+The program will read in a list of subversive words from the file
+<em>words.txt</em> and will read in fragments of notes from the file
+<em>anagin.txt</em>.  You must test each note fragment to see if it is
+an anagram of any subversive word.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The list of subversive words (<em>words.txt</em>) will consist of a
+sequence of lines with one word on each line.  All words will be at most
+30 letters long, will contain no punctuation and will be entirely in
+lower case.  This list will contain at most 650 words and will be
+terminated by a line containing a single # character.  No two subversive
+words will be the same.
+</p>
+
+<p>
+The input file (<em>anagin.txt</em>) will consist of a sequence of
+lines with one or more words on each line.  Words on the same line will
+be separated by a single space.  Each line will be no more than 80
+characters long, will contain no punctuation and will be entirely in
+lower case. This list of lines will also be terminated by a line
+containing a single # character. There will be at most 200,000 lines.
+</p>
+
+<h3>Output</h3>
+
+<p>
+For each line in the input file, a line of output must be produced
+containing a list of all subversive words which are anagrams of the
+entire line from the input file.  These words must be separated by a
+single space, and may be output in any order on the line.  If there is
+no such subversive word, the output line should be "<code>No anagram
+found</code>".  Do not produce any output for the final #.
+</p>
+
+<p>
+Note that each anagram found should use only one subversive word, and
+should use the entire line from the input file.
+</p>
+
+<h3>Sample <i>words.txt</i> 1</h3>
+
+<pre>the
+quality
+of
+mercy
+is
+not
+strained
+#
+</pre>
+
+<h3>Sample <i>anagin.txt</i> 1</h3>
+
+<p>
+</p><pre>cry me
+a river
+#
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<p>
+</p><pre>mercy
+No anagram found
+</pre>
+
+<h3>Sample <i>words.txt</i> 2</h3>
+
+<pre>evil
+uprising
+vile
+hairstyle
+revolution
+takeover
+#
+</pre>
+
+<h3>Sample <i>anagin.txt</i> 2</h3>
+
+<pre>what an awful
+relay this
+live
+sports
+what an awful relay this
+live this relay
+#
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>No anagram found
+hairstyle
+evil vile
+No anagram found
+No anagram found
+No anagram found
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each line of the input file will be determined as follows:
+</p><ul>
+<li>If no anagram exists, a score of 100% will be given if the program
+determines that no anagram exists, and 0% otherwise.</li>
+<li>If <i>n</i> anagrams exist:
+<ul>
+<li>If the program determines that no anagram exists, a score of 0%
+will be given.</li>
+<li>If the program produces <i>m</i> of these anagrams, as well as
+<i>w</i> words that are not actually anagrams, the score will be
+(<i>m</i>-<i>w</i>)/<i>n</i>&nbsp;x&nbsp;100%,
+down to a minimum score of 0%.</li>
+</ul>
+In particular, if all possible anagrams are produced with nothing extraneous
+then the score will be 100%.</li>
+</ul>
+<p></p>
+
+<p>
+For instance, consider Sample Input&nbsp;2 with the input line
+"<code>live</code>".  There are <i>n=2</i> anagrams of this line in
+<i>words.txt</i>.  The output line
+</p>
+<center><pre>evil vile uprising
+</pre></center>
+<p>
+would obtain a score of
+(2-1)/2&nbsp;x&nbsp;100%&nbsp;=&nbsp;50%, and the output line
+</p>
+<center><pre>vile
+</pre></center>
+<p>
+would obtain a score of
+(1-0)/2&nbsp;x&nbsp;100%&nbsp;=&nbsp;50%.
+</p>
+
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

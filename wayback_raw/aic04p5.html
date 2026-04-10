@@ -1,0 +1,138 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Bouncy Ball</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Bouncy Ball</h2></center>
+
+<p>
+<b>Input File:</b> <tt>ballin.txt</tt><br>
+<b>Output File:</b> <tt>ballout.txt</tt><br>
+<b>Time Limit:</b> 0.2 seconds
+</p>
+
+<p>
+For your birthday you have been given a small rubber ball.  This ball
+is particularly bouncy, which makes it great fun for throwing down a
+flight of stairs.
+</p>
+
+<p>
+On each bounce, the ball may jump over one step or it may jump over
+several steps.  The ball never loses momentum — each bounce must jump
+over at least as many steps as the previous bounce.  In the
+illustration below, the left hand diagram shows a valid passage down
+eight steps, whereas the right hand diagram shows an invalid passage down
+eight steps.
+</p>
+
+<center>
+<img width="318" height="92" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04sen&amp;problemid=116&amp;file=img1.png">
+</center>
+
+<p>
+The path of the ball down the flight of stairs can be represented as a
+sequence of positive integers, with each integer representing the number
+of steps that are jumped over on a single bounce.  Thus the left hand
+diagram above can be represented by the sequence 1,2,2,3, and the
+right hand diagram above can be represented by the sequence 3,2,3.
+</p>
+
+<p>
+Note that the final bounce must be exactly the right length to reach the
+bottom of the staircase.  For example, for a staircase of eight steps,
+the sequence 3,4,5 is invalid since the final bounce covers more steps
+than are available.  The sequence 3,4,1 is also invalid since, even
+though it covers the correct amount of steps, the final bounce is
+smaller than the bounce before it.
+</p>
+
+<p>
+Some balls are in fact so bouncy that they accelerate as they make
+their way down the stairs.  If a ball has acceleration <i>a</i>, each bounce
+must jump over at least <i>a</i> more steps than the previous bounce.  For
+example, if a ball with acceleration 2 makes its way down a flight of 11
+stairs, it may follow the path 1,4,6 but it may not follow the path
+2,3,6.  Both of these paths are illustrated below.
+</p>
+
+<center>
+<img width="375" height="125" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04sen&amp;problemid=116&amp;file=img2.png">
+</center>
+
+<p>
+Given the acceleration of the ball and the length of the flight of
+stairs, there are many different paths that the ball can take.  These
+paths can be written in lexicographical (dictionary) order and assigned
+numbers 1,2,3,....  The following table lists all possible paths
+that a ball with acceleration 1 can take down a flight of 10 stairs.
+</p>
+
+<center>
+<img width="222" height="95" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04sen&amp;problemid=116&amp;file=img3.png">
+</center>
+
+<p>
+You must write a program that, given the acceleration of the ball and
+the length of the flight of stairs, can output the <i>k</i>th path in this
+list for any <i>k</i>.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The input will consist of a single line containing three integers
+separated by spaces.  The first integer will be <i>n</i>, the length of the
+flight of stairs
+(1&nbsp;&lt;=&nbsp;<i>n</i>&nbsp;&lt;=&nbsp;120).
+The second integer will be <i>a</i>, the acceleration of the ball
+(0&nbsp;&lt;=&nbsp;<i>a</i>&nbsp;&lt;=&nbsp;<i>n</i>).  The third
+integer will be <i>k</i> as described above
+(1&nbsp;&lt;=&nbsp;<i>k</i>).
+</p>
+
+<p>
+You are guaranteed that there are at least <i>k</i> possible paths down the
+flight of stairs for the given length and acceleration, and that there
+are at most
+2,000,000,000 such possible paths.
+</p>
+
+<h3>Output</h3>
+
+<p>
+Your output should consist of a single line describing the <i>k</i>th path
+down the flight of stairs for the given length and acceleration.
+The path should be written as a sequence of integers separated by
+spaces.  In particular, there should be no commas or other punctuation
+in the output.
+</p>
+
+<h3>Sample Input</h3>
+
+<p>
+The following input data corresponds to the table of possible paths
+illustrated above, with the sixth path in the table being requested.
+</p>
+
+<pre>10 1 6
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>2 3 5
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if the
+correct sequence is written to the output file and 0% otherwise.
+</p>
+</div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

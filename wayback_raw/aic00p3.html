@@ -1,0 +1,189 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Analysing Bach</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=11">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic00#aic00">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Analysing Bach</h2></center>
+
+<p>
+<b>Input File:</b> <tt>bachin.txt</tt><br>
+<b>Output File:</b> <tt>bachout.txt</tt><br>
+<b>Time Limit:</b> 1.667 seconds
+</p>
+
+<p>
+Back in the era when musicians did not have the opportunity to grace CD
+covers with pictures of themselves, the composer Bach developed a habit
+of embedding the letters of his name in his music.  At that time, the
+letters B, A, C and H were all notes of the musical scale, and a number
+of his pieces contained these four notes consecutively.  Thus he left his
+mark on history.
+</p>
+
+<p>
+You have some friends who compose as a hobby, and it has suddenly struck
+you to see if they have also embedded their names in some of their
+masterpieces.
+</p>
+
+<p>
+For simplicity, we will have ten notes in our musical scale, represented
+by the digits 0,1,...,9.  You cannot go any higher or lower,
+since your friends are writing for beginner saxophonists.  Each musical
+piece can thus be represented as a sequence of digits.
+</p>
+
+<p>
+We will also represent the composer's name as a sequence of digits.
+Your task is to find the composer's name embedded in the piece.
+</p>
+
+<p>
+Take for example the following musical delight:
+</p>
+
+<center>
+<code>1467654543234545679905</code>
+</center>
+
+<p>
+Say the composer's name translates to <code>67654</code>.  Then we can see
+the composer's name beginning at the third character.
+</p>
+
+<p>
+Bach also often transposed his name up or down.  This corresponds to
+adding or subtracting some constant amount from each digit in the
+composer's name.  We see the digits <code>45432</code> starting at the
+seventh digit, which corresponds to the composer's name transposed down
+by two.
+</p>
+
+<p>
+Bach even inverted his name from time to time.  This
+corresponds to replacing each digit <i>d</i> with the corresponding digit
+9-<i>d</i>.  So in our example the composer's name inverted is
+<code>32345</code>, which appears beginning at the tenth digit.  Finally,
+the composer may even be as bold as to invert <em>and</em> transpose, such
+as our composer has done beginning at the fourteenth digit where we see
+<code>54567</code>.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of the input shall consist of a single string of digits
+representing the composer's name, whose length will be between 1 and 50
+digits inclusive.
+</p>
+
+<p>
+The remainder of the input file will contain a musical piece, possibly
+split over a number of lines for convenience.  Each line will be a
+sequence of between 1 and 50 digits, and there will be at most 600 such
+lines.  Together these lines form the musical piece, and occurrences of
+the composer's name may run across line breaks.
+</p>
+
+<p>
+The musical piece will be terminated by a line containing the single
+character <code>#</code>.
+</p>
+
+<h3>Output</h3>
+
+<p>
+Your program must output each occurrence of the composer's name, in
+the order in which they appear in the piece.
+</p>
+
+<p>
+If the occurrence is exact
+or simply transposed, you must output a line containing the integer
+<i>i</i>,
+where the occurrence begins at the <i>i</i>th note.
+If the output is inverted or
+inverted and transposed, you must output a line containing <i>i</i>
+followed by a single space and the word "<code>inverted</code>".
+</p>
+
+<p>
+You are guaranteed that any given occurrence will not be both uninverted
+and inverted.
+</p>
+
+<p>
+If no occurrences are found, your program must output the single line
+"<code>No occurrences.</code>".
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>67654
+14676545
+43234545679
+905
+#
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>3
+7
+10 inverted
+14 inverted
+</pre>
+
+<h3>Sample Input 2</h3>
+
+<pre>636
+14676545
+43234545679
+905
+#
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>No occurrences.
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+For each test case, let <i>n</i> be the number of occurrences of the
+composer's name.  If your program correctly finds <i>c</i> of these
+occurrences and incorrectly identifies <i>i</i> fraudulent occurrences,
+it will be awarded (<i>c</i>-<i>i</i>)/<i>n</i> of the available marks for the
+test case, down to a minimum of zero.
+</p>
+
+<p>
+If there are no occurrences in the test case, your program will be
+awarded either all or none of the available marks for the test case
+according to whether or not it correctly
+identified this fact.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

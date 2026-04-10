@@ -1,0 +1,147 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Packing Pentominoes</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Packing Pentominoes</h2></center>
+
+<p>
+<b>Input File:</b> <tt>pentin.txt</tt><br>
+<b>Output File:</b> <tt>pentout.txt</tt><br>
+<b>Time Limit:</b> 0.2 second
+</p>
+
+<p>
+Times have been bad for gaming companies, and the manufacturers of
+dominoes and pentominoes have been forced to merge.  To mark this event
+and perhaps even make some income, they have released a curious new
+puzzle as follows.
+</p>
+
+<p>
+You are given a rectangular board divided into squares.  Every square of this board has been marked with one of the
+digits 1, 2, 3, 4 or 5.  Your task is to cover this board with pentominoes.
+</p>
+
+
+
+<p>
+A <em>pentomino</em> is a plastic tile consisting of five squares connected
+along their edges.  Some sample pentominoes are illustrated below.
+</p>
+
+
+
+<p>
+Note that the squares forming a pentomino must be connected along their
+edges; diagonal connections are not sufficient. 
+</p>
+
+
+
+<p>
+Note that any tile consisting of five connected squares is a valid
+pentomino; the examples above only represent a small selection of the
+available shapes.
+</p>
+
+<p>
+But a puzzle is not a puzzle without a catch.  Your restrictions are
+that you must:
+</p><ul>
+<li>cover the entire board with pentominoes so that no pentominoes
+  overlap;</li>
+<li>place the pieces so that each pentomino covers each of the
+  digits 1, 2, 3, 4 and 5 precisely once.</li>
+</ul>
+<p></p>
+
+
+
+
+
+<p>
+Since this is an informatics competition, you are asked
+to replace hours of pleasure with a computer program that will solve
+the puzzle for you while you sit down and watch TV.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The input file will consist of a description of a single board.
+The first line of input will be of the form <i>r</i>&nbsp;<i>c</i>,
+where <i>r</i> is the
+number of rows and <i>c</i> is the number of columns in the board.  You are
+guaranteed that the board will contain at least 5 and at most 60 squares
+in total.
+</p>
+
+<p>
+Following this will be <i>r</i> lines, each containing <i>c</i> digits
+representing the markings on a single row of the board.
+There will be no spaces between these digits.
+</p>
+
+<h3>Output</h3>
+
+<p>
+Your output must describe a single solution to the puzzle.
+</p>
+
+<p>
+Pentominoes should be labelled using letters of the alphabet.
+It does not matter in which particular order they are labelled or which
+particular letters are used.
+</p>
+
+<p>
+The output file must contain precisely <i>r</i> lines, each containing
+<i>c</i> upper-case letters indicating which pentomino is covering
+each square on that particular row of the board (thus each letter that
+you use appears precisely five times in the output file).  There should be no
+spaces between these letters.
+</p>
+
+<p>
+The rows and columns of the board in the output file must match
+the rows and columns of the board in the input file.
+</p>
+
+<p>
+You may assume there is always a solution to the puzzle.  If there is
+more than one solution then any solution will suffice.
+</p>
+
+<h3>Sample Input</h3>
+
+<pre>5 3
+231
+224
+545
+313
+415
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>AAA
+BCA
+BCA
+BCC
+BBC
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if a correct solution
+is written to the output file and 0% otherwise.
+</p>
+</div></div>
+
+</body></html>

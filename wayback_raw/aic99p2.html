@@ -1,0 +1,198 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Hunt-a-Word</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=14">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic99#aic99">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Hunt-a-Word</h2></center>
+
+<p>
+<b>Input File:</b> <tt>huntin.txt</tt><br>
+<b>Output File:</b> <tt>huntout.txt</tt><br>
+<b>Time Limit:</b> 0.333 second
+</p>
+
+<p>
+A young friend has become quite interested in Hunt-a-Word puzzles,
+where one is given a rectangular block of letters, e.g.
+</p>
+<center><pre>XSMILEA
+FHKDLDB
+ISMIOQP
+XDMFLGE
+LSKLYEH
+</pre></center>
+<p>
+and asked to locate a word, such as <code>DOG</code>.  In this example,
+<code>DOG</code> can be found beginning in row 2, column 4 and heading
+south-east (down and right).
+</p>
+
+<p>
+Your friend is continually asking you for help on these puzzles, and
+you decide it would be good to write a program to help them and so allow
+you to concentrate on your school work.
+</p>
+
+<p>
+Your task is to write a program which finds each word from a given
+list of words in a given block of letters.  Note that words can
+occur more than once, in which case your program may find either
+occurrence. In the example above, the word
+<code>SMILE</code> occurs twice - once at row 1, column 2 and heading east,
+and once at row 5, column 2, and heading north-east.
+</p>
+
+<p>
+Words may lie in any one of eight possible directions,
+</p>
+<center><pre>NW  N  NE
+  \ | /  
+   \|/   
+W --+-- E
+   /|\   
+  / | \  
+SW  S  SE
+</pre></center>
+<p>
+but must run in a straight line.  For example, <code>SMILE</code>
+<em>cannot</em>
+be found at row 3, column 2 in the example above - it does not run
+straight in one of the eight possible directions.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line shall consist of a pair of positive integers <i>h&nbsp;w</i>,
+separated by a single space,
+where <i>h</i> is the height (number of rows) of the block, and <i>w</i> is
+the width (number of columns) of the block.  Each of <i>h</i> and
+<i>w</i> shall be at most 100.
+</p>
+
+<p>
+Following this is the block of letters.  There shall be exactly <i>h</i>
+lines, each consisting of exactly <i>w</i> characters and a single terminating
+newline. Each character shall be an upper case letter, 
+from <code>A</code>&nbsp;...&nbsp;<code>Z</code> inclusive.
+</p>
+
+<p>
+Following this is a line with a single positive integer <i>n</i>, giving
+the number of words which need to be found in the grid. The integer
+<i>n</i> shall be at most 100.
+</p>
+
+<p>
+Following this are <i>n</i> lines, each containing a word to be found
+on a single line together with a terminating newline.
+The word shall consist of at most
+100 characters, each of which shall be an upper case letter,
+from <code>A</code>&nbsp;...&nbsp;<code>Z</code> inclusive.
+Every supplied word shall occur at least once in the given block of letters.
+</p>
+
+<p>
+Other than the space separating the integers <i>h</i> and <i>w</i> on the first
+line of input, there shall be no other space characters in the input file.
+</p>
+
+<h3>Output</h3>
+
+<p>
+You program shall output a sequence of <em>finds</em>, one to a line,
+where each find gives a location of a supplied word in the given
+block of letters. The finds shall be in the same order as the supplied
+words.  In the event a word occurs multiple times in the grid, you
+should output only one location at which it is found (it does not matter
+which one).
+</p>
+
+<p>
+A find shall consist of a two positive integers <i>r&nbsp;c</i>
+followed by a direction. The positive integers give the row (<i>r</i>) and
+column (<i>c</i>) in which the word starts.  Both rows and columns are numbered
+so that the top left letter in the block is in row 1 and column 1.  The
+direction shall be one of <code>N</code>, <code>NE</code>, <code>E</code>,
+<code>SE</code>, <code>S</code>, <code>SW</code>, <code>W</code>,
+<code>NW</code> in accordance with the compass diagram shown above.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>5 7
+XSMILEA
+FHKDLDB
+ISMIOQP
+XDMFLGE
+LSKLYEH
+1
+DOG
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>2 4 SE
+</pre>
+
+<h3>Sample Input 2</h3>
+
+<pre>5 7
+XSMILEA
+FHKDLDB
+ISMIOQP
+XDMFLGE
+LSKLYEH
+3
+SMILE
+DOG
+ADO
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>1 2 E
+2 4 SE
+1 7 SW
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+Your program will receive 100% for correctly locating one occurrence
+of each supplied word.  Programs which do not correctly locate all
+supplied words shall receive proportionally less marks.  For example,
+a program which correctly finds only 3 of 4 supplied words will receive
+75%.
+</p>
+
+<p>
+Note that the finds must be in the same order as the list of supplied
+words! If the finds are output in the incorrect order, they may not
+be legitimate finds of the corresponding word, and will <em>not</em>
+count as a correct find!
+</p>
+
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

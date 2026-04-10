@@ -1,0 +1,132 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Keeping Secrets</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=10">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic00#aic00">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Keeping Secrets</h2></center>
+
+<p>
+<b>Input File:</b> <tt>secrtin.txt</tt><br>
+<b>Output File:</b> <tt>secrtout.txt</tt><br>
+<b>Time Limit:</b> 0.333 second
+</p>
+
+<p>
+Encryption is the science of scrambling messages in order to hide information
+from prying eyes.  As well as a long history in warfare, encryption is vitally
+important for commercial interests in a highly networked world. In this problem
+you will implement a simple, well known cipher (encryption algorithm).
+</p>
+
+<p>
+Our cipher uses a keyword, which the parties wishing to communicate agree
+upon and keep secret. Letters of the keyword are used in order to scramble
+each letter of the message. If the message is longer than the keyword, as
+is usually the case, we start again at the beginning of the keyword.
+</p>
+
+<p>
+To scramble a single letter of the message, the keyword letter is converted
+to a number where <tt>A</tt>&nbsp;=&nbsp;1, <tt>B</tt>&nbsp;=&nbsp;2,
+..., <tt>Z</tt>&nbsp;=&nbsp;26.  The letter
+of the message is then advanced that number of letters in the alphabet. A
+letter which is advanced past <tt>Z</tt> returns to <tt>A</tt>.
+</p>
+
+<p>
+For example, with the keyword <tt>ABC</tt> and the message <tt>WXYZ</tt>, we
+proceed as follows:
+</p>
+
+<ol>
+<li>The keyword letter <tt>A</tt> is used to scramble the message
+letter <tt>W</tt>. Now <tt>A</tt>&nbsp;=&nbsp;1, so we advance <tt>W</tt>
+by one letter, obtaining <tt>X</tt>.</li>
+<li>The keyword letter <tt>B</tt> is used to scramble the message
+letter <tt>X</tt>. Now <tt>B</tt>&nbsp;=&nbsp;2, so we advance <tt>X</tt>
+by two letters, obtaining <tt>Z</tt>.</li>
+<li>The keyword letter <tt>C</tt> is used to scramble the message
+letter <tt>Y</tt>. Now <tt>C</tt>&nbsp;=&nbsp;3, so we advance <tt>Y</tt>
+by three letters, obtaining <tt>B</tt>.</li>
+<li>The keyword letter <tt>A</tt> is used to scramble the message
+letter <tt>Z</tt>. Now <tt>A</tt>&nbsp;=&nbsp;1, so we advance <tt>Z</tt>
+by one letter, obtaining <tt>A</tt>.</li>
+</ol>
+
+<p>
+Hence the final, encrypted message is <tt>XZBA</tt>.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of input shall consist of the keyword. The second line of
+input shall contain the message to encrypt.
+</p>
+
+<p>
+Each line of input shall consist entirely of upper case alphabetic characters
+(i.e. <tt>A</tt>...<tt>Z</tt>). Each line of input shall consist of 
+at least 1 and at most 50 characters.
+</p>
+
+<p>
+</p><h3>Output</h3>
+
+<p>
+Your program shall output a single line consisting of the encryption of
+the given message with the given keyword.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>ETHAN
+THISISNOTMISSIONDIFFICULTMRHUNT
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>YBQTWXHWUANMAJCSXQGTNWCMHRLPVBY
+</pre>
+
+<h3>Sample Input 2</h3>
+
+<pre>JAMES
+THENAMEISBONDJAMESBOND
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>DIRSTWFVXUYOQOTWFFGHXE
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+For each test case, your program shall be awarded 100% of the marks
+if it outputs the correct encrypted message, and 0% otherwise.
+</p>
+
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

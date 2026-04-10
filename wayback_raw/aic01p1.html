@@ -1,0 +1,144 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Flowers</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=5">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic01#aic01">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Flowers</h2></center>
+
+<p>
+<b>Input File:</b> <tt>flowin.txt</tt><br>
+<b>Output File:</b> <tt>flowout.txt</tt><br>
+<b>Time Limit:</b> 0.2 second
+</p>
+
+<p>
+You run a florist in central Oklahoma where the land is bare and
+nothing grows.  In an effort to boost your sagging sales, you decide
+to experiment with different types of fertiliser.
+</p>
+
+<p>
+You take a square patch of land and divide it into four quarters.
+The quarters are numbered from 1 to 4 as shown below.  In each
+quarter you use a different type of fertiliser, and throughout
+the spring you record where the flowers grow.
+</p>
+
+<center>
+<table rows="2" cols="2" border="1">
+<tbody><tr><td>&nbsp;1&nbsp;</td><td>&nbsp;2&nbsp;</td></tr>
+<tr><td>&nbsp;3&nbsp;</td><td>&nbsp;4&nbsp;</td></tr>
+</tbody></table>
+</center>
+
+<p>
+At the end of spring you have a long list of coordinates, each
+pair of coordinates representing a flower that appeared.  Your task
+is to determine which fertiliser produced the most flowers.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of the input file will contain the single integer
+<i>N</i> representing the size of each quadrant
+(1&nbsp;&lt;=&nbsp;<i>N</i>&nbsp;&lt;=&nbsp;1,000).
+The second line will contain the single integer <i>M</i> representing the
+total number of flowers whose coordinates
+you recorded
+(1&nbsp;&lt;=&nbsp;<i>M</i>&nbsp;&lt;=&nbsp;100,000).
+</p>
+
+<p>
+Following this will be <i>M</i> lines, each representing a single flower.  Each
+of these lines will be of the form <i>x&nbsp;y</i>, where <i>x</i> and
+<i>y</i> are the
+integer x- and y-coordinates at which the flower grew
+(1&nbsp;&lt;=&nbsp;<i>x</i>,<i>y</i>&nbsp;&lt;=&nbsp;2<i>N</i>).
+</p>
+
+<p>
+The diagram below shows how the coordinates are located on the patch of land.
+Quarters 1 and 3 have <i>x</i> coordinates from 1 to <i>N</i>
+inclusive; quarters 2 and 4 have <i>x</i> coordinates from
+<i>N</i>+1 to 2<i>N</i> inclusive.
+Quarters 1 and 2 have <i>y</i> coordinates from 1 to <i>N</i>
+inclusive; quarters 3 and 4 have <i>y</i> coordinates from <i>N</i>+1 to
+2<i>N</i> inclusive.
+</p>
+
+<center>
+<img width="280" height="157" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic01&amp;problemid=5&amp;file=img2.png">
+</center>
+
+<p>
+Note that over the course of spring, many different flowers might appear
+at the same location.
+</p>
+
+<h3>Output</h3>
+
+<p>
+The output must be a single line of the form <i>q&nbsp;f</i>, where
+<i>q</i> is the
+quarter that produced the most flowers and <i>f</i> is the number of
+flowers that this quarter produced.  You may assume that there is
+always a single quarter with the most flowers.
+</p>
+
+<h3>Sample Input</h3>
+
+<pre>3
+7
+2 2
+6 2
+2 5
+2 3
+6 5
+1 3
+5 6
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>1 3
+</pre>
+
+<p>
+The scenario above represents the following plot of land.
+In this case the best quarter is quarter 1 which produced 3 flowers.
+</p>
+
+<center>
+<img width="201" height="144" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic01&amp;problemid=5&amp;file=img3.png">
+</center>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if the 
+correct answer is written to the output file and 0% otherwise.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

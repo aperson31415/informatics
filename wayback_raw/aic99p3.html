@@ -1,0 +1,164 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Cartography</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=15">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic99#aic99">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Cartography</h2></center>
+
+<p>
+<b>Input File:</b> <tt>cartin.txt</tt><br>
+<b>Output File:</b> <tt>cartout.txt</tt><br>
+<b>Time Limit:</b> 0.333 second
+</p>
+
+<p>
+You have been contracted by a company which is mapping Pacific islands.
+They have been taking photographs of the islands from aircraft to produce
+their maps. The photographs have been converted to grids showing where land
+is present and where there is water.
+</p>
+
+<p>
+You have been called in to help the map makers count the number of islands
+in their photos.  This task is complicated by the fact that some
+of the islands
+have lakes and lagoons, which show up as water in the photographs.
+For example, consider the photograph
+</p>
+<center><pre>..X..XX.
+.XX..X.X
+.X...X.X
+.XX..XXX
+....X..X
+...XXX..
+...X.X..
+XX.XXX..
+</pre></center>
+<p>
+in which an <code>X</code> denotes land and a <code>.</code>
+denotes water. This photograph
+contains four islands - they have been designated <code>A</code>,
+<code>B</code>, <code>C</code>, and <code>D</code> in the diagram below:
+</p>
+<center><pre>..A..BB.
+.AA..B.B
+.A...B.B
+.AA..BBB
+....C..B
+...CCC..
+...C.C..
+DD.CCC..
+</pre></center>
+<p>
+Note that two land squares in the grid are considered adjacent if they
+share an edge horizontally or vertically (<em>not</em> diagonally).  Two land
+squares are part of the same island if they can be reached from one another
+via a sequence of adjacent land squares.
+</p>
+
+<p>
+In the event an island contains a lake which contains an island, the two
+islands are counted as separate islands.  For example, the map
+</p>
+<center><pre>.XXXXXX.
+.X....X.
+.X.XX.X.
+.X.XX.X.
+.X.XX.X.
+.X....X.
+.XXXXXX.
+........
+</pre></center>
+<p>
+contains two islands.
+</p>
+
+<p>
+Your task is to read a map as input, and produce as output the number of
+islands contained in the map.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The input consists of a line containing two positive integers
+<i>h&nbsp;w</i>, giving
+the height and width of the map.  Each of <i>h</i> and <i>w</i> is less
+than or equal
+to 100. Following this are <i>h</i> lines of input, each containing
+exactly <i>w</i> characters, each character being an <code>X</code> (land)
+or a <code>.</code> (water).
+</p>
+
+<p>
+Other than the space separating the integers <i>h</i> and <i>w</i> on the first
+line of input, there shall be no other space characters in the input file.
+</p>
+
+<h3>Output</h3>
+
+<p>
+The output shall consist of a single integer <i>n</i> on a line giving the
+number of islands contained in the map.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>3 5
+...XX
+X.X.X
+X.XXX
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>2
+</pre>
+
+<h3>Sample Input 2</h3>
+
+<pre>8 8
+..X..XX.
+.XX..X.X
+.X...X.X
+.XX..XXX
+....X..X
+...XXX..
+...X.X..
+XX.XXX..
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>4
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+Your program will receive 100% for giving the correct number of islands
+as output.  Any other output will receive 0%.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

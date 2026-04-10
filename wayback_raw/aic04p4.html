@@ -1,0 +1,129 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Zig-Zag Cipher</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Zig-Zag Cipher</h2></center>
+
+<p>
+<b>Input File:</b> <tt>zigin.txt</tt><br>
+<b>Output File:</b> <tt>zigout.txt</tt><br>
+<b>Time Limit:</b> 0.2 second
+</p>
+
+<p>
+The latest development in cryptography, certain to be adopted by the
+military, governments and anyone else who is paranoid, is the zig-zag
+cipher.
+</p>
+
+<p>
+To encrypt a message using the zig-zag cipher, the letters of the
+message are written on the page in a zig-zag pattern.  This is
+illustrated below for the message "<tt>CARTOGRAPHY</tt>".
+</p>
+
+<pre>    C       O       P
+      A   T   G   A   H
+        R       R       Y
+</pre>
+
+<p>
+The letters are then read one row at a time, from the top row down to
+the bottom.  In the diagram above, the first row spells "<tt>COP</tt>",
+the second spells "<tt>ATGAH</tt>" and the third spells "<tt>RRY</tt>".
+Finally these are combined to obtain the final encrypted message, which
+is "<tt>COPATGAHRRY</tt>".
+</p>
+
+<p>
+The zig-zag cipher can be extended to use as many rows as you like.  For
+instance, using a zig-zag cipher with six rows, the message
+"<tt>CHARLIETHEWONDERBUDGIE</tt>" is encrypted to become
+"<tt>CWIHEOGEAHNDRTDULEEBIR</tt>" as seen in the following diagram.
+</p>
+
+<pre>    C                   W                   I
+      H               E   O               G   E
+        A           H       N           D
+          R       T           D       U
+            L   E               E   B
+              I                   R
+</pre>
+
+<p>
+Your task is to write a program that can <em>decrypt</em> messages written
+in the zig-zag cipher.  Your program must read the number of rows used in
+the cipher as well as an encrypted message, and must output the original
+(decrypted) message.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of input will consist of a single integer <i>r</i>, the number
+of rows used in the zig-zag cipher
+(2&nbsp;&lt;=&nbsp;<i>r</i>&nbsp;&lt;=&nbsp;100).
+</p>
+
+<p>
+Following this will be the encrypted message.  The encrypted message
+will consist entirely of upper-case letters, with no spaces or
+punctuation.  This message may be split across several lines in the
+input file; each line will contain between 1 and 70 letters inclusive.
+The entire encrypted message will be between 1 and 10,000 letters
+long.
+</p>
+
+<p>
+Following the encrypted message will be a final line containing a single
+hash (<tt>#</tt>).
+</p>
+
+<h3>Output</h3>
+
+<p>
+Your output should consist of a single line containing the entire decrypted
+message (note that this line might be very long).  The output line
+should contain no spaces or punctuation.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>3
+COPATGAHRRY
+#
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>CARTOGRAPHY
+</pre>
+
+<h3>Sample Input 2</h3>
+
+<pre>6
+CWIHEOGE
+AHNDRTDU
+LEEBIR
+#
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>CHARLIETHEWONDERBUDGIE
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if the correct decrypted
+message is written to the output file and 0% otherwise.
+</p>
+</div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

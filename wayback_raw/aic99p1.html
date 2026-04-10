@@ -1,0 +1,130 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Hailstone Sequences</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=13">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic99#aic99">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Hailstone Sequences</h2></center>
+
+<p>
+<b>Input File:</b> <tt>hailin.txt</tt><br>
+<b>Output File:</b> <tt>hailout.txt</tt><br>
+<b>Time Limit:</b> 1 second
+</p>
+
+<p>
+A famous unsolved problem in mathematics involves sequences of numbers
+called Hailstone sequences.  To form such a sequence, you begin with some
+starting integer and repeatedly apply the following rule:
+</p>
+
+<p>
+Let the last number in the sequence be <i>n</i>.  If <i>n</i> is even, the next
+number is <i>n</i>/2.  If <i>n</i> is odd, the next number is 3<i>n</i>+1.
+</p>
+
+<p>
+So say your first number is 7.  Then, since 7 is odd, the next number is
+3x7+1&nbsp;=&nbsp;22.  Since 22 is even, the next number is
+22/2&nbsp;=&nbsp;11,
+and so on. The complete sequence beginning with 7 is shown below:
+</p>
+
+<center>
+7,&nbsp;22,&nbsp;11,&nbsp;34,&nbsp;17,&nbsp;52,&nbsp;26,&nbsp;13,&nbsp;40,&nbsp;20,&nbsp;10,&nbsp;5,&nbsp;16,&nbsp;8,&nbsp;4,&nbsp;2,&nbsp;1,&nbsp;4,&nbsp;2,&nbsp;1,&nbsp;...
+</center>
+
+<p>
+Notice that the sequence eventually reaches 1 and cycles
+1,&nbsp;4,&nbsp;2,&nbsp;1,&nbsp;4,&nbsp;2,&nbsp;1,&nbsp;... forever.
+But what if you were to begin with a different initial number instead of 7?
+</p>
+
+<p>
+Mathematicians have conjectured that, no matter what number you begin
+with, you will always reach 1 and cycle as before.  However, nobody has
+been able to prove it.
+</p>
+
+<p>
+Having proved Fermat's Last Theorem merely months after Wiles did in 1993,
+you are determined this time to win this year's Fields medal.  Thus you
+set out to investigate the Hailstone sequences.
+Your first idea is to find a relationship between the starting number and
+the number of steps required to reach 1.  So you grab your laptop and
+begin programming.
+</p>
+
+<p>
+Your task is, given the starting number for the sequence, to determine how
+many steps are required to reach 1.
+</p>
+
+<h3>Input</h3>
+
+<p>
+Input will consist of a list of positive integers, each on a separate
+line.  At the end of the list will be the number 0.
+</p>
+
+<h3>Output</h3>
+
+<p>
+For each positive integer <i>n</i> in the input list, assuming your sequence
+begins with <i>n</i>, you must output the number of steps required to
+reach 1.  Each answer must be output on a separate line.  No output
+is required for the final 0 in the input list.
+</p>
+
+<p>
+You may assume that, for each starting integer in the input, you can
+always reach 1.  You may also assume that the integers in the sequence
+will grow no larger than 1,000,000,000.
+</p>
+
+<h3>Sample Input</h3>
+
+<pre>7
+5
+1
+6
+0
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>16
+5
+0
+8
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each number in the input file will be
+100% if the correct answer is written to the output file, and 0%
+otherwise.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

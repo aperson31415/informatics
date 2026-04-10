@@ -1,0 +1,213 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Word Wrap</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Word Wrap</h2></center>
+
+<p>
+<b>Input File:</b> <tt>wrapin.txt</tt><br>
+<b>Output File:</b> <tt>wrapout.txt</tt><br>
+<b>Time Limit:</b> 1 second
+</p>
+
+<p>
+KDE, MacOS, Windows, it's all too much.
+These days everybody has a graphical user interface with a fancy word
+processor and proportional fonts.  Plain text-based programs just
+aren't as trendy as they used to be.
+</p>
+
+<p>
+You are determined to reverse this trend.  One day you will make
+people understand the value of having a word processor that can run on a
+computer with under a megabyte of memory.  Of course, you happen to
+be writing such a word processor at this very moment.
+</p>
+
+<p>
+Your task here is to implement word wrapping in this word processor.
+That is, given a paragraph of text, you must arrange the words into
+lines so that the paragraph fits on your screen and is
+pleasing to the eye.
+</p>
+
+<p>
+Since your word processor is a plain text-based program, you are using
+fixed width fonts.  If your screen has width <i>w</i>, this means that
+each line of your screen can fit precisely <i>w</i> characters, including
+letters, digits, punctuation and spaces.
+</p>
+
+<p>
+A <em>word</em> is defined to be a consecutive sequence of letters, digits
+and/or punctuation surrounded by spaces on either side (although the
+first word of the paragraph need not be preceded by a space, and the
+last word of the paragraph need not be followed by a space).  Thus the
+first word of the problem statement that you are reading now is
+"<tt>KDE,</tt>" including the comma, and the fourth word is "<tt>it's</tt>".
+</p>
+
+<p>
+You must arrange the words into lines so that each line except
+for the last contains as many words as possible.  Words within each line
+must be separated by at least one space, and the total length of each
+line (including spaces) must not exceed the screen width <i>w</i>.
+</p>
+
+<p>
+Of course some lines may have total length less than <i>w</i>, and so the
+question remains how to display such lines on the screen.  You will be
+asked to use one of three styles of output: <em>left flushed</em>,
+<em>right flushed</em> and <em>justified</em>.  These styles of output are
+explained below, and are illustrated in the sample data later in this
+question statement.
+</p>
+
+<ul>
+<li>In left flushed output, there must be precisely one space
+    between any two adjacent words on a line.  Furthermore, the first
+    character of the first word of each line
+    must be placed as far left as possible;
+    i.e., in the first column of the display.</li>
+<li>In right flushed output, there must again be precisely one
+    space between any two adjacent words on a line.  The last character
+    of the last word of each line must be placed as far right as
+    possible; i.e., in the <i>w</i>th column of the display.</li>
+<li>In justified output, the first character of the first word
+    and the last character of the last word must be placed in the first
+    and <i>w</i>th columns of the display respectively.  To allow for this,
+    some words will need to be separated by more than one space.
+    <br>
+    Spaces must be distributed as evenly as possible between the words
+    on each line.  If the spaces cannot be distributed evenly,
+    more spaces must be given to the leftmost gaps.
+    That is, the gaps between words on each line must remain equal or decrease
+    in size from left to right, and the leftmost gap can be at most one
+    space larger than the rightmost gap.
+    <br>
+    As an exception, the final line of the paragraph must be left
+    flushed as described earlier, with precisely one space between
+    any two adjacent words.</li>
+</ul>
+
+<h3>Input</h3>
+
+<p>
+Each input file will contain a single paragraph and a specification
+for how it is to be output.
+</p>
+
+<p>
+The first line of input will be of the form <i>s&nbsp;w</i>, where
+<i>s</i> is a
+single upper-case letter representing the output style and <i>w</i>
+is the screen
+width.  The letter <i>s</i> will be either <tt>L</tt>, <tt>R</tt> or
+<tt>J</tt>, for left
+flushed, right flushed and justified output respectively.  You are
+guaranteed that
+3&nbsp;&lt;=&nbsp;<i>w</i>&nbsp;&lt;=&nbsp;70.
+</p>
+
+<p>
+Following this will be some number of lines containing the actual text
+of the paragraph.
+The final line of input will contain a single hash character (<tt>#</tt>).
+This hash is not considered to be part of the paragraph text.
+</p>
+
+<p>
+The paragraph text will contain between 1 and 1000 lines inclusive.
+Each of these lines will contain at least one word and be at most
+80 characters long.  None of these
+lines will contain any hash characters or tabs.  If <i>m</i> is the length of
+the longest word in the paragraph text, you are guaranteed that
+2<i>m</i>+1&nbsp;&lt;=&nbsp;<i>w</i>.
+</p>
+
+<h3>Output</h3>
+
+<p>
+The output must contain the paragraph text laid out in the correct
+style as described above.  Lines may contain leading spaces as required
+by the output style.  Lines must
+not contain any trailing spaces.  That is, there must be no spaces
+output after the final word on each line.  The output must not contain
+any blank lines.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>L 66
+You have been hired     by a company
+which needs to place   an information
+  booth in a shopping mall.  The shopping mall also
+contains four fake trees to add   ambiance   to a shopper's experience.
+#
+</pre>
+
+<h3>Sample Output 1 (Left Flushed)</h3>
+
+<pre>You have been hired by a company which needs to place an
+information booth in a shopping mall. The shopping mall also
+contains four fake trees to add ambiance to a shopper's
+experience.
+</pre>
+
+<h3>Sample Input 2</h3>
+
+<pre>R 66
+You have been hired     by a company
+which needs to place   an information
+  booth in a shopping mall.  The shopping mall also
+contains four fake trees to add   ambiance   to a shopper's experience.
+#
+</pre>
+
+<h3>Sample Output 2 (Right Flushed)</h3>
+
+<p>
+</p><pre>          You have been hired by a company which needs to place an
+      information booth in a shopping mall. The shopping mall also
+           contains four fake trees to add ambiance to a shopper's
+                                                       experience.
+</pre>
+
+<h3>Sample Input 3</h3>
+
+<pre>J 66
+You have been hired     by a company
+which needs to place   an information
+  booth in a shopping mall.  The shopping mall also
+contains four fake trees to add   ambiance   to a shopper's experience.
+#
+</pre>
+
+<h3>Sample Output 3 (Justified)</h3>
+
+<pre>You  have  been  hired  by  a  company  which  needs  to  place an
+information  booth  in  a  shopping  mall.  The shopping mall also
+contains   four   fake  trees  to  add  ambiance  to  a  shopper's
+experience.
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if the
+correct answer is written to the output file and 0% otherwise.
+</p>
+<p><b>Note:</b>
+Unlike most problems, leading and trailing spaces on each
+line <em>will</em> be taken into account by the judging software.  You
+should ensure that each line contains precisely the right number of
+leading spaces and that each line contains no trailing spaces.
+</p>
+</div></div>
+
+<div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

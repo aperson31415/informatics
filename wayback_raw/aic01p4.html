@@ -1,0 +1,205 @@
+<!--WTF SAME AS AN AIIO PROBLEM!!!!-->
+
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Mobiles</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=8">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic01#aic01">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Mobiles</h2></center>
+
+<p>
+<b>Input File:</b> <tt>mobin.txt</tt><br>
+<b>Output File:</b> <tt>mobout.txt</tt><br>
+<b>Time Limit:</b> 1.667 seconds
+</p>
+
+<p>
+After several months of quarrelling, your aunt has turned up on your
+mother's doorstep with a beautiful peace offering.  It is a present
+for your younger brother, who is delighted when he discovers it is
+an intricate mobile with loud rattling balls and clanking metal rods.
+He is instantly addicted to the toy, which is a puzzle that requires
+you to arrange a set of balls of different weights on a set of hooks
+so that the mobile balances.
+</p>
+
+<p>
+After listening to hours of incessant jangling, you decide that
+your peace of mind is worth more than your brother's educational
+experience.  In an act of frustration you whip out your laptop and
+begin to write a program that will solve your brother's puzzle for
+him.
+</p>
+
+<p>
+The mobile consists of a series of horizontal rods connected by
+vertical wires.  Some of the rods contain hooks on which you need to
+hang the balls.  The balls are numbered 1,2,..., where
+the number represents the weight of the ball.
+</p>
+
+<p>
+Below is a sample mobile with three balls (thus the balls are
+numbered 1,2,3).  Each hook is represented by a hash (<code>#</code>).
+</p>
+
+<center>
+<img width="180" height="115" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic01&amp;problemid=8&amp;file=img1.png">
+</center>
+
+<p>
+Your task is to make every rod balance.
+The <em>balance point</em> of each rod is the point at which it is
+suspended by the wire above it.  The <em>torque</em> that a weight
+applies to a rod is the weight times the distance of
+the weight from the balance point.  A rod <em>balances</em> if the total
+torque from the weights left of the balance point
+equals the total torque from the weights right of the balance point.
+</p>
+
+<p>
+A sample solution to this example mobile is shown below.  Each number
+represents the weight of the ball that was hung on the corresponding
+hook.
+</p>
+
+<center>
+<img width="180" height="115" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic01&amp;problemid=8&amp;file=img2.png">
+</center>
+
+<p>
+Consider the bottom rod.  To the left of the balance point we have
+ball 1 at distance 2 from the balance point.  Thus the torque is
+1&nbsp;x&nbsp;2&nbsp;=&nbsp;2.  To the right of the balance point we have ball
+2 at distance 1 from the balance point, giving torque
+2&nbsp;x&nbsp;1&nbsp;=&nbsp;2.
+The torque to the left of the balance point (2) equals the
+torque to the right of the balance point (2) and so the rod is
+balanced.
+</p>
+
+<p>
+Consider now the higher rod.  To the right of the balance point we
+have ball 3 at distance 2, giving torque
+3&nbsp;x&nbsp;2&nbsp;=&nbsp;6.  To the
+left of the balance point we have a wire holding the lower rod.
+This lower rod has <em>total</em> weight 3 and the wire that holds it
+is at distance 2 from the balance point.  Thus it has total torque
+3&nbsp;x&nbsp;2&nbsp;=&nbsp;6.  We see here that whenever
+a wire holds an entire branch
+of the mobile, it is considered as one large weight at the position
+of the wire that holds it.
+</p>
+
+<p>
+Thus for the higher rod the torque to the left equals the torque to
+the right (both are 6) and so it is also balanced.  Because every
+rod is balanced, we have a solution to the puzzle.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of the input file will be of the form <i>N&nbsp;M</i> where
+<i>N</i>
+is the number of balls
+(2&nbsp;&lt;=&nbsp;<i>N</i>&nbsp;&lt;=&nbsp;12) and <i>M</i>
+is the number of rods
+(1&nbsp;&lt;=&nbsp;<i>M</i>&nbsp;&lt;=&nbsp;9).  The mobile will
+contain <i>N</i> hooks, labelled with the first <i>N</i> letters of the
+alphabet.  The balls will be numbered 1,...,<i>N</i>.  The rods will
+be numbered 1,...,<i>M</i>.
+</p>
+
+<p>
+Following this will be <i>M</i> lines describing rods 1,...,<i>M</i> in
+order.  Each rod description will contain a combination of letters,
+numbers, periods (<code>.</code>) and asterisks (<code>*</code>).
+These symbols describe the components of the rod from left to right.
+</p>
+
+<p>
+A letter indicates a hook on the rod.  A number indicates a wire
+leading down to another rod (the specific number tells you which rod is
+below).  An asterisk (each description will have exactly one of
+these) represents the balance point.  A period (<code>.</code>) indicates
+a position on the rod containing nothing of interest.  Each rod
+description will contain no spaces and will be at most 15 characters
+long.
+</p>
+
+<p>
+You are guaranteed that rod 1 will be the uppermost rod and that, for
+all other <i>k</i>, rod <i>k</i> will hang from a rod numbered less than
+<i>k</i>
+(for example, rod 4 might hang from rod 2 but will not hang from rod 7).
+You are also guaranteed that no individual rod will contain more
+than 6 hooks.
+</p>
+
+<p>
+</p><h3>Output</h3>
+
+<p>
+Your output must describe a solution to the puzzle.
+The output should consist of <i>N</i> lines each containing a single
+integer.  The first line should contain the ball hung on hook <i>A</i>,
+the second line should contain the ball hung on hook <i>B</i> and so
+on.
+</p>
+
+<p>
+You may assume there is always a solution to the puzzle.  If there
+is more than one solution then any solution will suffice.
+</p>
+
+<h3>Sample Input</h3>
+
+<pre>3 2
+2.*.A
+B.*C
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>3
+1
+2
+</pre>
+
+<p>
+The sample data above describes the example mobile and its solution as
+presented earlier in the problem description.  Rod 1 (<code>2.*.A</code>)
+represents the upper rod and rod 2 (<code>B.*C</code>) represents the
+lower rod.
+</p>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if a correct solution
+is written to the output file and 0% otherwise.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:19pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

@@ -1,0 +1,157 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Shopping Malls</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=17">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic98#aic98">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Shopping Malls</h2></center>
+
+<p>
+<b>Input File:</b> <tt>mallsin.txt</tt><br>
+<b>Output File:</b> <tt>mallsout.txt</tt><br>
+<b>Time Limit:</b> 0.1 seconds
+</p>
+
+<p>
+You have been hired by a company which needs to place an information
+booth in a shopping mall.  The shopping mall also contains four fake
+trees to add ambience to a shopper's experience.  The company wishes
+to know how many positions the information booth could be placed in,
+as part of a feasibility study into hiring a consultant to determine
+the best position for the booth.
+</p>
+
+<p>
+Your job is to write a program to determine the number of positions
+in which the booth can be placed, subject to the following restrictions:
+</p><ol>
+<li>The mall is rectangular, and measures <i>w</i> metres east-west
+and <i>h</i> metres north-south.</li>
+<li>The booth is also rectangular, and the architects have
+determined that it must face the mall entrance and have its
+walls parallel to the mall.  It measures <i>x</i> metres east-west
+and <i>y</i> metres north-south.</li>
+<li>Due to the cost of custom manufacturing tiles, the booth
+must be placed an integral number of metres (i.e., 0,1,2,...)
+from the edge of the mall in both directions, so as to avoid needing
+to cut any of the metre square tiles used for flooring.</li>
+<li>Militant interior decorators have already decided the
+locations of the one metre by one metre pots containing the trees.
+Of course, due to the tiling restrictions, these are also an integral
+number of metres from the edges of the mall.</li>
+<li>Note that the booth and the pots are allowed to
+touch any of the walls of the mall.</li>
+</ol>
+<p></p>
+
+<h3>Input</h3>
+
+<p>
+The input file will contain five lines of integers, separated by spaces,
+in the following form:
+</p>
+
+<center>
+<img width="94" height="90" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic98&amp;problemid=17&amp;file=img1.png">
+</center>
+
+<p>
+</p><ul>
+<li><i>w</i> is the east-west length of the mall;</li>
+<li><i>h</i> is the north-south length of the mall;</li>
+<li><i>x</i> is the east-west length of the booth;</li>
+<li><i>y</i> is the north-south length of the booth;</li>
+<li><i>a_1</i> is the east-west distance in metres from the west side of the
+first pot to the west edge of the mall;</li>
+<li><i>b_1</i> is the north-south distance in metres from the north side of the
+first pot to the north edge of the mall;</li>
+<li>Similarly for
+<i>a_2</i>, <i>b_2</i>, <i>a_3</i>, <i>b_3</i>, <i>a_4</i>, <i>b_4</i>,
+with <i>i</i>
+representing the locations of the second, third and fourth pots.</li>
+</ul>
+<p></p>
+
+<p>
+You may assume:
+</p><ul>
+<li>1&nbsp;&lt;=&nbsp;<i>w</i>&nbsp;&lt;=&nbsp;30,000
+and 1&nbsp;&lt;=&nbsp;<i>h</i>&nbsp;&lt;=&nbsp;30,000 (to account
+for the possibility of American Megamalls);</li>
+<li>1&nbsp;&lt;=&nbsp;<i>x</i>&nbsp;&lt;=&nbsp;<i>w</i>
+and 1&nbsp;&lt;=&nbsp;<i>y</i>&nbsp;&lt;=&nbsp;<i>h</i>;</li>
+<li>0&nbsp;&lt;=&nbsp;<i>a_i</i>&nbsp;&lt;&nbsp;<i>w</i>
+and 0&nbsp;&lt;=&nbsp;<i>b_i</i>&nbsp;&lt;&nbsp;<i>h</i>, for
+<i>i</i>&nbsp;=&nbsp;1,2,3,4;</li>
+<li>No two pots will occupy the same position.</li>
+</ul>
+<p>
+
+</p><p>
+All measurements are in metres and are illustrated in the figure below
+(although this diagram shows only one of the four pots).
+</p>
+
+<center>
+<img width="336" height="268" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic98&amp;problemid=17&amp;file=img2.png">
+</center>
+
+<h3>Output</h3>
+
+<p>
+The output should consist of a single line containing a single integer,
+representing the total number of positions in which the booth may be placed.
+</p>
+
+<p>
+</p><h3>Sample Input</h3>
+
+<center>
+<img width="280" height="152" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic98&amp;problemid=17&amp;file=img3.png">
+</center>
+
+<p>
+The sample input below corresponds to the configuration shown in the
+figure above.
+</p>
+
+<pre>6 4 1 2
+0 1
+2 2
+4 1
+4 2
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>11
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input scenario will be 100% if the correct answer
+is written to the output file, and 0% otherwise.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

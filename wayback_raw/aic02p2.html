@@ -1,0 +1,117 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Cartography II</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Cartography II</h2></center>
+
+<p>
+<b>Input File:</b> <tt>cartin.txt</tt><br>
+<b>Output File:</b> <tt>cartout.txt</tt><br>
+<b>Time Limit:</b> 0.25 second
+</p>
+
+<p>
+You are responsible for governing a small chain of Pacific islands.  Due
+to a recent economic slump you have lost the refugee processing that was
+your primary source of income.  In search for new prosperity, it is
+decided that you should expand your tourism industry.
+</p>
+
+<p>
+Excited by the prospect of becoming a much beloved tourist resort, you
+set out to discover just how long your beaches actually are.
+Fortunately your islands are entirely surrounded by beaches, so your
+task is simply to calculate the perimeter of each island.
+</p>
+
+<h3>Input</h3>
+
+<p>
+Each input file will contain a single island, represented on a
+rectangular map of size <i>w</i>&nbsp;by&nbsp;<i>h</i>
+(1&nbsp;&lt;=&nbsp;<i>w</i>,<i>h</i>&nbsp;&lt;=&nbsp;100).
+The first line of input will be of the form <i>w&nbsp;h</i>.  Following this
+will be <i>h</i> lines, each <i>w</i> characters long, representing a map.
+</p>
+
+<p>
+The map will be composed entirely of periods (<code>.</code>) and
+hashes (<code>#</code>), with periods representing ocean and hashes
+representing land.
+</p>
+
+<p>
+Squares of land (hashes) are considered <em>adjacent</em> if
+they meet along an edge.  It is possible to travel from any point on
+your island to any other by only moving through adjacent squares of
+land.  Thus, of the following two maps, the first represents a single
+island and the second represents two different islands.
+</p>
+
+<pre>......           ......
+.##...           .##...
+.##...           .##...
+..###.           ...##.
+...##.           ...##.
+......           ......
+</pre>
+
+<p>
+You are guaranteed that the map contains precisely one island and that
+this island has no inland lakes.
+Inland lakes are patches of water completely surrounded by land.  Of the
+following two maps, only the first has an inland lake.
+In the second map the water in the centre is simply an extension of
+the sea, since the two squares of land in the top right hand corner are
+not adjacent and so the ocean flows through the gap between them.
+</p>
+
+<pre>......           ......
+.####.           .###..
+.##.#.           .##.#.
+.##.#.           .##.#.
+.####.           .####.
+......           ......
+</pre>
+
+<h3>Output</h3>
+
+<p>
+The output must be a single line representing the perimeter of the
+island.  The perimeter is measured <em>around</em> the squares of land as
+illustrated below;
+thus the following islands have perimeters 4 and 10 respectively.
+</p>
+
+<center>
+<img width="196" height="61" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic02&amp;problemid=2&amp;file=img1.png">
+</center>
+
+<h3>Sample Input</h3>
+
+<pre>5 4
+.....
+.###.
+.##..
+.....
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>10
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if the 
+correct answer is written to the output file and 0% otherwise.
+</p>
+</div></div>
+
+<div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

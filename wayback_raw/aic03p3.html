@@ -1,0 +1,171 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Stacking Numbers</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Stacking Numbers</h2></center>
+
+<p>
+<b>Input File:</b> <tt>stackin.txt</tt><br>
+<b>Output File:</b> <tt>stackout.txt</tt><br>
+<b>Time Limit:</b> 0.5 seconds
+</p>
+
+<p>
+It's raining outside, you're bored and you desperately need something to
+do.  Staring at a pile of soft drink cans in the corner, you devise a
+game that could keep you entertained for hours.
+</p>
+
+<p>
+This game is played on a pyramid of side length six.  This pyramid
+contains 21 boxes as illustrated below.  In each box you must place
+a single non-negative integer.
+</p>
+
+<center>
+<img width="191" height="96" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic03&amp;problemid=22&amp;file=img1.png">
+</center>
+
+<p>
+You may choose the six integers that are placed in the
+bottom row of the pyramid.  Once this bottom row has been filled,
+you have rules that describe how to fill the remaining boxes from
+bottom to top.  The integer that
+is placed in the very top box of the pyramid is your score.  Your aim is
+to obtain the highest score possible.
+</p>
+
+<p>
+Before you play the game you are given some positive integer <i>b</i> called
+the <em>base</em>.
+The rules for filling in the remaining boxes are as follows.
+</p><ul>
+<li>For each box below the top row, you add the
+integers in the two boxes directly beneath it.  If this sum is
+greater than or equal to the base <i>b</i>, you subtract <i>b</i>
+from this total so that the sum becomes strictly less than <i>b</i>.</li>
+<li>For the very top box, you simply multiply the integers in the two
+boxes directly beneath it.</li>
+</ul>
+<p></p>
+
+<p>
+A sample game is illustrated below, played with base <i>b</i>&nbsp;=&nbsp;100.
+The left hand diagram shows six integers initially placed in the bottom
+row, and the right hand diagram shows the resulting pyramid with every
+box filled.
+</p>
+
+<center>
+<img width="493" height="96" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic03&amp;problemid=22&amp;file=img2.png">
+</center>
+
+<p>
+Examine the first box of the fourth row (61).  This box simply
+contains the sum of the two integers beneath it: 33+28.  On the other
+hand, consider the first box of the third row (49).  The sum of the
+two integers beneath it is 61+88&nbsp;=&nbsp;149, which is larger than
+<i>b</i>.  We thus subtract <i>b</i>&nbsp;=&nbsp;100 from this total to
+obtain 49, which is placed
+within the box.  The topmost box contains 9702, which is the product
+99&nbsp;x&nbsp;98.
+</p>
+
+<p>
+Note that every box aside from the topmost box contains an integer
+between 0 and <i>b</i>-1 inclusive.  In particular, if the two integers
+beneath a box add to precisely <i>b</i> then that box is filled with the
+integer 0.
+</p>
+
+<p>
+To make the game more interesting, you are given a small set of numbers
+from which the six integers in the bottom row must be chosen.  No
+integer from this set may be used more than once in the bottom row.
+You must write a program that selects six integers from this set to
+place in the bottom row so that you obtain the highest score possible.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The input file will consist of three lines.
+The first line will contain the base <i>b</i> with which the game is played.
+You are guaranteed that
+1&nbsp;&lt;=&nbsp;<i>b</i>&nbsp;&lt;=&nbsp;32,768.
+</p>
+
+<p>
+The second line will contain an integer <i>s</i> representing the number
+of integers in your set from which the bottom row must be chosen.
+You are guaranteed that
+6&nbsp;&lt;=&nbsp;<i>s</i>&nbsp;&lt;=&nbsp;32.
+</p>
+
+<p>
+The third line will contain the entire list of <i>s</i> integers from which
+the bottom row of the pyramid must be chosen.  Each of these integers will be
+between 0 and <i>b</i>-1 inclusive.  These integers will be separated
+by spaces, and no two of these integers will be equal.
+</p>
+
+<h3>Output</h3>
+
+<p>
+The output must consist of precisely two lines.
+The first line must contain a single integer representing the highest
+possible score.
+</p>
+
+<p>
+The second line must contain six integers that can be placed in the
+bottom row of the pyramid to obtain this highest possible score.
+The six integers should be written from left to right as they appear in
+the bottom row, and should be separated by spaces.
+</p>
+
+<p>
+If more than one solution exists then you should only output one of
+these solutions.  Any of these solutions will suffice.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>100
+7
+1 2 3 4 5 6 7
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>8100
+2 5 6 7 4 3
+</pre>
+
+<h3>Sample Input 2</h3>
+
+<pre>100
+8
+7 12 15 21 35 49 53 67
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>9702
+12 21 7 53 49 35
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if a correct solution
+is written to the output file and 0% otherwise.
+</p>
+</div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

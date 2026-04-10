@@ -1,0 +1,152 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Atlantis</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Atlantis</h2></center>
+
+<p>
+<b>Input File:</b> <tt>atlanin.txt</tt><br>
+<b>Output File:</b> <tt>atlanout.txt</tt><br>
+<b>Time Limit:</b> 0.2 seconds
+</p>
+
+<p>
+The Greek philosopher Plato tells us that the ancient continent of
+Atlantis sank beneath the sea in a single day and night.  But you
+have other ideas.  You believe that Atlantis disappeared in a series of
+small floods, with the waters rising and falling over several years
+until the continent was completely submerged.
+</p>
+
+<p>
+To prove your point, you decide to write a computer program that simulates a
+single flood as it rises and falls.  Your program must read in a
+rectangular map showing the heights above sea level of the different
+pieces of land that it contains.  An example map is illustrated below.
+</p>
+
+<center>
+<img width="229" height="147" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04int&amp;problemid=115&amp;file=img1.png">
+</center>
+
+<p>
+You may assume that the water begins at sea level, and that the sea lies
+everywhere outside the border of the map.  The first stage is the rising
+of the flood, where the water floods in until it reaches a certain
+height <i>h</i>.  Note that water can only enter from the edges of the map.
+This is illustrated in the following diagram, with the water rising to
+height <i>h</i>&nbsp;=&nbsp;50.
+The shaded areas show which parts of the map are now
+underwater.  Note in particular that the square near the top left corner
+at height 35 is <em>not</em> underwater, since it is completely surrounded
+by high land and the water cannot reach it.
+</p>
+
+<center>
+<img width="229" height="147" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04int&amp;problemid=115&amp;file=img2.png">
+</center>
+
+<p>
+It should be observed that water can flow diagonally as well as
+horizontally and vertically.  For example, near the upper right corner
+of the illustration above, the water flows in diagonally past the four
+squares at height 63 to cover the height 47 square situated between
+them.
+</p>
+
+<p>
+The second stage is the falling of the flood, where the water drains
+away to a final smaller height <i>f</i>.  Again the water may only drain away
+from the edges of the map.  The following diagram illustrates the water
+draining away to final height <i>f</i>&nbsp;=&nbsp;30,
+with the shaded areas once more
+representing land that is underwater.  Note that a small lake has formed
+in the centre of the map — even though the entire lake is at height
+41, the water cannot drain away since it is completely surrounded by
+higher land.
+</p>
+
+<center>
+<img width="229" height="147" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04int&amp;problemid=115&amp;file=img3.png">
+</center>
+
+<p>
+Your overall task is to write a program that will read in a map as well
+as the two water levels <i>h</i> and <i>f</i>, and output the total number of
+squares on the map that remain underwater after the water has drained
+down to its final height <i>f</i>.  In this example there are 60 such squares
+(these are the squares shaded in the final diagram above).
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of input will contain the two integers <i>h</i> and <i>f</i>
+separated by a single space, where <i>h</i> is the initial height to which
+the water rises and <i>f</i> is the final height to which the water falls.
+You are guaranteed that <i>h</i> and <i>f</i> will be even numbers satisfying
+0&nbsp;&lt;=&nbsp;<i>f</i>&nbsp;&lt;=&nbsp;<i>h</i>&nbsp;&lt;=&nbsp;1000.
+</p>
+
+<p>
+The second line of input will contain the two integers <i>r</i> and
+<i>c</i>
+separated by a single space, where <i>r</i> is the number of rows in the map
+and <i>c</i> is the number of columns in the map.  You are guaranteed that
+1&nbsp;&lt;=&nbsp;<i>r</i>,<i>c</i>&nbsp;&lt;=&nbsp;100.
+</p>
+
+<p>
+Following this will be <i>r</i> lines, each representing a single row of the
+map.  Each of these lines will contain <i>c</i> integers separated by spaces,
+representing the heights above sea level of the <i>c</i> squares in the
+corresponding row of the map.  Each height will be an odd number between
+1 and 999 inclusive.
+</p>
+
+<h3>Output</h3>
+
+<p>
+Your output should consist of a single integer representing the number
+of squares that remain underwater once the water has fallen to its final
+height <i>f</i>.
+</p>
+
+<h3>Sample Input</h3>
+
+<p>
+The following input file represents the example discussed above.
+</p>
+
+<pre>50 30
+9 14
+15 15 15 15 15 15 15 15 15 15 15 15 15 15
+15 31 31 31 31 31 31 31 27 27 27 63 27 15
+15 31 55 55 55 41 41 31 31 27 63 47 63 15
+15 31 55 35 55 41 41 41 31 31 31 63 31 15
+15 31 55 55 55 41 47 47 47 47 31 31 21 15
+15 31 31 31 31 41 47 41 41 47 31 31 31 15
+15 21 27 27 31 41 47 47 47 47 31 31 21 15
+15 21 21 21 27 31 31 31 31 31 31 21 21 15
+15 15 15 15 15 15 15 15 15 15 15 15 15 15
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>60
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each input file will be 100% if the
+correct answer is written to the output file and 0% otherwise.
+</p>
+</div></div>
+
+<div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div><div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

@@ -1,0 +1,214 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Spies</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=7">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic01#aic01">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Spies</h2></center>
+
+<p>
+<b>Input File:</b> <tt>spiesin.txt</tt><br>
+<b>Output File:</b> <tt>spiesout.txt</tt><br>
+<b>Time Limit:</b> 0.1 seconds
+</p>
+
+<p>
+It's been a while now since the cold war ended, and you and your
+friends at the national intelligence agency feel you are missing
+that spark of danger and excitement in your lives.  So you do what
+any good manager does when things need improving: you rearrange the
+administrative structure of the Agency.
+</p>
+
+<p>
+In the new structure every person has a superior and zero or more
+subordinates (except for the chair of the Agency who has no
+superior).  Being spies, each person naturally knows nobody other
+than their superior and their immediate subordinates.  This of
+course means things get hairy when you need to send a message to
+somebody in a different department – you have no idea how to reach
+them.
+</p>
+
+<p>
+Fortunately for the Agency, the Prime Minister's office has access to
+all of the secret files and can help you out with your addressing
+difficulties.  Unfortunately they cannot give names, so they merely
+provide you with instructions such as "send to your superior, then
+to his superior, then to her second subordinate and finally to her
+third subordinate."  The folks in the Prime Minister's office,
+however, aren't as sharp as you and your fellow spies, and after that
+embarrassing incident in which a dinner date was mistakenly offered to
+the second in command you have been hired to write a program to make
+sure that the addressing instructions are correct.
+</p>
+
+<p>
+Your program must read in the organisational structure of the
+Agency, a sender and a set of addressing instructions and output
+the person to whom the message will be delivered.
+</p>
+
+<p>
+Each agent has an ID number; if there are <i>N</i> agents
+then the ID numbers are 1,2,...,<i>N</i>.  An <em>address</em> (a set of
+addressing instructions) is a string of digits such as <tt>0032</tt>.  The
+digit <tt>0</tt> means "send to the superior" and the digit
+<i>k</i>
+(1&nbsp;&lt;=&nbsp;<i>k</i>&nbsp;&lt;=&nbsp;9) means "send to the
+<i>k</i>th subordinate" (the Agency
+requires that nobody has more than nine subordinates lest they gain
+too much power).
+</p>
+
+<p>
+Consider the example below, where <i>N</i>&nbsp;=&nbsp;10.
+The chair of the Agency is
+at the top of the tree and each person's subordinates are shown
+below them.  The numbers in the tree are the ID numbers of the
+agents.
+</p>
+
+<center>
+<img width="178" height="114" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic01&amp;problemid=7&amp;file=img1.png">
+</center>
+
+<p>
+Say a message begins at agent 6 and has address <tt>0013</tt>.  The message
+is sent to the superior (4), then to the superior (2), then to the
+first subordinate (1) and then to the third subordinate (5).  Thus
+the message is delivered to agent 5.
+</p>
+
+<p>
+There is one additional complication.  Occasionally somebody will
+move departments, at which point they leave a forwarding address.
+An example is the first subordinate of 7 in the tree above.  Say a
+message begins at agent 4 and has address <tt>211</tt>.  The message is
+sent to the second subordinate (7), then to the first subordinate
+which is the forwarding address <tt>001</tt>.  So we follow the forwarding
+address which takes us up from 7 to the superior (4), the
+superior (2) and then the first subordinate (1).  Now we continue
+with our original addressing instructions; we were up to the third
+instruction in <tt>211</tt> which tells us to move from our current
+position (1) to the first
+subordinate (8).  Finally we have completed our original addressing
+instructions and we can deliver the message to agent 8.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of the input file will contain the single integer <i>N</i>
+representing the number of agents
+(1&nbsp;&lt;=&nbsp;<i>N</i>&nbsp;&lt;=&nbsp;300).  Following
+this will be <i>N</i> lines describing agents 1,2,...,<i>N</i>
+respectively.  An agent description will be of the form
+</p>
+<center>
+<em>sup</em>&nbsp;<i>b</i>&nbsp;<i>s1</i>&nbsp;<i>s2</i>&nbsp;...&nbsp;<i>sb</i>
+</center>
+<p>
+where <em>sup</em> is the ID number of the superior (or 0 if the agent being
+described is the Agency chair), <i>b</i> is the number of subordinates that the
+agent has
+(0&nbsp;&lt;=&nbsp;<i>b</i>&nbsp;&lt;=&nbsp;9) and
+<i>sX</i> is the ID number or forwarding
+address for the <i>X</i>th subordinate.  For each <i>sX</i>, an ID number
+will be written as a plus followed by the subordinate's ID number
+with no intervening spaces
+(for instance, <code>+8</code>) and a forwarding address will be
+written as a minus followed by a sequence of digits with no
+intervening spaces (for instance, <code>-001</code>).
+</p>
+
+<p>
+Following this will be a sequence of queries, each query on its own
+line.  A query will be of the form
+</p>
+<center>
+<em>ID</em>&nbsp;<em>address</em>
+</center>
+<p>
+where <em>ID</em> is the ID number of the agent sending the message and
+<em>address</em> represents the addressing instructions for the message (no
+preceding dash this time).  Following the list of queries will
+be a line containing the single integer 0.  There will be at most
+100 queries in the input file.
+</p>
+
+<p>
+Each message address and forwarding address will contain at least 1
+and at most 15 digits, and there will be no spaces between the
+digits.
+</p>
+
+<h3>Output</h3>
+
+<p>
+For each query in the input file you must output a single line
+containing the ID number of the agent who will receive the message.  You
+may assume that all addressing instructions are valid; you will
+never be asked to pass a message to a subordinate that does not
+exist or to the superior of the Agency chair, and there will never
+be an infinite loop of forwarding addresses.
+</p>
+
+<h3>Sample Input</h3>
+
+<pre>10
+2 3 +8 +3 +5
+0 2 +1 +4
+1 0
+2 2 +6 +7
+1 1 +9
+4 1 +10
+4 1 -001
+1 0
+5 0
+6 0
+6 0013
+4 211
+0
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>5
+8
+</pre>
+
+<p>
+The sample data above describes the tree and the two queries
+discussed earlier in the problem description.
+</p>
+
+<h3>Scoring</h3>
+
+<p>
+The score for each query in the input file will be 100% if the
+correct solution is written to the output file and 0% otherwise.
+</p>
+
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

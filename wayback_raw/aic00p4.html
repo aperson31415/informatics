@@ -1,0 +1,143 @@
+<html>
+  <body class="pageWithContainer">
+    <canvas id="canvas"></canvas>
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    <div class="row-fluid">
+    <span class="span6 offset3">
+	<img src="/aioc/images/aiocheader.jpg" alt="AIOC Banner" border="0">
+    </span>
+    </div>
+    <div class="row-fluid">
+<p></p><h1>Problem: Displaying Paintings</h1><p></p>
+<ul class="nav nav-tabs"><li class="active"><a href="#statement">Problem statement</a></li><li><a href="/cgi-bin/train/fame_detail.pl?problemid=12">Hall of fame</a></li><li><a href="/cgi-bin/train/hub.pl?expand=aic00#aic00">Return to hub</a></li></ul><p>Want to try solving this problem? You can submit your code online if you <a href="/cgi-bin/train/hub.pl">log in</a> or <a href="/cgi-bin/train/register.pl">register</a>.</p><div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Displaying Paintings</h2></center>
+
+<p>
+<b>Input File:</b> <tt>paintin.txt</tt><br>
+<b>Output File:</b> <tt>paintout.txt</tt><br>
+<b>Time Limit:</b> 1.25 seconds
+</p>
+
+<p>
+You are working part time in the art gallery.  On of your jobs
+is to place paintings on a wall in the gallery. The gallery is rather
+short on space, and needs to pack the paintings tightly on a single wall
+in the gallery. Each painting and the wall itself has dimensions which
+are an integer number of millimeters.
+</p>
+
+<p>
+There are some rules about where paintings can be placed:
+</p><ol>
+<li>Paintings must be placed with their sides parallel to the sides
+of the wall, and in the correct orientation.</li>
+<li>Paintings cannot overlap - the patrons need to see the whole painting
+to appreciate it.</li>
+<li>Paintings must be hung in the order they arrive.</li>
+<li>Paintings must be placed as far to the left of the
+wall as possible when they are hung.</li>
+<li>Paintings must be hung as low as possible, without
+breaking rule&nbsp;4.</li>
+</ol>
+<p></p>
+
+<p>
+The x-coordinate of a painting is the distance (in millimeters) of the left
+edge of the painting from the left edge of the wall. The y-coordinate is the
+distance (in millimeters) of the bottom of the painting from the bottom of the
+wall.
+</p>
+
+<p>
+Thus rule&nbsp;4 says that paintings must be given the
+least x-coordinate possible when they arrive, and rule&nbsp;5 says
+that paintings must be given the least y-coordinate possible which doesn't
+increase the x-coordinate.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of input shall contain two integers <i>W</i> and <i>H</i>,
+separated
+by a single space.  These give the width and height (respectively) of the
+wall on which the paintings are to be hung, measured in millimeters.
+</p>
+
+<p>
+Each following line of input shall contain two integers <i>w_i</i> and
+<i>h_i</i>,
+separated by a single space. These give the width and height (respectively)
+of the next painting to be hung, measured in millimeters.
+</p>
+
+<p>
+The input shall be terminated by a line consisting of two 0s (zeroes)
+separated by a single space.
+</p>
+
+<p>
+You are guaranteed that:
+</p><ul>
+<li>1&nbsp;&lt;=&nbsp;<i>W</i>&nbsp;&lt;=&nbsp;30,000</li>
+<li>1&nbsp;&lt;=&nbsp;<i>H</i>&nbsp;&lt;=&nbsp;30,000</li>
+<li>For each painting <i>i</i>,
+1&nbsp;&lt;=&nbsp;<i>w_i</i>&nbsp;&lt;=&nbsp;<i>W</i>.</li>
+<li>For each painting <i>i</i>,
+1&nbsp;&lt;=&nbsp;<i>h_i</i>&nbsp;&lt;=&nbsp;<i>H</i>.</li>
+<li>All paintings can be hung on the wall by following the rules.</li>
+</ul>
+<p></p>
+
+<h3>Output</h3>
+
+<p>
+For each painting in the input (each line after the first), your program
+shall output a single line consisting of two integers <i>x_i</i> and <i>y_i</i>,
+separated by a single space.  These give the x-coordinate and y-coordinate
+of the corresponding painting when placed according to the rules.
+</p>
+
+<h3>Sample Input</h3>
+
+<pre>5 4
+3 3
+2 2
+4 1
+1 2
+1 1
+0 0
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>0 0
+3 0
+0 3
+4 2
+3 2
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+For each test case, let <i>n</i> be the number of paintings to be placed.
+If your program correctly places <i>r</i> of the paintings for this case, it
+shall be awarded <i>r</i>/<i>n</i> of the available marks for the test case.
+</p>
+</div><div class="row-fluid"><p>&nbsp;</p>
+<div align="center"><hr noshade="" width="85%" color="#0022BB" size="1"></div>
+        <div class="row-fluid">
+            <div>
+                <p><a href="http://www.amt.edu.au/privacy-policy/">Privacy
+                    statement</a><br>
+                © Australian Mathematics Trust 2001-2022</p>
+            <address>Contact: <a href="mailto:training@orac.amt.edu.au">training@orac.amt.edu.au</a></address>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<div class="clearfix"></div><pre style="border: 0; padding: 0; margin: 0; background-color: transparent;">Page generated:  2 March 2022,  9:18pm AEDT</pre></div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>
