@@ -1,0 +1,277 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: Handwriting Recognition</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>Handwriting Recognition</h2></center>
+
+<p>
+<b>Input Files:</b> <tt>handin.txt</tt>, <tt>symbols.txt</tt>,
+<tt>dict.txt</tt><br>
+<b>Output File:</b> <tt>handout.txt</tt><br>
+<b>Time Limit:</b> 0.3 seconds
+</p>
+
+<p>
+You are an employee of a new handheld computer company that is preparing
+its flagship product, the Assistant for Intelligent and Organised
+Computing.  This product has so many bells and whistles that there is no
+room left for a keyboard.  It is thus your task to implement handwriting
+recognition for this device.
+</p>
+
+<p>
+Fortunately the device is not required to learn the handwriting style
+of its user.  Instead the user must learn the single handwriting
+style recognised by the device.  Every letter
+is represented as a sequence of up, down, left or right strokes.
+In order to enter a letter, the user must draw the appropriate sequence
+of strokes without taking their pen away from the drawing area.
+</p>
+
+<p>
+As an example, the figure below illustrates the letters
+<tt>B</tt>, <tt>C</tt>, <tt>I</tt> and <tt>L</tt>, each drawn without
+taking the pen
+away from the drawing area.  Below each of these letters is a simplified
+representation using only up, down, left and right strokes (although
+some strokes have been angled slightly so that they can be distinguished
+in the diagram).  In each
+symbol the beginning of the pen movement is indicated by a black circle,
+and the direction of the pen movement is indicated by an arrow.
+</p>
+
+<center>
+<img width="225" height="165" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic03&amp;problemid=23&amp;file=img1.png">
+</center>
+
+<p>
+For this problem you are given a file <em>symbols.txt</em> listing
+every recognised letter and the corresponding sequences of up,
+down, left and right strokes.
+</p>
+
+<p>
+Unfortunately, users are not precise and cannot draw accurate horizontal
+and vertical strokes.  If a user draws a diagonal stroke, your program
+may interpret it as one of two types of stroke as follows.
+</p><ul>
+<li>A stroke running diagonally up and to the left may be
+    interpreted as an up stroke or as a left stroke;</li>
+<li>A stroke running diagonally down and to the left may be
+    interpreted as a down stroke or as a left stroke;</li>
+<li>A stroke running diagonally up and to the right may be
+    interpreted as an up stroke or as a right stroke;</li>
+<li>A stroke running diagonally down and to the right may be
+    interpreted as a down stroke or as a right stroke.</li>
+</ul>
+If a user draws a precise horizontal or vertical stroke then this stroke
+already runs up, down, left or right and so there is only one possible
+interpretation.
+<p></p>
+
+<p>
+As an example, consider the symbol entered by a user
+that is illustrated below.  The first stroke
+may be interpreted as either a down stroke or a left stroke.  The second
+stroke is precisely horizontal and so must be interpreted as a right
+stroke.  Using the sequences for <tt>B</tt>, <tt>C</tt>, <tt>I</tt> and
+<tt>L</tt>
+described above, the symbol could thus represent either of the letters
+<tt>C</tt> or <tt>L</tt>.
+</p>
+
+<center>
+<img width="36" height="70" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic03&amp;problemid=23&amp;file=img2.png">
+</center>
+
+<p>
+In order to resolve such ambiguities, you must consider each letter within
+the larger context of a word.  You are given a dictionary of recognised
+words in the file <em>dict.txt</em>, and you may assume that each word
+entered by a user belongs to this dictionary.
+</p>
+
+<p>
+As an example, suppose that the only letters recognised are <tt>B</tt>,
+<tt>C</tt>, <tt>I</tt> and <tt>L</tt> (as described previously) and that the
+dictionary contains the word <tt>BIC</tt> but not <tt>BIL</tt>.
+Consider the word illustrated below.
+</p>
+
+<center>
+<img width="166" height="86" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic03&amp;problemid=23&amp;file=img3.png">
+</center>
+
+<p>
+The first two symbols unambiguously represent <tt>B</tt> and <tt>I</tt>.
+The third
+symbol might represent either <tt>C</tt> or <tt>L</tt> as described above.
+However, since <tt>BIC</tt> belongs to the dictionary but <tt>BIL</tt> does
+not, your program can deduce that the word entered by the user is
+<tt>BIC</tt>.
+</p>
+
+<p>
+Your task is to write a program that reads a number of words entered by
+a user, where each word is presented as a sequence of
+symbols.  For each input word your program must output the corresponding
+dictionary word that is represented.  You are guaranteed for each
+input word that there is one and only one dictionary word that it can
+represent.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The input is contained in three files: <em>symbols.txt</em>, <em>dict.txt</em>
+and <em>handin.txt</em>.
+</p>
+
+<p>
+The file <em>symbols.txt</em> will contain a list of individual letters
+that your program must understand and the corresponding sequences of up,
+down, left and right strokes.  Each letter and its sequence of strokes
+will be described on a separate line.  No letter will be described more
+than once.  At least 1 and at most 26 letters will be described.
+Following these lines will be a single line containing a single hash
+character (<tt>#</tt>).
+</p>
+
+<p>
+Each individual line (except for the line containing the hash character)
+will contain an upper-case
+letter to be recognised, followed by a single space and then a sequence
+of upper-case characters representing strokes.
+Up, down, left and right strokes will be represented
+by the characters <tt>U</tt>, <tt>D</tt>, <tt>L</tt> and <tt>R</tt>
+respectively.  Each line will contain at least 1 and at most 6 strokes.
+</p>
+
+<p>
+The file <em>dict.txt</em> will contain a dictionary of recognised words.
+This dictionary will
+be presented as a series of lines each containing a single upper-case
+word.  Each word in the dictionary will be at least 1 letter and
+at most 50 letters long.  The dictionary will contain at least 1 and
+at most 1000 words.  No word will be contained in the dictionary more
+than once.  The list of words will be terminated by a line containing
+a single hash character (<tt>#</tt>).
+</p>
+
+<p>
+The file <em>handin.txt</em> will contain a series of words entered by a user.  
+At least 1 and at most 1000 words will be presented.
+Each word will be described using several lines as explained below.
+Following this series of words will be a line containing the
+single integer 0.
+</p>
+
+<p>
+The first line of each word description will contain a single integer <i>k</i>
+representing the number of letters in the word.  Following this will be
+<i>k</i> lines describing the <i>k</i> letters of the word in order from
+first to last.  Each letter will be described as a symbol entered by the user.
+</p>
+
+<p>
+Each line describing a symbol will begin with an integer <i>s</i>
+representing the number of strokes in the symbol
+(1&nbsp;&lt;=&nbsp;<i>s</i>&nbsp;&lt;=&nbsp;6).
+Following this will be a sequence of <i>s</i>+1 points (separated by
+spaces) giving, in order, the beginning of the first stroke,
+the end of the first stroke (which is also the beginning of
+the second stroke), the end of the second stroke and so on,
+finishing with the end of the last stroke.  Each point is
+described by an integer <i>x</i>-coordinate followed by a single space
+then an integer <i>y</i>-coordinate, where larger values of <i>x</i> indicate
+points further to the right and larger values of <i>y</i> indicate
+points further upwards.  Each coordinate will be between 0 and
+100 inclusive.
+</p>
+
+<center>
+<img width="98" height="145" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic03&amp;problemid=23&amp;file=img4.png">
+</center>
+
+<p>
+The figure above illustrates the ambiguous <tt>C</tt> or <tt>L</tt> symbol
+discussed earlier, this time with a coordinate grid drawn in.  The two
+strokes of this symbol move from points (3,6) to (1,2) and then to
+(3,2).  Thus this symbol would be represented in the input file by the
+following line.
+</p>
+
+<pre>2 3 6 1 2 3 2
+</pre>
+
+<h3>Output</h3>
+
+<p>
+For each word presented in <em>handin.txt</em> as a sequence of symbols,
+a line should be written to the output file <em>handout.txt</em>
+containing the unique
+dictionary word that this sequence of symbols represents.
+The output words must be entirely in upper case, and must be presented
+in the order in which the corresponding sequences of symbols are presented
+in <em>handin.txt</em>.
+</p>
+
+<h3>Sample <i>symbols.txt</i></h3>
+
+<pre>A UD
+B URLRL
+C LR
+I D
+L DR
+#
+</pre>
+
+<h3>Sample <i>dict.txt</i></h3>
+
+<pre>AIL
+BIC
+BILL
+CAB
+ILL
+LAB
+#
+</pre>
+
+<h3>Sample <i>handin.txt</i></h3>
+
+<pre>3
+5 1 1 2 4 4 3 3 2 4 0 2 1
+1 2 5 3 1
+2 3 6 1 2 3 2
+4
+5 1 1 2 4 4 3 3 2 4 0 2 1
+1 2 5 3 1
+2 3 6 1 2 3 2
+2 3 6 1 2 3 2
+0
+</pre>
+
+<h3>Sample <i>handout.txt</i></h3>
+
+<pre>BIC
+BILL
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+For each set of input files, let <i>n</i> be the number of words in
+<em>handin.txt</em> that your program is asked to recognise.
+If your program correctly recognises <i>r</i> of these words,
+it shall be awarded <i>r</i>/<i>n</i> of the available marks for that
+particular set of input files.
+</p>
+
+</div></div>
+
+<div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>

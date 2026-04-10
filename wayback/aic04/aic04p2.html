@@ -1,0 +1,165 @@
+<html>
+  <body class="pageWithContainer">
+    
+    <div class="span10 container-fluid" style="margin: 0 auto; float: none;">
+    
+    <div class="row-fluid">
+<p></p><h1>Problem: AFL</h1><p></p>
+<div align="center"><a name="statement"><hr noshade="" width="85%" color="#0022BB" size="1"></a></div>
+
+<center><h2>AFL</h2></center>
+
+<p>
+<b>Input File:</b> <tt>aflin.txt</tt><br>
+<b>Output File:</b> <tt>aflout.txt</tt><br>
+<b>Time Limit:</b> 0.2 seconds<br>
+</p>
+
+<p>
+It's football season, and the rush is on.  You have the unfortunate job
+of trying to arrange seating in the stadium for the horde of fans phoning
+in to the ticket office.
+</p>
+
+<p>
+Luckily you are only responsible for a single row of seats.  For each
+football fan who phones in with a booking for <i>k</i> people, you have to
+find a continuous block of <i>k</i> empty seats in the row in which they can
+sit.  To save
+yourself the hassle of having to decide each time <em>which</em> block of
+<i>k</i> empty seats to book, you decide upon the following strategy.
+</p>
+
+<p>
+Each time a fan phones in with a booking for <i>k</i> people, you find the
+longest continuous sequence of empty seats in the row (if there is a
+tie then you choose the leftmost longest sequence).  You then book
+the first <i>k</i> seats in this sequence (and hope that the sequence of
+empty seats is long enough).  These seats are then marked as taken,
+and you move on to answer the next phone call.
+</p>
+
+<p>
+As an example, consider a row of 10 seats numbered 1,2,...,10.
+Say that seats 3 and 8 have already been taken before you start making
+bookings.  The initial state of the row is illustrated in the following
+diagram, where the shaded seats have already been taken.
+</p>
+
+<center>
+<img width="164" height="17" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04int&amp;problemid=114&amp;file=img1.png">
+</center>
+
+<p>
+Suppose that the first phone call is for a booking of size 1.  The
+longest continuous sequence of empty seats is from seats 4 to 7, so you
+place the booking at the beginning of this sequence, claiming seat 4.
+</p>
+
+<center>
+<img width="164" height="17" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04int&amp;problemid=114&amp;file=img2.png">
+</center>
+
+<p>
+Suppose that the next request is for a booking of size 2.  The longest
+continuous sequence of empty seats is now from seats 5 to 7, so the
+booking is made for seats 5 and 6.
+</p>
+
+<center>
+<img width="164" height="17" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04int&amp;problemid=114&amp;file=img3.png">
+</center>
+
+<p>
+Let the next request be another booking of size 1.  There are now two
+longest continuous sequences of empty seats, each of length two.  One is
+from seats 1 to 2 and the other is from seats 9 to 10.  You choose the
+leftmost of these longest sequences and book seat 1.
+</p>
+
+<center>
+<img width="164" height="17" align="BOTTOM" border="0" src="/cgi-bin/train/support.pl?set=aic04int&amp;problemid=114&amp;file=img4.png">
+</center>
+
+<p>
+And so on.  After a few days of carrying out this procedure it is
+becoming rather tedious, so you decide to write a computer program that
+can carry it out for you.  Grabbing your laptop and an AFL-branded meat
+pie, you set to work.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of input will contain the single integer <i>n</i>
+representing the total number of seats in the row
+(1&nbsp;&lt;=&nbsp;<i>n</i>&nbsp;&lt;=&nbsp;30,000).
+These seats are numbered 1,2,...,<i>n</i> from left to right.
+</p>
+
+<p>
+The second line of input will contain the single integer <i>t</i>
+representing the total number of seats that have already been taken
+(0&nbsp;&lt;=&nbsp;<i>t</i>&nbsp;&lt;=&nbsp;<i>n</i>).
+Following this will be <i>t</i> lines, each containing
+the number of a seat that has been taken (no two of these seat numbers
+will be identical).
+</p>
+
+<p>
+The next line of input will contain the single integer <i>b</i> representing
+the total number of bookings that you must make
+(0&nbsp;&lt;=&nbsp;<i>b</i>&nbsp;&lt;=&nbsp;<i>n</i>).
+Following this will be <i>b</i> lines, each describing a single booking.
+Each of these lines will contain a single integer <i>k</i> representing the
+number of seats to be booked
+(1&nbsp;&lt;=&nbsp;<i>k</i>&nbsp;&lt;=&nbsp;<i>n</i>).  The bookings will be
+presented in order from the first phone call to the last.
+</p>
+
+<h3>Output</h3>
+
+<p>
+For each booking, your program should write a single line of output.
+This line should contain a single integer describing the leftmost seat
+that was booked.
+</p>
+
+<p>
+You may assume that it is possible to successfully make all of the
+requested bookings using the strategy described above.
+</p>
+
+<h3>Sample Input</h3>
+
+<p>
+The following sample data corresponds to the example discussed earlier.
+</p>
+
+<pre>10
+2
+3
+8
+3
+1
+2
+1
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>4
+5
+1
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+For each input file, let <i>b</i> be the total number of bookings.
+If your program correctly places <i>r</i> of these bookings, it shall be
+awarded <i>r</i>/<i>b</i> of the available marks for that input file.
+</p>
+</div></div>
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></html>
