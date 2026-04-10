@@ -8,6 +8,8 @@
 // @match        https://orac.amt.edu.au/hub/personal/*
 // @match        https://orac2.info/problem/*
 // @match        https://orac.amt.edu.au/problem/*
+// @match        https://orac2.info/*
+// @match        https://orac.amt.edu.au/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=orac2.info
 // @grant        GM_setValue
 // @grant        GM_getValue
@@ -134,12 +136,12 @@
             const h1 = document.querySelector("h1");
             const pageHeading = h1 ? h1.innerText.toLowerCase().trim() : "";
 
-            const isErrorPage = pageHeading.includes('access denied') || 
-                                pageHeading.includes('page requested does not exist') || 
+            const isErrorPage = pageHeading.includes('access denied') ||
+                                pageHeading.includes('page requested does not exist') ||
                                 pageHeading.includes('page not found');
 
             if (old_problems.includes(problem_id) && isErrorPage) {
-                
+
                 document.body.innerHTML = `<div style="text-align:center; margin-top:100px; font-family:sans-serif;"><h2>Restoring ${problem_id}...</h2></div>`;
 
                 const cdnBase = `https://cdn.jsdelivr.net/gh/aperson31415/informatics@main/wayback_raw/${problem_id}`;
@@ -1039,5 +1041,32 @@
                 }
             });
         }
+    }
+    function waitForElm(selector) {
+        return new Promise(resolve => {
+            if (document.querySelector(selector)) {
+                return resolve(document.querySelector(selector));
+            }
+            const observer = new MutationObserver(mutations => {
+                if (document.querySelector(selector)) {
+                    observer.disconnect();
+                    resolve(document.querySelector(selector));
+                }
+            });
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    }
+
+    // add kactl
+    document.querySelector(".collapse.navbar-collapse").children[0].innerHTML += `<a class="nav-item nav-link user-links " href="/hub/notes/">Notes</a>`;
+    if(window.location.href == "https://orac2.info/hub/notes/" || window.location.href == "https://orac.amt.edu.au/hub/notes") {
+        waitForElm("p").then((elm) => {
+            window.title = "OI Notes";
+            let cdnBase = "https://cdn.jsdelivr.net/gh/aperson31415/informatics@main/kactl";
+            document.querySelectorAll("div.container-xl")[1].innerHTML = `<embed class="embed-responsive-item" src="${cdnBase}.pdf" type="application/pdf" style="flex-grow:1; width:100%; height:80vh;" />`;
+        });
     }
 })();
