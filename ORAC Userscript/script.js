@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         ORAC Userscript
 // @namespace    http://tampermonkey.net/
-// @version      v3.4.2
-// @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering, editorials
+// @version      v3.5.1
+// @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering, editorials, old problems
 // @author       a_person31415
 // @match        https://orac2.info/hub/personal/*
 // @match        https://orac.amt.edu.au/hub/personal/*
@@ -506,85 +506,85 @@
         async function load_from_data() {
             let data = {
                 "sets": [
-                    { "tag":"training", "set_name":"Implementation Problems", "set_id":"impl", "problems": [
-                        { "problem_name":"Bernard's Magic Needles", "problem_link":"https://orac2.info/problem/1106/" },
-                        { "problem_name":"A Not So Simple Sort", "problem_link":"https://orac2.info/problem/1105/" },
-                        { "problem_name":"Pie a la Mode", "problem_link":"https://orac2.info/problem/1111/" },
-                        { "problem_name":"Stacks", "problem_link":"https://orac2.info/problem/745/" },
-                        { "problem_name":"Queues", "problem_link":"https://orac2.info/problem/752/" },
-                        { "problem_name":"Bracket Matching", "problem_link":"https://orac2.info/problem/1107/" },
-                        { "problem_name":"Twin Primes", "problem_link":"https://orac2.info/problem/872/" },
-                        { "problem_name":"Pairs", "problem_link":"https://orac2.info/problem/947/" },
-                        { "problem_name":"Reverse Polish Notation", "problem_link":"https://orac2.info/problem/precamppublic2"}
+                    { "tag":"training", "set_name":"Implementation Problems", "set_id":"impl", "old":false, "problems": [
+                        { "problem_name":"Bernard's Magic Needles", "problem_link":"https://orac2.info/problem/1106/", "old":false},
+                        { "problem_name":"A Not So Simple Sort", "problem_link":"https://orac2.info/problem/1105/", "old":false },
+                        { "problem_name":"Pie a la Mode", "problem_link":"https://orac2.info/problem/1111/", "old":false },
+                        { "problem_name":"Stacks", "problem_link":"https://orac2.info/problem/745/", "old":false },
+                        { "problem_name":"Queues", "problem_link":"https://orac2.info/problem/752/", "old":false },
+                        { "problem_name":"Bracket Matching", "problem_link":"https://orac2.info/problem/1107/", "old":false },
+                        { "problem_name":"Twin Primes", "problem_link":"https://orac2.info/problem/872/", "old":false },
+                        { "problem_name":"Pairs", "problem_link":"https://orac2.info/problem/947/", "old":false }
                     ]},
-                    { "tag":"training", "set_name":"Graph Problems", "set_id":"graph", "problems": [
-                        { "problem_name":"Quicksort", "problem_link":"https://orac2.info/problem/659/" },
-                        { "problem_name":"Gossip Chains", "problem_link":"https://orac2.info/problem/738/" },
-                        { "problem_name":"King Arthur", "problem_link":"https://orac2.info/problem/978/" }
+                    { "tag":"training", "set_name":"Graph Problems", "set_id":"graph", "old":false, "problems": [
+                        { "problem_name":"Quicksort", "problem_link":"https://orac2.info/problem/659/", "old":false },
+                        { "problem_name":"Gossip Chains", "problem_link":"https://orac2.info/problem/738/", "old":false },
+                        { "problem_name":"King Arthur", "problem_link":"https://orac2.info/problem/978/", "old":false }
                     ]},
-                    { "tag":"training", "set_name":"Bitmask Problems", "set_id":"bitmask", "problems": [
-                        { "problem_name":"Tiling", "problem_link":"https://orac2.info/problem/935/" },
-                        { "problem_name":"Odd Jobs", "problem_link":"https://orac2.info/problem/951/" },
-                        { "problem_name":"King Arthur", "problem_link":"https://orac2.info/problem/978/" }
+                    { "tag":"training", "set_name":"Bitmask Problems", "set_id":"bitmask", "old":false, "problems": [
+                        { "problem_name":"Tiling", "problem_link":"https://orac2.info/problem/935/", "old":false },
+                        { "problem_name":"Odd Jobs", "problem_link":"https://orac2.info/problem/951/", "old":false },
+                        { "problem_name":"King Arthur", "problem_link":"https://orac2.info/problem/978/", "old":false }
                     ]},
-                    { "tag":"cpp-practice", "set_name":"C++ Starter Problems", "set_id":"cpp-starter", "problems": [
-                        { "problem_name":"Addition (C++ Only)", "problem_link":"https://orac2.info/problem/1309/" },
-                        { "problem_name":"Counting to Infinity (C++ Only)", "problem_link":"https://orac2.info/problem/1307/" },
-                        { "problem_name":"Triple Hunting (C++ Only)", "problem_link":"https://orac2.info/problem/1306/" },
-                        { "problem_name":"Sitting or Standing (C++ Only)", "problem_link":"https://orac2.info/problem/1308/" },
-                        { "problem_name":"A Dish Best served Cold (C++ Only)", "problem_link":"https://orac2.info/problem/1310/" }
+                    { "tag":"cpp-practice", "set_name":"C++ Starter Problems", "set_id":"cpp-starter", "old":false, "problems": [
+                        { "problem_name":"Addition (C++ Only)", "problem_link":"https://orac2.info/problem/1309/", "old":false },
+                        { "problem_name":"Counting to Infinity (C++ Only)", "problem_link":"https://orac2.info/problem/1307/", "old":false },
+                        { "problem_name":"Triple Hunting (C++ Only)", "problem_link":"https://orac2.info/problem/1306/", "old":false },
+                        { "problem_name":"Sitting or Standing (C++ Only)", "problem_link":"https://orac2.info/problem/1308/", "old":false },
+                        { "problem_name":"A Dish Best served Cold (C++ Only)", "problem_link":"https://orac2.info/problem/1310/", "old":false }
                     ]},
-                    { "tag":"aic", "set_name":"AIC 1998", "set_id":"aic98", "problems": [
-                        { "problem_name":"Shopping Malls", "problem_link":"https://orac2.info/problem/aic98p1"},
-                        { "problem_name":"Anagram Solver", "problem_link":"https://orac2.info/problem/aic98p2"},
-                        { "problem_name":"Building Integers", "problem_link":"https://orac2.info/problem/aic98p3"},
+                    { "tag":"aic", "set_name":"AIC 1998", "set_id":"aic98", "old":true, "problems": [
+                        { "problem_name":"Shopping Malls", "problem_link":"https://orac2.info/problem/aic98p1", "old":true},
+                        { "problem_name":"Anagram Solver", "problem_link":"https://orac2.info/problem/aic98p2", "old":true},
+                        { "problem_name":"Building Integers", "problem_link":"https://orac2.info/problem/aic98p3", "old":true},
                     ]},
-                    { "tag":"aic", "set_name":"AIC 1999", "set_id":"aic99", "problems": [
-                        { "problem_name":"Hailstone Sequences", "problem_link":"https://orac2.info/problem/aic99p1"},
-                        { "problem_name":"Hunt-a-Word", "problem_link":"https://orac2.info/problem/aic99p2"},
-                        { "problem_name":"Cartography", "problem_link":"https://orac2.info/problem/aic99p3"},
+                    { "tag":"aic", "set_name":"AIC 1999", "set_id":"aic99", "old":true, "problems": [
+                        { "problem_name":"Hailstone Sequences", "problem_link":"https://orac2.info/problem/aic99p1", "old":true},
+                        { "problem_name":"Hunt-a-Word", "problem_link":"https://orac2.info/problem/aic99p2", "old":true},
+                        { "problem_name":"Cartography", "problem_link":"https://orac2.info/problem/aic99p3", "old":true},
                     ]},
-                    { "tag":"aic", "set_name":"AIC 2000", "set_id":"aic00", "problems": [
-                        { "problem_name":"Academic Espionage", "problem_link":"https://orac2.info/problem/aic00p1"},
-                        { "problem_name":"Keeping Secret", "problem_link":"https://orac2.info/problem/aic00p2"},
-                        { "problem_name":"Analysing Bach", "problem_link":"https://orac2.info/problem/aic00p3"},
-                        { "problem_name":"Displaying Paintings", "problem_link":"https://orac2.info/problem/aic00p4"},
+                    { "tag":"aic", "set_name":"AIC 2000", "set_id":"aic00", "old":true, "problems": [
+                        { "problem_name":"Academic Espionage", "problem_link":"https://orac2.info/problem/aic00p1", "old":true},
+                        { "problem_name":"Keeping Secret", "problem_link":"https://orac2.info/problem/aic00p2", "old":true},
+                        { "problem_name":"Analysing Bach", "problem_link":"https://orac2.info/problem/aic00p3", "old":true},
+                        { "problem_name":"Displaying Paintings", "problem_link":"https://orac2.info/problem/aic00p4", "old":true},
                     ]},
-                    { "tag":"aic", "set_name":"AIC 2001", "set_id":"aic01", "problems": [
-                        { "problem_name":"Flowers", "problem_link":"https://orac2.info/problem/aic01p1"},
-                        { "problem_name":"Cartography III", "problem_link":"https://orac2.info/problem/aic01p2"},
-                        { "problem_name":"Spies", "problem_link":"https://orac2.info/problem/aic01p3"},
-                        { "problem_name":"Mobiles", "problem_link":"https://orac2.info/problem/aic01p4"},
+                    { "tag":"aic", "set_name":"AIC 2001", "set_id":"aic01", "old":true, "problems": [
+                        { "problem_name":"Flowers", "problem_link":"https://orac2.info/problem/aic01p1", "old":true},
+                        { "problem_name":"Cartography III", "problem_link":"https://orac2.info/problem/aic01p2", "old":true},
+                        { "problem_name":"Spies", "problem_link":"https://orac2.info/problem/aic01p3", "old":true},
+                        { "problem_name":"Mobiles", "problem_link":"https://orac2.info/problem/aic01p4", "old":true},
                     ]},
-                    { "tag":"aic", "set_name":"AIC 2002", "set_id":"aic02", "problems": [
-                        { "problem_name":"Halloween", "problem_link":"https://orac2.info/problem/aic02p1"},
-                        { "problem_name":"Cartography II", "problem_link":"https://orac2.info/problem/aic02p2"},
-                        { "problem_name":"Bureaucratic Bungling", "problem_link":"https://orac2.info/problem/aic02p3"}
+                    { "tag":"aic", "set_name":"AIC 2002", "set_id":"aic02", "old":true, "problems": [
+                        { "problem_name":"Halloween", "problem_link":"https://orac2.info/problem/aic02p1", "old":true},
+                        { "problem_name":"Cartography II", "problem_link":"https://orac2.info/problem/aic02p2", "old":true},
+                        { "problem_name":"Bureaucratic Bungling", "problem_link":"https://orac2.info/problem/aic02p3", "old":true}
                     ]},
-                    { "tag":"aic", "set_name":"AIC 2003", "set_id":"aic03", "problems": [
-                        { "problem_name":"Word Wrap", "problem_link":"https://orac2.info/problem/aic03p2"},
-                        { "problem_name":"Stacking Numbers", "problem_link":"https://orac2.info/problem/aic03p3"},
-                        { "problem_name":"Handwriting Recognition", "problem_link":"https://orac2.info/problem/aic03p4"}
+                    { "tag":"aic", "set_name":"AIC 2003", "set_id":"aic03", "old":true, "problems": [
+                        { "problem_name":"Word Wrap", "problem_link":"https://orac2.info/problem/aic03p2", "old":true},
+                        { "problem_name":"Stacking Numbers", "problem_link":"https://orac2.info/problem/aic03p3", "old":true},
+                        { "problem_name":"Handwriting Recognition", "problem_link":"https://orac2.info/problem/aic03p4", "old":true}
                     ]},
-                    { "tag":"aic", "set_name":"AIC 2004", "set_id":"aic04", "problems": [
-                        { "problem_name":"Bugs", "problem_link":"https://orac2.info/problem/aic04p1"},
-                        { "problem_name":"AFL", "problem_link":"https://orac2.info/problem/aic04p2"},
-                        { "problem_name":"Atlantis", "problem_link":"https://orac2.info/problem/aic04p3"},
-                        { "problem_name":"Zig-Zag Cipher", "problem_link":"https://orac2.info/problem/aic04p4"},
-                        { "problem_name":"Bouncy Ball", "problem_link":"https://orac2.info/problem/aic04p5"},
+                    { "tag":"aic", "set_name":"AIC 2004", "set_id":"aic04", "old":true, "problems": [
+                        { "problem_name":"Bugs", "problem_link":"https://orac2.info/problem/aic04p1", "old":true},
+                        { "problem_name":"AFL", "problem_link":"https://orac2.info/problem/aic04p2", "old":true},
+                        { "problem_name":"Atlantis", "problem_link":"https://orac2.info/problem/aic04p3", "old":true},
+                        { "problem_name":"Zig-Zag Cipher", "problem_link":"https://orac2.info/problem/aic04p4", "old":true},
+                        { "problem_name":"Bouncy Ball", "problem_link":"https://orac2.info/problem/aic04p5", "old":true},
                     ]},
-                    { "tag":"training", "set_name":"Data Structure Excercises", "set_id":"trainingds", "problems": [
-                        { "problem_name":"Cannons", "problem_link":"https://orac2.info/problem/dscannons"},
-                        { "problem_name":"XOR Queries", "problem_link":"https://orac2.info/problem/dsfenwickxor"},
-                        { "problem_name":"Inversion Counting", "problem_link":"https://orac2.info/problem/dsinversioncounting"},
-                        { "problem_name":"Lazy Updates", "problem_link":"https://orac2.info/problem/dslazyupdate"},
-                        { "problem_name":"Min Tree with Updates", "problem_link":"https://orac2.info/problem/dsrangetreeupdates"},
-                        { "problem_name":"Supplies", "problem_link":"https://orac2.info/problem/dssupplies"}
+                    { "tag":"training", "set_name":"Data Structure Excercises", "set_id":"trainingds","old":true,  "problems": [
+                        { "problem_name":"Cannons", "problem_link":"https://orac2.info/problem/dscannons", "old":true},
+                        { "problem_name":"XOR Queries", "problem_link":"https://orac2.info/problem/dsfenwickxor", "old":true},
+                        { "problem_name":"Inversion Counting", "problem_link":"https://orac2.info/problem/dsinversioncounting", "old":true},
+                        { "problem_name":"Lazy Updates", "problem_link":"https://orac2.info/problem/dslazyupdate", "old":true},
+                        { "problem_name":"Min Tree with Updates", "problem_link":"https://orac2.info/problem/dsrangetreeupdates", "old":true},
+                        { "problem_name":"Supplies", "problem_link":"https://orac2.info/problem/dssupplies", "old":true}
                     ]},
-                    { "tag":"training", "set_name":"2005 April Monthly Problems", "set_id":"monthly05", "problems": [
-                        { "problem_name":"Anagrammatic Primes", "problem_link":"https://orac2.info/problem/monthly05p1"},
-                        { "problem_name":"Packing Pentominoes", "problem_link":"https://orac2.info/problem/monthly05p2"},
-                        { "problem_name":"Nine Clocks", "problem_link":"https://orac2.info/problem/monthly05p3"}
+                    { "tag":"training", "set_name":"2005 April Monthly Problems", "set_id":"monthly05", "old":true, "problems": [
+                        { "problem_name":"Anagrammatic Primes", "problem_link":"https://orac2.info/problem/monthly05p1", "old":true},
+                        { "problem_name":"Packing Pentominoes", "problem_link":"https://orac2.info/problem/monthly05p2", "old":true},
+                        { "problem_name":"Nine Clocks", "problem_link":"https://orac2.info/problem/monthly05p3", "old":true},
+                        { "problem_name":"Reverse Polish Notation", "problem_link":"https://orac2.info/problem/precamppublic2", "old":true}
                     ]}
                 ]
             };
@@ -625,21 +625,39 @@
                 div.className = `problemset-display set-table set-tag-${set.tag}`;
 
                 let tooltip = set.tooltip_text || "Tags: " + set.tag;
-                div.innerHTML = `
-                    <table class="table table-sm mt-0 mb-0 pointer" data-toggle="collapse" data-target="#collapse-${set.set_id}">
-                        <thead class="thead-dark"><tr>
-                            <th scope="col"><span class="set-title mr-auto">${set.set_name}</span></th>
-                            <th scope="col" class="progress-column">
-                                <div class="d-flex align-items-center">
-                                    <span class="badge badge-secondary mr-auto score-display">Fetching scores...</span>
+                if(!set.old) {
+                    div.innerHTML = `
+                        <table class="table table-sm mt-0 mb-0 pointer" data-toggle="collapse" data-target="#collapse-${set.set_id}">
+                            <thead class="thead-dark"><tr>
+                                <th scope="col"><span class="set-title mr-auto">${set.set_name}</span></th>
+                                <th scope="col" class="progress-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge badge-secondary mr-auto score-display">Fetching scores...</span>
+                                        <span class="fas fa-lg fa-tag" data-toggle="tooltip" data-original-title="${tooltip}"></span>
+                                    </div>
+                                </th>
+                            </tr></thead>
+                        </table>
+                        <div id="collapse-${set.set_id}" class="collapse show set-problems">
+                            <table class="table table-sm mt-0 mb-0"><tbody id="table-${set.set_id}"></tbody></table>
+                        </div>`;
+                } else {
+                    div.innerHTML = `
+                        <table class="table table-sm mt-0 mb-0 pointer" data-toggle="collapse" data-target="#collapse-${set.set_id}">
+                            <thead class="thead-dark"><tr>
+                                <th scope="col"><span class="set-title mr-auto">${set.set_name}</span></th>
+                                <th scope="col" class="progress-column">
+                                    <div class="d-flex align-items-center">
+                                    <span class="badge badge-secondary mr-auto score-display">N/A</span>
                                     <span class="fas fa-lg fa-tag" data-toggle="tooltip" data-original-title="${tooltip}"></span>
-                                </div>
-                            </th>
-                        </tr></thead>
-                    </table>
-                    <div id="collapse-${set.set_id}" class="collapse show set-problems">
-                        <table class="table table-sm mt-0 mb-0"><tbody id="table-${set.set_id}"></tbody></table>
-                    </div>`;
+                                    </div>
+                                </th>
+                            </tr></thead>
+                        </table>
+                        <div id="collapse-${set.set_id}" class="collapse show set-problems">
+                            <table class="table table-sm mt-0 mb-0"><tbody id="table-${set.set_id}"></tbody></table>
+                        </div>`;
+                }
                 document.getElementById("show-sets").appendChild(div);
 
                 let score_elems = $("td.progress-column");
@@ -664,7 +682,16 @@
                 let badgePromises = set.problems.map(async (p) => {
                     let tr = document.createElement("tr");
                     tr.innerHTML = `<td><a href="${p.problem_link}">${p.problem_name}</a></td><td class="progress-column"></td>`;
-                    document.getElementById("table-" + set.set_id).appendChild(tr);
+                    document.getElementById("table-" + set.set_id).appendChild(tr); 
+
+                    if (p.old) {
+                        tr.setAttribute("old", true);
+                        let badge_node = document.createElement("span");
+                        badge_node.className = "badge badge-secondary";
+                        badge_node.innerText = "N/A";
+                        tr.children[1].appendChild(badge_node);
+                        return null;
+                    }
 
                     let badge_node = document.createElement("span");
                     badge_node.className = "badge badge-secondary";
@@ -844,6 +871,14 @@
                         if (row.querySelector("th") || row.classList.contains("thead-dark")) return;
                         // Prevent duplicate columns if script re-runs
                         if (row.querySelector(".difficulty-column")) return;
+                        // Check if old
+                        if (row.hasAttribute("old")) {
+                            let diffTd = document.createElement("td");
+                            diffTd.classList.add("difficulty-column");
+                            diffTd.innerHTML = "N/A (Old Problem)";
+                            row.children[0].after(diffTd);
+                            return;
+                        }
 
                         let diffTd = document.createElement("td");
                         diffTd.classList.add("difficulty-column");
@@ -1064,7 +1099,7 @@
     document.querySelector(".collapse.navbar-collapse").children[0].innerHTML += `<a class="nav-item nav-link user-links " href="/hub/notes/">Notes</a>`;
     if(window.location.href == "https://orac2.info/hub/notes/" || window.location.href == "https://orac.amt.edu.au/hub/notes") {
         waitForElm("p").then((elm) => {
-            window.title = "OI Notes";
+            document.title = "Informatics Notes - ORAC";
             let cdnBase = "https://cdn.jsdelivr.net/gh/aperson31415/informatics@main/kactl";
             document.querySelectorAll("div.container-xl")[1].innerHTML = `<embed class="embed-responsive-item" src="${cdnBase}.pdf" type="application/pdf" style="flex-grow:1; width:100%; height:80vh;" />`;
         });
