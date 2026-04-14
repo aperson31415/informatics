@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         ORAC Userscript
 // @namespace    http://tampermonkey.net/
-// @version      v3.5.1
-// @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering, editorials, old problems
+// @version      v3.4.2
+// @description  Custom tags in orac, hidden problems, difficulty approximation, searching upgrade, custom styling & ordering, editorials
 // @author       a_person31415
 // @match        https://orac2.info/hub/personal/*
 // @match        https://orac.amt.edu.au/hub/personal/*
@@ -1100,8 +1100,8 @@
     if(window.location.href == "https://orac2.info/hub/notes/" || window.location.href == "https://orac.amt.edu.au/hub/notes") {
         waitForElm("p").then((elm) => {
             document.title = "Informatics Notes - ORAC";
-            let cdnBase = "https://cdn.jsdelivr.net/gh/aperson31415/informatics@main/kactl";
-            document.querySelectorAll("div.container-xl")[1].innerHTML = `<embed class="embed-responsive-item" src="${cdnBase}.pdf" type="application/pdf" style="flex-grow:1; width:100%; height:80vh;" />`;
+            let cdnBase = "https://cdn.jsdelivr.net/gh/aperson31415/informatics@main/kactl.pdf?time=" + Date.now();
+            document.querySelectorAll("div.container-xl")[1].innerHTML = `<embed class="embed-responsive-item" src="${cdnBase}" type="application/pdf" style="flex-grow:1; width:100%; height:80vh;" />`;
         });
     }
 })();
