@@ -5,10 +5,19 @@ I'm planning to solve a lot of problems (specifically AIO + AIIO) soon. (Aiming 
 
 Here is a list of the included problem's solutions (I've solved a few more: some seln ones, and some external ones, which are not original, so not included):
 <details>
+<summary>Goals</summary>
+100 Problems: Jan 2026
+125 Problems: Mar 2026
+150 Problems: Apr 2026
+175 Problems: [Jun/Jul 2026?]
+Leaderboard (~190): [Oct 2026?]
+200 Problems: [Dec 2026?]
+225 Problems: [Jan 2027?]
+250 Problems: [Jan/Feb 2027?]
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 151 (Yay! 150)
+  Problems I've solved: 154 (Yay! 150)
   
 
 Starter
@@ -63,8 +72,8 @@ FARIO
   - P3s: None :(
   - P4s: None :(
 
-Selection Exams (No solutions given)
-  - 2003: p1, 2, 5
+Selection Exams (Decided to put solutions)
+  - 2003: p1, 2, 4, 5, 6, 7
   - 1999: p1
 
 </details>
