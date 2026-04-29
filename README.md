@@ -71,14 +71,26 @@ Selection Exams (Decided to put solutions)
 </details>
 <details>
   <summary>Goals</summary>
+  Weekly Leaderboard: At least once a month
+
+  Monthly Leaderboard: At least 50% of the time
+
+  All time Leaderboard (~190-200): [Oct 2026?]
+
   100 Problems: Jan 2026
+
   125 Problems: Mar 2026
+
   150 Problems: Apr 2026
+
   175 Problems: [Jun/Jul 2026?]
-  Leaderboard (~190): [Oct 2026?]
+
   200 Problems: [Dec 2026?]
+
   225 Problems: [Jan 2027?]
+
   250 Problems: [Jan/Feb 2027?]
+
 </details>
 
 
@@ -87,7 +99,9 @@ A tool located in the top folder of this repository which, as injected as a user
 
 Now, it comes with editorials for problems (most not added, but slowly and surely they will). However, you need to do 'something' in order to enable the showing of these editorials, to make sure that you have actually tried to solve the problem.
 
-I've also added some old problems which most users can't access now, but given the pdfs/old html stuff. Note that the style is very different, so womp womp kinda.
+I've also added some old problems which _most_ users can't access now, but given the pdfs/old html stuff (i can only use stuff used from other online sources wayback machine otherwise i could get in trouble). Note that the style is very different, so womp womp kinda.
+
+Also, there are some very brief and kinda unreadable editorials in the form of notes that i got from my tampermonkey, called editorial_data.json or smth like that. I recommend importing it immediately before u get solving bcuz otherwise if u re-import, then it might corrupt your other data like custom sets (working on tool to combine without clashes like this). To do it, enable developer mode or advanced mode (forgot), then reload everything a bunch, then click on the 'storage' tab when editing the userscript.
 
 ## Advanced AIO Tutorials
 This is a project being worked on right now, to cover some advanced AIO problems, and topics needed to solve them. This also extends into AIIO problems and topics. I hope to also make [now include inside] a userscript to integrate this into orac2.info.
