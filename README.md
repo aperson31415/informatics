@@ -8,7 +8,7 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 156 (Yay! 150)
+  Problems I've solved: 157 (Yay! 150)
   
 
 Starter
@@ -40,7 +40,7 @@ AIO
   - AIO 2005: p1-3, 6
 
 AIIO
-  - P1s: 2025, 2006, 2007, 2009, 2010
+  - P1s: 2025, 2024, 2010, 2009, 2007, 2006
   - P2s: 2025, 2011
   - P3s: 2012
   - P4s: None :(
@@ -49,7 +49,7 @@ Other Sets
   - Training Set I: p1-8
   - Training Set II: p1-4
   - C++ Starter Set: p1-5
-  - AIC: 3x
+  - AIC: 3x (part of starter set/s)
 
 Alpha Contest
   - P1s: 2022, 2023, 2024
@@ -64,6 +64,7 @@ FARIO
   - P4s: None :(
 
 Selection Exams (Decided to put solutions)
+  - 2004: None :(
   - 2003: p1, 2, 4, 5, 6, 7
   - 1999: p1
 
