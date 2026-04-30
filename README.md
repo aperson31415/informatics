@@ -3,6 +3,8 @@ ORAC Solutions to AIO problems, AIIO Problems, Alpha Contest Problems, FARIO Pro
 
 I'm planning to solve a lot of problems (specifically AIO + AIIO) soon. (Aiming for 5 stars and below full solve), and solving a few easy FARIO cuz I haven't solved any right now for some reason.
 
+Somehow this repo has an average of ~150-200 unique cloners every fortnight but like 5 views, so is that just bots or real people? Someone pls tell me.
+
 Here is a list of the included problem's solutions (I've solved a few more: some seln ones, and some external ones, which are not original, so not included):
 <details>
 <summary>Click to expand</summary>
