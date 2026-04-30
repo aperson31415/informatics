@@ -2,7 +2,7 @@ from jinja2 import Template
 import json
 import sys
 
-template_str = "\n".join(open("template.md", "r").readlines())
+template_str = "".join(open("template.md", "r").readlines())
 
 json_string = open("pdata.json", "r").read()
 data = json.loads(json_string)
