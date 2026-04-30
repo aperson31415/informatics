@@ -149,6 +149,7 @@
                 mdDisplay.innerHTML = marked.parse(text);
             } else if(ext === 'html' || ext == 'htm' || ext == 'hta') {
                 htmlDisplay.classList.remove('hidden');
+                console.log(text);
                 htmlDisplay.innerHTML = text;
             } else {
                 codePre.classList.remove('hidden');
