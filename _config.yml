@@ -1,8 +1,0 @@
-include: ["Starter, Training, Seln, AIC", "AIO", "Alpha", "AIIO", "FARIO", "wayback_raw", "kactl.pdf", "no highlight.pdf"]
-exclude: ["_config.yml", "index.html", "files.json", "files.json", "README.md"]
-
-defaults:
-  - scope:
-      path: ""
-    values:
-      static: true
