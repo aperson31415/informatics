@@ -29,24 +29,17 @@ Your output should consist of a single line containing the entire decrypted mess
 ### Sample Input #1
 ```text
 C       O       P
-
       A   T   G   A   H
-
         R       R       Y
 ```
 
 ### Sample Output #1
 ```text
 C                   W                   I
-
       H               E   O               G   E
-
         A           H       N           D
-
           R       T           D       U
-
             L   E               E   B
-
               I                   R
 ```
 
@@ -54,9 +47,7 @@ C                   W                   I
 ### Sample Input #2
 ```text
 3
-
 COPATGAHRRY
-
 #
 ```
 
@@ -69,13 +60,9 @@ CARTOGRAPHY
 ### Sample Input #3
 ```text
 6
-
 CWIHEOGE
-
 AHNDRTDU
-
 LEEBIR
-
 #
 ```
 

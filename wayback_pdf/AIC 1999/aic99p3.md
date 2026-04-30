@@ -32,38 +32,24 @@ The output shall consist of a single integer _n_ on a line giving the number of 
 ### Sample Input #1
 ```text
 ..X..XX.
-
 .XX..X.X
-
 .X...X.X
-
 .XX..XXX
-
 ....X..X
-
 ...XXX..
-
 ...X.X..
-
 XX.XXX..
 ```
 
 ### Sample Output #1
 ```text
 ..A..BB.
-
 .AA..B.B
-
 .A...B.B
-
 .AA..BBB
-
 ....C..B
-
 ...CCC..
-
 ...C.C..
-
 DD.CCC..
 ```
 
@@ -71,30 +57,20 @@ DD.CCC..
 ### Sample Input #2
 ```text
 .XXXXXX.
-
 .X....X.
-
 .X.XX.X.
-
 .X.XX.X.
-
 .X.XX.X.
-
 .X....X.
-
 .XXXXXX.
-
 ........
 ```
 
 ### Sample Output #2
 ```text
 3 5
-
 ...XX
-
 X.X.X
-
 X.XXX
 ```
 
@@ -107,21 +83,13 @@ X.XXX
 ### Sample Output #3
 ```text
 8 8
-
 ..X..XX.
-
 .XX..X.X
-
 .X...X.X
-
 .XX..XXX
-
 ....X..X
-
 ...XXX..
-
 ...X.X..
-
 XX.XXX..
 ```
 

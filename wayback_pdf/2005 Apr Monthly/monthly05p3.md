@@ -23,43 +23,24 @@ The output should consist of a shortest sequence of moves that returns all the d
 ### Sample Input #1
 ```text
 |-------|    |-------|    |-------|
-
 |       |    |       |    |   |   |
-
 |---O   |    |---O   |    |   O   |
-
 |       |    |       |    |       |
-
 |-------|    |-------|    |-------|
-
     A            B            C
 
-
-
 |-------|    |-------|    |-------|
-
 |       |    |       |    |       |
-
 |   O   |    |   O   |    |   O   |
-
 |   |   |    |   |   |    |   |   |
-
 |-------|    |-------|    |-------|
-
     D            E            F
 
-
-
 |-------|    |-------|    |-------|
-
 |       |    |       |    |       |
-
 |   O   |    |   O---|    |   O   |
-
 |   |   |    |       |    |   |   |
-
 |-------|    |-------|    |-------|
-
     G            H            I
 ```
 
@@ -67,24 +48,14 @@ The output should consist of a shortest sequence of moves that returns all the d
 ```text
 Move   Affected clocks
 
-
-
  1         ABDE
-
  2         ABC
-
  3         BCEF
-
  4         ADG
-
  5         BDEFH
-
  6         CFI
-
  7         DEGH
-
  8         GHI
-
  9         EFHI
 ```
 
@@ -92,9 +63,7 @@ Move   Affected clocks
 ### Sample Input #2
 ```text
 3 3 0
-
 2 2 2 
-
 2 1 2
 ```
 
@@ -107,9 +76,7 @@ Move   Affected clocks
 ### Sample Input #3
 ```text
 3 3 0         3 0 0         3 0 0          0 0 0         0 0 0
-
 2 2 2   5->   3 3 3   8->   3 3 3   4 ->   0 3 3   9->   0 0 0 
-
 2 1 2         2 2 2         3 3 3          0 3 3         0 0 0
 ```
 

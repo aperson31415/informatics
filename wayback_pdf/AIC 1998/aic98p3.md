@@ -28,20 +28,15 @@ It is guaranteed that no construction will require more than 40 symbols.
 ### Sample Input #1
 ```text
 4
-
 23
-
 242
-
 0
 ```
 
 ### Sample Output #1
 ```text
 4=1+1+1+1
-
 23=11+11+1
-
 242=(11+11)*11
 ```
 

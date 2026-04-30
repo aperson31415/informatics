@@ -39,30 +39,20 @@ For each painting in the input (each line after the first), your program shall o
 ### Sample Input #1
 ```text
 5 4
-
 3 3
-
 2 2
-
 4 1
-
 1 2
-
 1 1
-
 0 0
 ```
 
 ### Sample Output #1
 ```text
 0 0
-
 3 0
-
 0 3
-
 4 2
-
 3 2
 ```
 

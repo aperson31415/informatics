@@ -32,24 +32,17 @@ You may assume that, for each starting integer in the input, you can always reac
 ### Sample Input #1
 ```text
 7
-
 5
-
 1
-
 6
-
 0
 ```
 
 ### Sample Output #1
 ```text
 16
-
 5
-
 0
-
 8
 ```
 

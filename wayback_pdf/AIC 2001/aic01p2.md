@@ -23,17 +23,11 @@ The output must be a single line containing the area (in squares) of the entire 
 ### Sample Input #1
 ```text
 7 6
-
 .......
-
 ..###..
-
 .##.##.
-
 ..#..#.
-
 ..####.
-
 .......
 ```
 

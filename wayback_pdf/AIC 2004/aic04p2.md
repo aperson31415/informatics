@@ -36,28 +36,19 @@ You may assume that it is possible to successfully make all of the requested boo
 ### Sample Input #1
 ```text
 10
-
 2
-
 3
-
 8
-
 3
-
 1
-
 2
-
 1
 ```
 
 ### Sample Output #1
 ```text
 4
-
 5
-
 1
 ```
 

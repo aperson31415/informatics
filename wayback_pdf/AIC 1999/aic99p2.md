@@ -34,30 +34,20 @@ A find shall consist of a two positive integers _r c_ followed by a direction. T
 ### Sample Input #1
 ```text
 XSMILEA
-
 FHKDLDB
-
 ISMIOQP
-
 XDMFLGE
-
 LSKLYEH
 ```
 
 ### Sample Output #1
 ```text
 NW  N  NE
-
   \ | /  
-
    \|/   
-
 W --+-- E
-
    /|\   
-
   / | \  
-
 SW  S  SE
 ```
 
@@ -65,19 +55,12 @@ SW  S  SE
 ### Sample Input #2
 ```text
 5 7
-
 XSMILEA
-
 FHKDLDB
-
 ISMIOQP
-
 XDMFLGE
-
 LSKLYEH
-
 1
-
 DOG
 ```
 
@@ -90,32 +73,21 @@ DOG
 ### Sample Input #3
 ```text
 5 7
-
 XSMILEA
-
 FHKDLDB
-
 ISMIOQP
-
 XDMFLGE
-
 LSKLYEH
-
 3
-
 SMILE
-
 DOG
-
 ADO
 ```
 
 ### Sample Output #3
 ```text
 1 2 E
-
 2 4 SE
-
 1 7 SW
 ```
 

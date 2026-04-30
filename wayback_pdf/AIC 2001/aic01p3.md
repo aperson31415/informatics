@@ -39,38 +39,24 @@ For each query in the input file you must output a single line containing the ID
 ### Sample Input #1
 ```text
 10
-
 2 3 +8 +3 +5
-
 0 2 +1 +4
-
 1 0
-
 2 2 +6 +7
-
 1 1 +9
-
 4 1 +10
-
 4 1 -001
-
 1 0
-
 5 0
-
 6 0
-
 6 0013
-
 4 211
-
 0
 ```
 
 ### Sample Output #1
 ```text
 5
-
 8
 ```
 

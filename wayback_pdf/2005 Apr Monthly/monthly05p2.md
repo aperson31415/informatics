@@ -39,28 +39,19 @@ You may assume there is always a solution to the puzzle. If there is more than o
 ### Sample Input #1
 ```text
 5 3
-
 231
-
 224
-
 545
-
 313
-
 415
 ```
 
 ### Sample Output #1
 ```text
 AAA
-
 BCA
-
 BCA
-
 BCC
-
 BBC
 ```
 

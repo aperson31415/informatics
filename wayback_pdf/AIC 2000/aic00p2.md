@@ -33,7 +33,6 @@ Your program shall output a single line consisting of the encryption of the give
 ### Sample Input #1
 ```text
 ETHAN
-
 THISISNOTMISSIONDIFFICULTMRHUNT
 ```
 
@@ -46,7 +45,6 @@ YBQTWXHWUANMAJCSXQGTNWCMHRLPVBY
 ### Sample Input #2
 ```text
 JAMES
-
 THENAMEISBONDJAMESBOND
 ```
 

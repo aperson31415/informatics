@@ -27,21 +27,13 @@ The output must be a single line of the form _q f_ , where _q_ is the quarter th
 ### Sample Input #1
 ```text
 3
-
 7
-
 2 2
-
 6 2
-
 2 5
-
 2 3
-
 6 5
-
 1 3
-
 5 6
 ```
 

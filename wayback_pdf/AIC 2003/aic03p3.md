@@ -40,16 +40,13 @@ If more than one solution exists then you should only output one of these soluti
 ### Sample Input #1
 ```text
 100
-
 7
-
 1 2 3 4 5 6 7
 ```
 
 ### Sample Output #1
 ```text
 8100
-
 2 5 6 7 4 3
 ```
 
@@ -57,16 +54,13 @@ If more than one solution exists then you should only output one of these soluti
 ### Sample Input #2
 ```text
 100
-
 8
-
 7 12 15 21 35 49 53 67
 ```
 
 ### Sample Output #2
 ```text
 9702
-
 12 21 7 53 49 35
 ```
 

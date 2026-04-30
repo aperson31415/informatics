@@ -39,18 +39,14 @@ You may assume there is always a solution to the puzzle. If there is more than o
 ### Sample Input #1
 ```text
 3 2
-
 2.*.A
-
 B.*C
 ```
 
 ### Sample Output #1
 ```text
 3
-
 1
-
 2
 ```
 

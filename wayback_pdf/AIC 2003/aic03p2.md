@@ -40,26 +40,18 @@ The output must contain the paragraph text laid out in the correct style as desc
 ### Sample Input #1
 ```text
 L 66
-
 You have been hired     by a company
-
 which needs to place   an information
-
   booth in a shopping mall.  The shopping mall also
-
 contains four fake trees to add   ambiance   to a shopper's experience.
-
 #
 ```
 
 ### Sample Output #1
 ```text
 You have been hired by a company which needs to place an
-
 information booth in a shopping mall. The shopping mall also
-
 contains four fake trees to add ambiance to a shopper's
-
 experience.
 ```
 
@@ -67,26 +59,18 @@ experience.
 ### Sample Input #2
 ```text
 R 66
-
 You have been hired     by a company
-
 which needs to place   an information
-
   booth in a shopping mall.  The shopping mall also
-
 contains four fake trees to add   ambiance   to a shopper's experience.
-
 #
 ```
 
 ### Sample Output #2
 ```text
 You have been hired by a company which needs to place an
-
       information booth in a shopping mall. The shopping mall also
-
            contains four fake trees to add ambiance to a shopper's
-
                                                        experience.
 ```
 
@@ -94,26 +78,18 @@ You have been hired by a company which needs to place an
 ### Sample Input #3
 ```text
 J 66
-
 You have been hired     by a company
-
 which needs to place   an information
-
   booth in a shopping mall.  The shopping mall also
-
 contains four fake trees to add   ambiance   to a shopper's experience.
-
 #
 ```
 
 ### Sample Output #3
 ```text
 You  have  been  hired  by  a  company  which  needs  to  place an
-
 information  booth  in  a  shopping  mall.  The shopping mall also
-
 contains   four   fake  trees  to  add  ambiance  to  a  shopper's
-
 experience.
 ```
 

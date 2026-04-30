@@ -49,13 +49,9 @@ The output should consist of a single line containing a single integer, represen
 ### Sample Input #1
 ```text
 6 4 1 2
-
 0 1
-
 2 2
-
 4 1
-
 4 2
 ```
 

@@ -38,24 +38,17 @@ If no occurrences are found, your program must output the single line "`No occur
 ### Sample Input #1
 ```text
 67654
-
 14676545
-
 43234545679
-
 905
-
 #
 ```
 
 ### Sample Output #1
 ```text
 3
-
 7
-
 10 inverted
-
 14 inverted
 ```
 
@@ -63,13 +56,9 @@ If no occurrences are found, your program must output the single line "`No occur
 ### Sample Input #2
 ```text
 636
-
 14676545
-
 43234545679
-
 905
-
 #
 ```
 

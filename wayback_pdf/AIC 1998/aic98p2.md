@@ -27,28 +27,19 @@ Note that each anagram found should use only one subversive word, and should use
 ### Sample Input #1
 ```text
 the
-
 quality
-
 of
-
 mercy
-
 is
-
 not
-
 strained
-
 #
 ```
 
 ### Sample Output #1
 ```text
 cry me
-
 a river
-
 #
 ```
 
@@ -56,24 +47,17 @@ a river
 ### Sample Input #2
 ```text
 mercy
-
 No anagram found
 ```
 
 ### Sample Output #2
 ```text
 evil
-
 uprising
-
 vile
-
 hairstyle
-
 revolution
-
 takeover
-
 #
 ```
 
@@ -81,32 +65,21 @@ takeover
 ### Sample Input #3
 ```text
 what an awful
-
 relay this
-
 live
-
 sports
-
 what an awful relay this
-
 live this relay
-
 #
 ```
 
 ### Sample Output #3
 ```text
 No anagram found
-
 hairstyle
-
 evil vile
-
 No anagram found
-
 No anagram found
-
 No anagram found
 ```
 

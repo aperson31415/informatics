@@ -33,26 +33,18 @@ Output should consist of the list of administrators that you visit (represented 
 ### Sample Input #1
 ```text
 5
-
 1 3 0
-
 2
-
 4
-
 1 5 0 4 0
-
 1 0 3 5 0
-
 3 4 0 2 0
-
 1 3 0 4 5 0
 ```
 
 ### Sample Output #1
 ```text
 4
-
 3
 ```
 

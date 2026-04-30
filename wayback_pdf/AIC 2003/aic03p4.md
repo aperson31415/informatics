@@ -57,15 +57,10 @@ For each word presented in _handin.txt_ as a sequence of symbols, a line should 
 ### Sample Output #1
 ```text
 A UD
-
 B URLRL
-
 C LR
-
 I D
-
 L DR
-
 #
 ```
 
@@ -73,40 +68,25 @@ L DR
 ### Sample Input #2
 ```text
 AIL
-
 BIC
-
 BILL
-
 CAB
-
 ILL
-
 LAB
-
 #
 ```
 
 ### Sample Output #2
 ```text
 3
-
 5 1 1 2 4 4 3 3 2 4 0 2 1
-
 1 2 5 3 1
-
 2 3 6 1 2 3 2
-
 4
-
 5 1 1 2 4 4 3 3 2 4 0 2 1
-
 1 2 5 3 1
-
 2 3 6 1 2 3 2
-
 2 3 6 1 2 3 2
-
 0
 ```
 
@@ -114,7 +94,6 @@ LAB
 ### Sample Input #3
 ```text
 BIC
-
 BILL
 ```
 

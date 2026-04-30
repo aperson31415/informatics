@@ -31,21 +31,13 @@ Your program shall output a single integer giving the number of magicians remain
 ### Sample Input #1
 ```text
 i
-
 o
-
 i
-
 i
-
 o
-
 i
-
 o
-
 o
-
 x
 ```
 
@@ -58,21 +50,13 @@ x
 ### Sample Input #2
 ```text
 i
-
 o
-
 i
-
 i
-
 o
-
 i
-
 i
-
 o
-
 x
 ```
 
