@@ -8,7 +8,7 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 157 (Yay! 150)
+  Problems I've solved: 158 (Yay! 150)
   
 
 Starter
@@ -40,7 +40,7 @@ AIO
   - AIO 2005: p1-3, 6
 
 AIIO
-  - P1s: 2025, 2024, 2010, 2009, 2007, 2006
+  - P1s: 2025, 2024, 2012, 2010, 2009, 2007, 2006
   - P2s: 2025, 2011
   - P3s: 2012
   - P4s: None :(
