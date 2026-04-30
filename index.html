@@ -167,10 +167,6 @@
         const text = !codePre.classList.contains('hidden') ? codeDisplay.textContent : mdDisplay.innerText;
         navigator.clipboard.writeText(text);
     }
-
-    document.addEventListener("load", () => {
-        loadFile("README.md", "README.md");
-    });
 </script>
 </body>
 </html>
