@@ -66,6 +66,8 @@
 
 <!-- SCRIPTS: Order is vital for C++ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-css-extras.min.js" integrity="sha512-K0jR40qf49ofHWKKE6IRibVqiVWKhskpbKRbDkGPVau+se/pmuWgyXxzVMq8jhXPsnG4dSIaVTcn3tapA/zzKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-css-extras.min.js" integrity="sha512-K0jR40qf49ofHWKKE6IRibVqiVWKhskpbKRbDkGPVau+se/pmuWgyXxzVMq8jhXPsnG4dSIaVTcn3tapA/zzKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
@@ -155,7 +157,7 @@
             } else {
                 codePre.classList.remove('hidden');
                 codeDisplay.textContent = text;
-                const langMap = { 'cpp':'cpp', 'c':'cpp', 'h':'cpp', 'py':'python', 'js':'javascript' };
+                const langMap = { 'cpp':'cpp', 'c':'cpp', 'h':'cpp', 'py':'python', 'js':'javascript', 'css':'css' };
                 codeDisplay.className = `language-${langMap[ext] || 'plaintext'}`;
                 Prism.highlightElement(codeDisplay);
             }
