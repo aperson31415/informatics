@@ -2,8 +2,7 @@ from bs4 import BeautifulSoup
 import html2text
 import re
 import json
-
-html_file = input("Html file path? ")
+import sys
 
 def get_content_between(soup, start_text, end_text_or_tag):
     content = []
@@ -22,6 +21,7 @@ def get_content_between(soup, start_text, end_text_or_tag):
     return "".join(content).strip()
 
 # The raw HTML string you provided
+html_file = sys.argv[1]
 html_data = "\n".join(open(html_file, "r").readlines())
 
 soup = BeautifulSoup(html_data, "html.parser")
@@ -33,11 +33,24 @@ title = soup.find('h2').text.strip() if soup.find('h2') else "Problem"
 
 # Statement: after the center tag but before the first <h3>
 statement_parts = []
-for p in soup.find_all('p'):
-    # Stop if we hit the 'Input' section
-    if "Input" in p.get_text(): break
-    statement_parts.append(h.handle(str(p)))
-statement = "".join(statement_parts)
+
+# 1. Find the starting point (the main title)
+start_node = soup.find('h2')
+
+# 2. Iterate through all siblings following that title
+for sibling in start_node.find_all_next():
+    if sibling.name == 'h3' and "input" in sibling.get_text().lower():
+        break
+    
+    # 4. Only grab the content tags (p, ul, ol, etc.) 
+    # to avoid double-processing nested elements
+    if sibling.name in ['p', 'ul', 'ol']:
+        # Ensure we don't add the same text twice if elements are nested
+        part = h.handle(str(sibling)).strip()
+        if part and part not in statement_parts:
+            statement_parts.append(part)
+
+statement = "\n\n".join(statement_parts)
 
 # Samples: pairs of <pre> tags
 samples = []
