@@ -152,7 +152,9 @@
                 const parser = new DOMParser();
                 const htmlDoc = parser.parseFromString(text, 'text/html');
                 htmlDisplay.innerHTML = '';
-                htmlDisplay.appendChild(htmlDoc);
+                htmlDisplay.contentWindow.open();
+                htmlDisplay.contentWindow.write(htmlDoc);
+                htmlDisplay.contentWindow.close();
             } else {
                 codePre.classList.remove('hidden');
                 codeDisplay.textContent = text;
