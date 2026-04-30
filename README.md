@@ -1,5 +1,5 @@
 # Australian Informatics Resources
-ORAC Solutions to AIO problems, AIIO Problems, Alpha Contest Problems, FARIO Problems, Other ORAC Problems. By the way, if a problem file is just a number, it refers to [https://orac2.info/problem/id/](#https://orac2.info/problem/id/). Also, I will not include solutions to leaderboarded-questions (Less than 10 people solved) (so I can stay on the leaderboard), or Selection Exam problems (maybe later tho because I don't want to :) ).
+ORAC Solutions to AIO problems, AIIO Problems, Alpha Contest Problems, FARIO Problems, Other ORAC Problems. By the way, if a problem file is just a number, it refers to [https://orac2.info/problem/id/](https://orac2.info/problem/id/). Also, I will not include solutions to leaderboarded-questions (Less than 10 people solved) (so I can stay on the leaderboard), or Selection Exam problems (maybe later tho because I don't want to :) ).
 
 UPDATE: Website is now live on [github pages](https://aperson31415.github.io/informatics/) (just a fancier file explorer tho, adding other stuff soon)
 
