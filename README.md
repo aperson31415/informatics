@@ -1,6 +1,8 @@
 # Australian Informatics Resources
 ORAC Solutions to AIO problems, AIIO Problems, Alpha Contest Problems, FARIO Problems, Other ORAC Problems. By the way, if a problem file is just a number, it refers to [https://orac2.info/problem/id/](#https://orac2.info/problem/id/). Also, I will not include solutions to leaderboarded-questions (Less than 10 people solved) (so I can stay on the leaderboard), or Selection Exam problems (maybe later tho because I don't want to :) ).
 
+UPDATE: Website is now live on [github pages](https://aperson31415.github.io/informatics/) (just a fancier file explorer tho, adding other stuff soon)
+
 I'm planning to solve a lot of problems (specifically AIO + AIIO) soon. (Aiming for 5 stars and below full solve), and solving a few easy FARIO cuz I haven't solved any right now for some reason.
 
 Somehow this repo has an average of ~150-200 unique cloners every fortnight but like 5 views, so is that just bots or real people? Someone pls tell me.
