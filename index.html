@@ -49,7 +49,7 @@
     const title = document.getElementById('file-title');
 
     // 1. Fetch the Jekyll-generated JSON index
-    fetch('./files.json')
+    fetch('files.json')
         .then(res => res.json())
         .then(files => {
             treeDiv.innerHTML = '';
