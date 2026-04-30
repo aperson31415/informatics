@@ -1,4 +1,3 @@
-# Separate each folder/file into its own quoted string
 include: 
   - "Starter, Training, Seln, AIC"
   - "AIO"
@@ -9,15 +8,6 @@ include:
   - "kactl.pdf"
   - "no highlight.pdf"
 
-# Standard exclusions
-exclude: 
-  - "_config.yml"
-  - "index.html"
-  - "files.json"
-  - "README.md"
-  - ".gitignore"
-
-# Force Jekyll to treat every file found as a static asset
 defaults:
   - scope:
       path: ""
