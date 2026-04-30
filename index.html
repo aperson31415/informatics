@@ -151,10 +151,7 @@
                 htmlDisplay.classList.remove('hidden');
                 const parser = new DOMParser();
                 const htmlDoc = parser.parseFromString(text, 'text/html');
-                htmlDisplay.innerHTML = '';
-                htmlDisplay.contentWindow.open();
-                htmlDisplay.contentWindow.write(htmlDoc);
-                htmlDisplay.contentWindow.close();
+                htmlDisplay.setAttribute("srcdoc", text);
             } else {
                 codePre.classList.remove('hidden');
                 codeDisplay.textContent = text;
