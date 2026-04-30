@@ -74,7 +74,7 @@ Selection Exams (Decided to put solutions)
 
 </details>
 <details>
-  <summary>Goals</summary>
+  <summary>Solve Count Goals</summary>
   Weekly Leaderboard: At least once a month
 
   Monthly Leaderboard: At least 50% of the time
@@ -95,6 +95,15 @@ Selection Exams (Decided to put solutions)
 
   250 Problems: [Jan/Feb 2027?]
 
+</details>
+<details>
+  <summary>Difficulty Solve Goals</summary>
+  AIO All: ?
+  AIIO p1s: ?
+  AIIO 20: ?
+  FARIO 15: ?
+  Alpha p3: ?
+  Seln 80%: ?
 </details>
 
 

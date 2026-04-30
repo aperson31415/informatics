@@ -1,3 +1,5 @@
+// Just realised u can use prefix min instead of sparse table. oh well
+
 #include <bits/stdc++.h>
 using namespace std;
 
