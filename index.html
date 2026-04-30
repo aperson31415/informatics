@@ -4,147 +4,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repo Explorer</title>
+    <title>Repo Explorer Pro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
-        :root {
-            --bg: #0d1117;
-            --sidebar: #161b22;
-            --text: #c9d1d9;
-            --accent: #58a6ff;
-            --border: #30363d;
-            --hover: #21262d;
+        :root { --bg: #0d1117; --sidebar: #161b22; --text: #c9d1d9; --accent: #58a6ff; --border: #30363d; --hover: #21262d; }
+        body { margin: 0; display: flex; height: 100vh; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow: hidden; }
+
+        /* FIXED SIDEBAR SQUEEZING */
+        #sidebar { 
+            width: 320px; 
+            min-width: 320px; /* Prevents squeezing */
+            max-width: 320px;
+            background: var(--sidebar); 
+            border-right: 1px solid var(--border); 
+            display: flex; 
+            flex-direction: column; 
         }
+        
+        .header { padding: 16px; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--accent); font-size: 14px; }
+        #tree { overflow-y: auto; flex-grow: 1; padding: 10px; white-space: nowrap; }
 
-        body { margin: 0; display: flex; height: 100vh; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; overflow: hidden; }
-
-        /* Sidebar Styling */
-        #sidebar { width: 320px; background: var(--sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
-        .header { padding: 16px; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--accent); letter-spacing: 1px; font-size: 14px; }
-        #tree { overflow-y: auto; flex-grow: 1; padding: 10px; }
-
-        /* Folder & File Tree UI */
         .folder-wrapper { margin-left: 12px; border-left: 1px solid #30363d; }
-        .folder-header { 
-            padding: 6px 8px; cursor: pointer; color: #e1e4e8; font-size: 14px;
-            display: flex; align-items: center; border-radius: 4px; margin-top: 1px;
-        }
+        .folder-header { padding: 6px 8px; cursor: pointer; color: #e1e4e8; font-size: 13px; display: flex; align-items: center; border-radius: 4px; }
         .folder-header:hover { background: var(--hover); }
         .folder-header::before { content: '▸'; display: inline-block; margin-right: 6px; transition: transform 0.2s; color: #8b949e; }
         .folder-header.open::before { transform: rotate(90deg); }
-        
-        .file-item { padding: 5px 8px 5px 24px; cursor: pointer; font-size: 13px; color: #8b949e; border-radius: 4px; }
+        .file-item { padding: 4px 8px 4px 24px; cursor: pointer; font-size: 13px; color: #8b949e; border-radius: 4px; overflow: hidden; text-overflow: ellipsis; }
         .file-item:hover { color: var(--accent); background: var(--hover); }
         .hidden { display: none; }
 
-        /* Main Viewer */
-        #main { flex-grow: 1; display: flex; flex-direction: column; background: var(--bg); }
+        #main { flex-grow: 1; display: flex; flex-direction: column; min-width: 0; /* Allows content to shrink/scroll */ }
         .toolbar { padding: 10px 20px; background: var(--sidebar); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        #file-title { font-size: 13px; font-family: monospace; color: #8b949e; }
         
-        pre { flex-grow: 1; margin: 0; padding: 20px; overflow: auto; font-size: 13px; line-height: 1.5; border-radius: 0 !important; background: transparent !important; }
-        code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace !important; }
+        #viewer-container { flex-grow: 1; overflow: auto; padding: 0; position: relative; }
+        #code-display, #markdown-display { padding: 20px; margin: 0; font-size: 13px; line-height: 1.5; }
+        #pdf-display { width: 100%; height: 100%; border: none; }
+        
+        /* Markdown Styling */
+        #markdown-display { color: #e6edf3; font-family: -apple-system, sans-serif; }
+        #markdown-display h1, #markdown-display h2 { border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+        #markdown-display code { background: #30363d; padding: 2px 4px; border-radius: 4px; }
 
-        button { background: #238636; color: white; border: 1px solid rgba(240,246,252,0.1); padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
-        button:hover { background: #2ea043; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+        button { background: #238636; color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
     </style>
 </head>
 <body>
 
 <div id="sidebar">
     <div class="header">REPOSITORY EXPLORER</div>
-    <div id="tree">Building tree...</div>
+    <div id="tree">Loading...</div>
 </div>
 
 <div id="main">
     <div class="toolbar">
         <span id="file-title">No file selected</span>
-        <button onclick="copyCode()">Copy Text</button>
+        <button id="copy-btn" onclick="copyCode()">Copy</button>
     </div>
-    <pre><code id="code-display" class="language-plaintext">Select a file from the sidebar to view its content.</code></pre>
+    <div id="viewer-container">
+        <pre id="code-pre"><code id="code-display" class="language-plaintext"></code></pre>
+        <div id="markdown-display" class="hidden"></div>
+        <iframe id="pdf-display" class="hidden"></iframe>
+    </div>
 </div>
 
+<!-- Support Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
 
 <script>
     const treeDiv = document.getElementById('tree');
-    const codeDiv = document.getElementById('code-display');
+    const codeDisplay = document.getElementById('code-display');
+    const codePre = document.getElementById('code-pre');
+    const mdDisplay = document.getElementById('markdown-display');
+    const pdfDisplay = document.getElementById('pdf-display');
     const title = document.getElementById('file-title');
 
-    // 1. Load the file list
-    fetch('files.json')
-        .then(res => res.json())
-        .then(files => {
-            treeDiv.innerHTML = '';
-            const treeData = buildTree(files);
-            renderTree(treeData, treeDiv);
-        })
-        .catch(err => { treeDiv.innerHTML = 'Error loading files.json'; });
+    fetch('files.json').then(res => res.json()).then(files => {
+        treeDiv.innerHTML = '';
+        renderTree(buildTree(files), treeDiv);
+    });
 
-    // 2. Convert flat Jekyll paths into a nested object
     function buildTree(files) {
         const root = {};
         files.forEach(file => {
-            // Remove leading/trailing slashes and split
             const parts = file.path.split('/').filter(p => p);
-            
-            // If the first part is the repo name (GitHub Pages behavior), we often need to skip it
-            // but Jekyll static_files usually start relative to the site root.
             let current = root;
-            parts.forEach((part, index) => {
-                if (index === parts.length - 1) {
-                    current[part] = file;
-                } else {
-                    current[part] = current[part] || {};
-                    current = current[part];
-                }
+            parts.forEach((part, i) => {
+                if (i === parts.length - 1) current[part] = file;
+                else { current[part] = current[part] || {}; current = current[part]; }
             });
         });
         return root;
     }
 
-    // 3. Recursively create the HTML elements
     function renderTree(obj, container) {
-        // Sort: Folders first, then files
-        const keys = Object.keys(obj).sort((a, b) => {
-            const aIsFile = !!obj[a].path;
-            const bIsFile = !!obj[b].path;
-            return aIsFile - bIsFile || a.localeCompare(b);
-        });
-
+        const keys = Object.keys(obj).sort((a,b) => (!!obj[a].path - !!obj[b].path) || a.localeCompare(b));
         keys.forEach(key => {
             const item = obj[key];
             const div = document.createElement('div');
-
-            if (item.path) { 
-                // FILE
+            if (item.path) {
                 div.className = 'file-item';
                 div.innerHTML = `📄 ${key}`;
-                div.onclick = (e) => {
-                    e.stopPropagation();
-                    loadFile(item.path, item.name);
-                };
+                div.onclick = () => loadFile(item.path, item.name);
                 container.appendChild(div);
             } else {
-                // FOLDER
                 const header = document.createElement('div');
                 header.className = 'folder-header';
                 header.innerHTML = `📁 ${key}`;
-                
                 const wrapper = document.createElement('div');
                 wrapper.className = 'folder-wrapper hidden';
-                
-                header.onclick = () => {
-                    header.classList.toggle('open');
-                    wrapper.classList.toggle('hidden');
-                };
-                
+                header.onclick = () => { header.classList.toggle('open'); wrapper.classList.toggle('hidden'); };
                 renderTree(item, wrapper);
                 container.appendChild(header);
                 container.appendChild(wrapper);
@@ -152,40 +124,38 @@
         });
     }
 
-    // 4. Fetch file content and highlight
     async function loadFile(path, name) {
-        title.innerText = "Loading: " + name + "...";
-        
-        // Ensure path is relative to the site root for fetch
-        // Jekyll paths start with /repo-name/, so we strip the first slash to make it relative
         const fetchPath = path.startsWith('/') ? path.substring(1) : path;
-        
-        try {
+        const ext = name.split('.').pop().toLowerCase();
+        title.innerText = name;
+
+        // Hide all viewers
+        [codePre, mdDisplay, pdfDisplay].forEach(el => el.classList.add('hidden'));
+
+        if (ext === 'pdf') {
+            pdfDisplay.classList.remove('hidden');
+            pdfDisplay.src = fetchPath;
+        } else {
             const res = await fetch(fetchPath);
-            if (!res.ok) throw new Error('File not found');
             const text = await res.text();
             
-            codeDiv.textContent = text;
-            title.innerText = path;
-
-            // Determine language for Prism
-            const ext = name.split('.').pop().toLowerCase();
-            const langMap = { 'js': 'javascript', 'py': 'python', 'cpp': 'cpp', 'c': 'cpp', 'html': 'html', 'css': 'css' };
-            codeDiv.className = `language-${langMap[ext] || 'plaintext'}`;
-            
-            Prism.highlightElement(codeDiv);
-        } catch (e) {
-            codeDiv.textContent = "Error: Could not load file content. (" + e.message + ")";
+            if (ext === 'md') {
+                mdDisplay.classList.remove('hidden');
+                mdDisplay.innerHTML = marked.parse(text);
+            } else {
+                codePre.classList.remove('hidden');
+                codeDisplay.textContent = text;
+                const langMap = { 'cpp':'cpp', 'c':'cpp', 'h':'cpp', 'py':'python', 'js':'javascript' };
+                codeDisplay.className = `language-${langMap[ext] || 'plaintext'}`;
+                Prism.highlightElement(codeDisplay);
+            }
         }
     }
 
     function copyCode() {
-        navigator.clipboard.writeText(codeDiv.textContent);
-        const btn = document.querySelector('.toolbar button');
-        btn.innerText = "Copied!";
-        setTimeout(() => btn.innerText = "Copy Text", 2000);
+        const text = !mdDisplay.classList.contains('hidden') ? mdDisplay.innerText : codeDisplay.textContent;
+        navigator.clipboard.writeText(text);
     }
 </script>
-
 </body>
 </html>
