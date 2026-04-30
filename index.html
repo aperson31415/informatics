@@ -4,74 +4,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Repo Explorer Pro</title>
+    <title>aperson - Informatics</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
         :root { --bg: #0d1117; --sidebar: #161b22; --text: #c9d1d9; --accent: #58a6ff; --border: #30363d; --hover: #21262d; }
+        
         body { margin: 0; display: flex; height: 100vh; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow: hidden; }
 
-        /* FIXED SIDEBAR SQUEEZING */
+        /* SIDEBAR - FIXED WIDTH */
         #sidebar { 
-            width: 320px; 
-            min-width: 320px; /* Prevents squeezing */
-            max-width: 320px;
+            flex: 0 0 320px; /* Do not grow, do not shrink, stay 320px */
             background: var(--sidebar); 
             border-right: 1px solid var(--border); 
             display: flex; 
             flex-direction: column; 
+            z-index: 10;
         }
         
         .header { padding: 16px; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--accent); font-size: 14px; }
         #tree { overflow-y: auto; flex-grow: 1; padding: 10px; white-space: nowrap; }
 
-        .folder-wrapper { margin-left: 12px; border-left: 1px solid #30363d; }
-        .folder-header { padding: 6px 8px; cursor: pointer; color: #e1e4e8; font-size: 13px; display: flex; align-items: center; border-radius: 4px; }
+        /* TREE UI */
+        .folder-wrapper { margin-left: 12px; border-left: 1px solid #444; }
+        .folder-header { padding: 6px 8px; cursor: pointer; color: #e1e4e8; font-size: 13px; display: flex; align-items: center; border-radius: 4px; transition: background 0.2s; }
         .folder-header:hover { background: var(--hover); }
         .folder-header::before { content: '▸'; display: inline-block; margin-right: 6px; transition: transform 0.2s; color: #8b949e; }
         .folder-header.open::before { transform: rotate(90deg); }
+        
         .file-item { padding: 4px 8px 4px 24px; cursor: pointer; font-size: 13px; color: #8b949e; border-radius: 4px; overflow: hidden; text-overflow: ellipsis; }
         .file-item:hover { color: var(--accent); background: var(--hover); }
         .hidden { display: none; }
 
-        #main { flex-grow: 1; display: flex; flex-direction: column; min-width: 0; /* Allows content to shrink/scroll */ }
+        /* MAIN CONTENT AREA */
+        #main { flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; }
         .toolbar { padding: 10px 20px; background: var(--sidebar); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        #file-title { font-size: 13px; font-family: monospace; color: #8b949e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 10px; }
         
-        #viewer-container { flex-grow: 1; overflow: auto; padding: 0; position: relative; }
-        #code-display, #markdown-display { padding: 20px; margin: 0; font-size: 13px; line-height: 1.5; }
-        #pdf-display { width: 100%; height: 100%; border: none; }
+        #viewer-container { flex: 1; overflow: auto; background: var(--bg); position: relative; }
         
-        /* Markdown Styling */
-        #markdown-display { color: #e6edf3; font-family: -apple-system, sans-serif; }
-        #markdown-display h1, #markdown-display h2 { border-bottom: 1px solid var(--border); padding-bottom: 5px; }
-        #markdown-display code { background: #30363d; padding: 2px 4px; border-radius: 4px; }
-
-        button { background: #238636; color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+        /* VIEWER TYPES */
+        #code-pre { margin: 0; padding: 20px; height: 100%; box-sizing: border-box; }
+        #markdown-display { padding: 40px; max-width: 800px; margin: 0 auto; color: #e6edf3; line-height: 1.6; }
+        #markdown-display h1, #markdown-display h2 { border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        #pdf-display { width: 100%; height: 100%; border: none; background: white; }
+        
+        button { background: #238636; color: white; border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap; }
+        button:hover { background: #2ea043; }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
     </style>
 </head>
 <body>
 
 <div id="sidebar">
-    <div class="header">REPOSITORY EXPLORER</div>
-    <div id="tree">Loading...</div>
+    <div class="header">Informatics</div>
+    <div id="tree">Generating tree...</div>
 </div>
 
 <div id="main">
     <div class="toolbar">
         <span id="file-title">No file selected</span>
-        <button id="copy-btn" onclick="copyCode()">Copy</button>
+        <button id="copy-btn" onclick="copyCode()">Copy Content</button>
     </div>
     <div id="viewer-container">
-        <pre id="code-pre"><code id="code-display" class="language-plaintext"></code></pre>
+        <!-- Code Viewer -->
+        <pre id="code-pre" class="hidden"><code id="code-display"></code></pre>
+        <!-- Markdown Viewer -->
         <div id="markdown-display" class="hidden"></div>
+        <!-- PDF Viewer -->
         <iframe id="pdf-display" class="hidden"></iframe>
     </div>
 </div>
 
-<!-- Support Libraries -->
+<!-- Scripts - Loaded in specific order for C++ support -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
 
 <script>
@@ -82,11 +93,15 @@
     const pdfDisplay = document.getElementById('pdf-display');
     const title = document.getElementById('file-title');
 
-    fetch('files.json').then(res => res.json()).then(files => {
-        treeDiv.innerHTML = '';
-        renderTree(buildTree(files), treeDiv);
-    });
+    // 1. Fetch File Data
+    fetch('files.json')
+        .then(res => res.json())
+        .then(files => {
+            treeDiv.innerHTML = '';
+            renderTree(buildTree(files), treeDiv);
+        });
 
+    // 2. Build Object Tree
     function buildTree(files) {
         const root = {};
         files.forEach(file => {
@@ -100,12 +115,13 @@
         return root;
     }
 
+    // 3. Render HTML Tree
     function renderTree(obj, container) {
         const keys = Object.keys(obj).sort((a,b) => (!!obj[a].path - !!obj[b].path) || a.localeCompare(b));
         keys.forEach(key => {
             const item = obj[key];
-            const div = document.createElement('div');
             if (item.path) {
+                const div = document.createElement('div');
                 div.className = 'file-item';
                 div.innerHTML = `📄 ${key}`;
                 div.onclick = () => loadFile(item.path, item.name);
@@ -116,7 +132,10 @@
                 header.innerHTML = `📁 ${key}`;
                 const wrapper = document.createElement('div');
                 wrapper.className = 'folder-wrapper hidden';
-                header.onclick = () => { header.classList.toggle('open'); wrapper.classList.toggle('hidden'); };
+                header.onclick = () => { 
+                    header.classList.toggle('open'); 
+                    wrapper.classList.toggle('hidden'); 
+                };
                 renderTree(item, wrapper);
                 container.appendChild(header);
                 container.appendChild(wrapper);
@@ -124,37 +143,52 @@
         });
     }
 
+    // 4. File Loader Switcher
     async function loadFile(path, name) {
         const fetchPath = path.startsWith('/') ? path.substring(1) : path;
         const ext = name.split('.').pop().toLowerCase();
-        title.innerText = name;
+        title.innerText = path;
 
-        // Hide all viewers
+        // Reset Viewers
         [codePre, mdDisplay, pdfDisplay].forEach(el => el.classList.add('hidden'));
 
         if (ext === 'pdf') {
             pdfDisplay.classList.remove('hidden');
             pdfDisplay.src = fetchPath;
         } else {
-            const res = await fetch(fetchPath);
-            const text = await res.text();
-            
-            if (ext === 'md') {
-                mdDisplay.classList.remove('hidden');
-                mdDisplay.innerHTML = marked.parse(text);
-            } else {
-                codePre.classList.remove('hidden');
-                codeDisplay.textContent = text;
-                const langMap = { 'cpp':'cpp', 'c':'cpp', 'h':'cpp', 'py':'python', 'js':'javascript' };
-                codeDisplay.className = `language-${langMap[ext] || 'plaintext'}`;
-                Prism.highlightElement(codeDisplay);
+            try {
+                const res = await fetch(fetchPath);
+                const text = await res.text();
+                
+                if (ext === 'md') {
+                    mdDisplay.classList.remove('hidden');
+                    mdDisplay.innerHTML = marked.parse(text);
+                } else {
+                    codePre.classList.remove('hidden');
+                    codeDisplay.textContent = text;
+                    const langMap = { 'cpp':'cpp', 'c':'cpp', 'h':'cpp', 'hpp':'cpp', 'py':'python', 'js':'javascript', 'java':'java' };
+                    codeDisplay.className = `language-${langMap[ext] || 'plaintext'}`;
+                    Prism.highlightAll(); // Stronger re-highlight
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Failed to load file content.");
             }
         }
     }
 
+    // 5. Copy Logic
     function copyCode() {
-        const text = !mdDisplay.classList.contains('hidden') ? mdDisplay.innerText : codeDisplay.textContent;
-        navigator.clipboard.writeText(text);
+        let textToCopy = "";
+        if (!codePre.classList.contains('hidden')) textToCopy = codeDisplay.textContent;
+        else if (!mdDisplay.classList.contains('hidden')) textToCopy = mdDisplay.innerText;
+        else { alert("Cannot copy PDF content here."); return; }
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy Content", 2000);
+        });
     }
 </script>
 </body>
