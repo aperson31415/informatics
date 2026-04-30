@@ -1,0 +1,11 @@
+---
+---
+[
+  {% for file in site.static_files %}
+    {
+      "path": {{ file.path | jsonify }},
+      "name": {{ file.basename | append: file.extname | jsonify }},
+      "ext": {{ file.extname | replace: '.', '' | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repo Explorer</title>
+    <!-- Prism for Code Colors -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        :root { --bg: #0d1117; --sidebar: #161b22; --text: #c9d1d9; --accent: #58a6ff; }
+        body { margin: 0; display: flex; height: 100vh; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; }
+        
+        #sidebar { width: 280px; background: var(--sidebar); border-right: 1px solid #30363d; display: flex; flex-direction: column; }
+        .header { padding: 20px; font-weight: bold; border-bottom: 1px solid #30363d; color: var(--accent); }
+        
+        #tree { overflow-y: auto; flex-grow: 1; padding: 10px; }
+        .file-item { padding: 8px; cursor: pointer; border-radius: 6px; font-size: 14px; margin-bottom: 2px; transition: 0.2s; }
+        .file-item:hover { background: #21262d; }
+        
+        #main { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .toolbar { padding: 10px 20px; background: var(--sidebar); display: flex; justify-content: space-between; align-items: center; }
+        
+        pre { flex-grow: 1; margin: 0; padding: 20px; overflow: auto; font-size: 13px; }
+        button { background: #238636; color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #2ea043; }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <div class="header">📂 PROJECT EXPLORER</div>
+    <div id="tree">Loading files...</div>
+</div>
+
+<div id="main">
+    <div class="toolbar">
+        <span id="file-title">Select a file</span>
+        <button onclick="copyCode()">Copy Content</button>
+    </div>
+    <pre><code id="code-display" class="language-javascript">// Code will appear here...</code></pre>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+<script>
+    const treeDiv = document.getElementById('tree');
+    const codeDiv = document.getElementById('code-display');
+    const title = document.getElementById('file-title');
+
+    // 1. Fetch the Jekyll-generated JSON index
+    fetch('./files.json')
+        .then(res => res.json())
+        .then(files => {
+            treeDiv.innerHTML = '';
+            files.forEach(file => {
+                const div = document.createElement('div');
+                div.className = 'file-item';
+                div.innerHTML = `📄 ${file.name}`;
+                div.onclick = () => loadFile(file.path, file.name);
+                treeDiv.appendChild(div);
+            });
+        });
+
+    async function loadFile(path, name) {
+        title.innerText = name;
+        const res = await fetch('.' + path);
+        const text = await res.text();
+        codeDiv.textContent = text;
+        
+        // Update language class based on extension
+        const ext = name.split('.').pop();
+        codeDiv.className = `language-${ext}`;
+        Prism.highlightElement(codeDiv);
+    }
+
+    function copyCode() {
+        navigator.clipboard.writeText(codeDiv.textContent);
+        alert('Copied!');
+    }
+</script>
+</body>
+</html>
