@@ -59,8 +59,8 @@ pre_tags = soup.find_all('pre')
 # Grouping pre tags into pairs (Input/Output)
 for i in range(0, len(pre_tags), 2):
     samples.append({
-        "input": pre_tags[i].text.strip(),
-        "output": pre_tags[i+1].text.strip() if i+1 < len(pre_tags) else ""
+        "input": '\n'.join(pre_tags[i].text.strip().split('\n')[::2]),
+        "output": '\n'.join(pre_tags[i+1].text.strip().split('\n')[::2]) if i+1 < len(pre_tags) else ""
     })
 
 # Input & Output
