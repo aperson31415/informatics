@@ -60,6 +60,7 @@
         <pre id="code-pre" class="hidden"><code id="code-display" class="language-cpp"></code></pre>
         <div id="markdown-display" class="hidden"></div>
         <iframe id="pdf-display" class="hidden"></iframe>
+        <iframe id="html-display" class="hidden"></iframe>
     </div>
 </div>
 
@@ -77,6 +78,7 @@
     const codePre = document.getElementById('code-pre');
     const mdDisplay = document.getElementById('markdown-display');
     const pdfDisplay = document.getElementById('pdf-display');
+    const htmlDisplay = document.getElementById('html-display');
 
     fetch('files.json').then(res => res.json()).then(data => {
         treeDiv.innerHTML = '';
@@ -132,7 +134,7 @@
         const finalPath = pathParts.join('/');
 
         document.getElementById('file-title').innerText = name;
-        [codePre, mdDisplay, pdfDisplay].forEach(el => el.classList.add('hidden'));
+        [codePre, mdDisplay, pdfDisplay, htmlDisplay].forEach(el => el.classList.add('hidden'));
 
         const ext = name.split('.').pop().toLowerCase();
 
@@ -145,6 +147,9 @@
             if (ext === 'md') {
                 mdDisplay.classList.remove('hidden');
                 mdDisplay.innerHTML = marked.parse(text);
+            } else if(ext === 'html' || ext == 'htm' || ext == 'hta') {
+                htmlDisplay.classList.remove('hidden');
+                htmlDisplay.innerHTML = text;
             } else {
                 codePre.classList.remove('hidden');
                 codeDisplay.textContent = text;
