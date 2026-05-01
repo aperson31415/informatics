@@ -9,6 +9,8 @@ include:
   - "kactl.pdf"
   - "no highlight.pdf"
   - "Vue test"
+  - "ORAC Userscript"
+  - "Hyperfast"
 
 exclude:
   - "favicon.ico"
