@@ -55,11 +55,38 @@
 
     <script>
 
+    async function fetchRawJson(url) {
+        try {
+            const response = await fetch(url);
+
+            // Check if HTTP status is OK (200–299)
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Get the raw JSON text (unparsed)
+            const rawText = await response.text();
+
+            console.log("Raw JSON string:");
+            console.log(rawText);
+
+            // Optionally, parse it into an object
+            try {
+                const jsonData = JSON.parse(rawText);
+                console.log("Parsed JSON object:");
+                console.log(jsonData);
+            } catch (parseError) {
+                console.error("Invalid JSON format:", parseError.message);
+            }
+
+        } catch (error) {
+            console.error("Error fetching JSON:", error.message);
+        }
+    }
+
     const app = Vue.createApp({
-        data() {
-            return {
-                message: "Hello World!"
-            };
+        async data() {
+            return await fetchRawJson("https://raw.githubusercontent.com/aperson31415/informatics/refs/heads/main/Vue%20test/template.json");
         }
     });
 
