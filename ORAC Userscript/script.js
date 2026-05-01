@@ -61,6 +61,24 @@
         tr[data-visible="false"] td {padding: 0 !important; margin: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; border: none !important;}
     `);
 
+    function waitForElm(selector) {
+        return new Promise(resolve => {
+            if (document.querySelector(selector)) {
+                return resolve(document.querySelector(selector));
+            }
+            const observer = new MutationObserver(mutations => {
+                if (document.querySelector(selector)) {
+                    observer.disconnect();
+                    resolve(document.querySelector(selector));
+                }
+            });
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    }
+
     function nospace(text) {
         return text.replace(" ", "koolspace")
     }
@@ -189,6 +207,37 @@
         }
     }
 
+    if(window.location.href.includes("problem")) {
+        const url = new URL(window.location.href);
+        const problem_id = url.pathname.split("/").filter(Boolean);
+
+        if(problem_id.length == 2) {
+            waitForElm(".container-xl").then((elm) => {
+                // load
+                document.querySelectorAll(".container-xl")[2].innerHTML += `<div id="notes">
+    <h2 class="mt-5">Notes</h2>
+    Small: <input id="smallnote" type="text" placeholder="Nothing yet!" style="width:80%"><br><br>
+    Large:<br>
+
+    <textarea id="bignote" style="width: 100%; height: 301px;" placeholder="Nothing yet!"></textarea>
+    </div>`;
+                let small = GM_getValue("smallnote" + problem_id[1], "");
+                let big = GM_getValue("bignote" + problem_id[1], "");
+                document.querySelector("#smallnote").value = small;
+                document.querySelector("#bignote").value = big;
+
+                // save
+                document.querySelector("#smallnote").addEventListener('input', () => {
+                    GM_setValue("smallnote" + problem_id[1], document.querySelector("#smallnote").value);
+                });
+
+                document.querySelector("#bignote").addEventListener('input', () => {
+                    GM_setValue("bignote" + problem_id[1], document.querySelector("#bignote").value);
+                });
+            });
+        }
+    }
+
     if(window.location.href.includes("problem") && window.location.href.includes("submissions")) {
         let aliases = {
             "py": "python",
@@ -214,7 +263,6 @@
         const problem_id = parseInt(url.pathname.split("/").filter(Boolean)[1]);
 
         (async () => {
-            // See if attempted, maybe might do more strict checking later with encoding.
             if(document.querySelector(".table") == null || document.querySelector(".table") == undefined) {
                 let wompwomp = document.createElement("p");
                 wompwomp.innerText = "Please attempt this problem before looking at hints";
@@ -278,36 +326,24 @@
         })();
     }
 
-    function tag_element(content, parent = document) {
-        let elem = parent.createElement("span");
+    function tag_element(content) {
+        let elem = document.createElement("span");
         elem.classList.add("badge", "badge-tag");
         elem.innerText = content;
         return elem;
     }
 
-    if(window.location.href.includes("problem") && !window.location.href.includes("hof") && !window.location.href.includes("submission")) {
-        let score_badge = document.querySelector(".badge.hub-badge");
-        if (score_badge) {
-            // Save current score/style immediately to its own key
-            GM_setValue("score_" + window.location.href, {
-                score: score_badge.innerText.trim(),
-                style: score_badge.className
-            });
-            let name = $("h1.mb-0")?.innerText.trim();
-            if (name) GM_setValue("name_" + window.location.href, name);
-        }
-
-        function render_tags_on_problem_page() {
+    function render_tags_on_problem_page() {
             if (!window.bookmark_section) return;
-            window.bookmark_section.innerHTML = "Custom Tags: ";
+            window.bookmark_section.innerText = "Custom Tags: ";
             let curr_tags = GM_getValue("rev_tags", {});
             if (curr_tags[window.location.href]) {
                 curr_tags[window.location.href].forEach(t => window.bookmark_section.appendChild(tag_element(t)));
             }
             let plus_tag = tag_element("+");
-            plus_tag.onclick = () => new_tag();
             let minus_tag = tag_element("-");
-            minus_tag.onclick = () => del_tag();
+        plus_tag.classList.add("plus");
+            minus_tag.classList.add("minus");
             window.bookmark_section.appendChild(plus_tag);
             window.bookmark_section.appendChild(minus_tag);
         }
@@ -357,26 +393,7 @@
             return {"elem":elem, "stars":stars};
         }
 
-        if ($("tbody")[1]) {
-            window.stats_bar = document.createElement("tr");
-            window.bookmark_section = document.createElement("td");
-            let diff_bar = document.createElement("td");
-            diff_bar.style.textAlign = "right";
-            document.querySelector(".mb-3").classList.add("kooltable");
-
-            (async () => {
-                let original_diffelem = rating_estimation_elem(await set_solvecount(window.location.href)).elem;
-                original_diffelem.classList.add("text-nowrap");
-                diff_bar.appendChild(original_diffelem);
-            })();
-
-            render_tags_on_problem_page();
-            ($("tbody")[1]).appendChild(window.stats_bar);
-            window.stats_bar.appendChild(window.bookmark_section);
-            window.stats_bar.appendChild(diff_bar);
-        }
-
-        function new_tag() {
+         function new_tag() {
             let tag_name = prompt("Name of tag to add to problem");
             if (!tag_name) return;
             let tag_content = GM_getValue("tags", {});
@@ -400,7 +417,7 @@
             if (!tag_name) return;
             let tag_content = GM_getValue("tags", {});
             let rev_tagcontent = GM_getValue("rev_tags", {});
-            if (tag_content[tag_name]?.includes(window.location.href)) {
+            if (tag_content[tag_name].includes(window.location.href)) {
                 tag_content[tag_name] = tag_content[tag_name].filter(loc => loc != window.location.href);
                 if(tag_content[tag_name].length == 0) {
                     let should_deltag = confirm("Fully remove tag '" + tag_name + "'?");
@@ -413,6 +430,37 @@
                 GM_setValue("rev_tags", rev_tagcontent);
                 render_tags_on_problem_page();
             }
+        }
+
+    if(window.location.href.includes("problem") && !window.location.href.includes("hof") && !window.location.href.includes("submission")) {
+        let score_badge = document.querySelector(".badge.hub-badge");
+        if (score_badge) {
+            // Save current score/style immediately to its own key
+            GM_setValue("score_" + window.location.href, {
+                score: score_badge.innerText.trim(),
+                style: score_badge.className
+            });
+            let name = $("h1.mb-0")?.innerText.trim();
+            if (name) GM_setValue("name_" + window.location.href, name);
+        }
+
+        if ($("tbody")[1]) {
+            window.stats_bar = document.createElement("tr");
+            window.bookmark_section = document.createElement("td");
+            let diff_bar = document.createElement("td");
+            diff_bar.style.textAlign = "right";
+            document.querySelector(".mb-3").classList.add("kooltable");
+
+            (async () => {
+                let original_diffelem = rating_estimation_elem(await set_solvecount(window.location.href)).elem;
+                original_diffelem.classList.add("text-nowrap");
+                diff_bar.appendChild(original_diffelem);
+            })();
+
+            window.stats_bar.appendChild(window.bookmark_section);
+            window.stats_bar.appendChild(diff_bar);
+            ($("tbody")[1]).appendChild(window.stats_bar);
+            render_tags_on_problem_page();
         }
 
         // Difficulty
@@ -682,7 +730,7 @@
                 let badgePromises = set.problems.map(async (p) => {
                     let tr = document.createElement("tr");
                     tr.innerHTML = `<td><a href="${p.problem_link}">${p.problem_name}</a></td><td class="progress-column"></td>`;
-                    document.getElementById("table-" + set.set_id).appendChild(tr); 
+                    document.getElementById("table-" + set.set_id).appendChild(tr);
 
                     if (p.old) {
                         tr.setAttribute("old", true);
@@ -1077,26 +1125,13 @@
             });
         }
     }
-    function waitForElm(selector) {
-        return new Promise(resolve => {
-            if (document.querySelector(selector)) {
-                return resolve(document.querySelector(selector));
-            }
-            const observer = new MutationObserver(mutations => {
-                if (document.querySelector(selector)) {
-                    observer.disconnect();
-                    resolve(document.querySelector(selector));
-                }
-            });
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
-        });
-    }
 
     // add kactl
-    document.querySelector(".collapse.navbar-collapse").children[0].innerHTML += `<a class="nav-item nav-link user-links " href="/hub/notes/">Notes</a>`;
+    waitForElm(".collapse.navbar-collapse").then((elm) => {
+            elm.children[0].innerHTML += `<a class="nav-item nav-link user-links " href="/hub/notes/">Notes</a>`;
+            elm.children[0].innerHTML += `<a class="nav-item nav-link user-links " href="https://aperson31415.github.io/informatics/">Github</a>`;
+        });
+
     if(window.location.href == "https://orac2.info/hub/notes/" || window.location.href == "https://orac.amt.edu.au/hub/notes") {
         waitForElm("p").then((elm) => {
             document.title = "Informatics Notes - ORAC";
@@ -1104,4 +1139,20 @@
             document.querySelectorAll("div.container-xl")[1].innerHTML = `<embed class="embed-responsive-item" src="${cdnBase}" type="application/pdf" style="flex-grow:1; width:100%; height:80vh;" />`;
         });
     }
+
+    // Add this once at the very top of your script
+document.addEventListener('click', function(e) {
+    // We check the class list because classes survive the re-render
+    if (e.target.classList.contains('plus')) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Call your logic here
+        new_tag();
+    }
+    else if (e.target.classList.contains('minus')) {
+        e.preventDefault();
+        e.stopPropagation();
+        del_tag();
+    }
+}, true); // The 'true' makes this a 'Capture' event—it strikes first!
 })();
