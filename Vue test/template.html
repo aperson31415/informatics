@@ -9,10 +9,10 @@
         <!--Add js & css here-->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
         </style>
     </head>
     <body>
@@ -39,9 +39,7 @@
                     <h3>{{section.graphic.title}}</h3>
                 </div>
                 <div class="paragraph_container">
-                    <p v-for="paragraph in section.paragraphs">
-                        {{paragraph}}
-                    </p>
+                    <p v-for="paragraph in section.paragraphs" v-html="paragraph"></p>
                 </div>
                 <div class="further_reading" v-if="'further_reading' in section">
                     <h3>Further Reading</h3>
@@ -75,13 +73,12 @@
                 </div>
             </div>
             <p>
-                By {{author}}, last updated on {{date}}.
+                <i>By {{author}}, last updated on {{date}}.</i>
             </p>
         </div>
     </body>
 
     <script>
-
     async function fetchRawJson(url) {
         try {
             const response = await fetch(url);
@@ -115,7 +112,6 @@
     Vue.createApp({
         data() {
                 return {
-                    // Pre-define keys so Vue makes them reactive
                     title: '',
                     sections: [],
                     author: '',
@@ -127,8 +123,6 @@
                 const data = await fetchRawJson("https://raw.githubusercontent.com/aperson31415/informatics/refs/heads/main/Vue%20test/template.json");
                 
                 if (data) {
-                    // This replaces the local data properties with the 
-                    // keys and values found directly inside the JSON file.
                     Object.assign(this.$data, data);
                 }
             } catch (err) {
