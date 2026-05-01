@@ -86,8 +86,24 @@
     }
 
     const app = Vue.createApp({
-        async data() {
-            return await fetchRawJson("https://raw.githubusercontent.com/aperson31415/informatics/refs/heads/main/Vue%20test/template.json");
+        data() {
+            return {
+                // 1. Initialize with default values
+                results: null,
+                loading: true,
+                error: null
+            };
+        },
+        async mounted() {
+            // 2. Fetch the data after the component is loaded
+            const data = await fetchRawJson("https://raw.githubusercontent.com/.../template.json");
+            
+            if (data) {
+                this.results = data;
+            } else {
+                this.error = "Failed to load data";
+            }
+            this.loading = false;
         }
     });
 
