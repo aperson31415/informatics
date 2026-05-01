@@ -9,52 +9,54 @@
         <!--Add js & css here-->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
-    <body id="body">
-        <h1>{{title}}</h1>
-        <div class="section" v-bind:id="'section_' + section.id" v-for="section in sections">
-            <h2>{{section.title}}</h2>
-            <div class="resources" v-bind:id="'resources_' + section.id" v-if="'resources' in section">
-                <h3>Resources</h3>
-                <table class="resource_table">
-                    <tr v-for="resource in section.resources">
-                        <th>{{resource.type}}</th>
-                        <th><a v-bind:href="resource.url">{{resource.name}}</a></th>
-                        <th>{{resource.description}}</th>
+    <body>
+        <div id="app">
+            <h1>{{title}}</h1>
+            <div class="section" v-bind:id="'section_' + section.id" v-for="section in sections">
+                <h2>{{section.title}}</h2>
+                <div class="resources" v-bind:id="'resources_' + section.id" v-if="'resources' in section">
+                    <h3>Resources</h3>
+                    <table class="resource_table">
+                        <tr v-for="resource in section.resources">
+                            <th>{{resource.type}}</th>
+                            <th><a v-bind:href="resource.url">{{resource.name}}</a></th>
+                            <th>{{resource.description}}</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="graphic" v-bind:id="'graphic_' + section.id" v-if="'graphic' in section">
+                    <h3>{{section.graphic.title}}</h3>
+                </div>
+                <div class="paragraph_container">
+                    <p v-for="paragraph in section.paragraphs">
+                        {{paragraph}}
+                    </p>
+                </div>
+                <div class="further_reading" v-if="'further_reading' in section">
+                    <h3>Further Reading</h3>
+                    <table class="further_table">
+                    <tr v-for="reading in section.further_reading">
+                        <th>{{reading.type}}</th>
+                        <th><a v-bind:href="reading.url">{{reading.name}}</a></th>
+                        <th>{{reading.description}}</th>
                     </tr>
-                </table>
+                    </table>
+                </div>
+                <div class="problems" v-if="'problems' in section">
+                    <h3>Practice Problems</h3>
+                    <table class="problems_table">
+                    <tr v-for="problem in section.problems">
+                        <th>{{problem.source}}</th>
+                        <th><a v-bind:href="problem.url">{{problem.name}}</a></th>
+                        <th>{{problem.description}}</th>
+                    </tr>
+                    </table>
+                </div>
             </div>
-            <div class="graphic" v-bind:id="'graphic_' + section.id" v-if="'graphic' in section">
-                <h3>{{section.graphic.title}}</h3>
-            </div>
-            <div class="paragraph_container">
-                <p v-for="paragraph in section.paragraphs">
-                    {{paragraph}}
-                </p>
-            </div>
-            <div class="further_reading" v-if="'further_reading' in section">
-                <h3>Further Reading</h3>
-                <table class="further_table">
-                <tr v-for="reading in section.further_reading">
-                    <th>{{reading.type}}</th>
-                    <th><a v-bind:href="reading.url">{{reading.name}}</a></th>
-                    <th>{{reading.description}}</th>
-                </tr>
-                </table>
-            </div>
-            <div class="problems" v-if="'problems' in section">
-                <h3>Practice Problems</h3>
-                <table class="problems_table">
-                <tr v-for="problem in section.problems">
-                    <th>{{problem.source}}</th>
-                    <th><a v-bind:href="problem.url">{{problem.name}}</a></th>
-                    <th>{{problem.description}}</th>
-                </tr>
-                </table>
-            </div>
+            <p>
+                By {{author}}, last updated on {{date}}.
+            </p>
         </div>
-        <p>
-            By {{author}}, last updated on {{date}}.
-        </p>
     </body>
 
     <script>
@@ -109,7 +111,7 @@
         }
     });
 
-    app.mount('#body');
+    app.mount('#app');
 
 </script>
 </html>
