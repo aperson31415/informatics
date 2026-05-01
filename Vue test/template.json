@@ -1,0 +1,40 @@
+{
+    "title":"",
+    "author":"",
+    "date":"",
+    "sections": [
+        {
+            "title":"",
+            "resources": [
+                {
+                    "type":"",
+                    "name":"",
+                    "description":"",
+                    "url":""
+                }
+            ],
+            "graphic": {
+                "title":""
+            },
+            "paragraphs": [
+                ""
+            ],
+            "further_reading": [
+                {
+                    "type":"",
+                    "name":"",
+                    "description":"",
+                    "url":""
+                }
+            ],
+            "problems": [
+                {
+                    "source":"",
+                    "name":"",
+                    "url":"",
+                    "description":""
+                }
+            ]
+        }
+    ]
+}
