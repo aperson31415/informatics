@@ -75,6 +75,7 @@
                 const jsonData = JSON.parse(rawText);
                 console.log("Parsed JSON object:");
                 console.log(jsonData);
+                return jsonData;
             } catch (parseError) {
                 console.error("Invalid JSON format:", parseError.message);
             }

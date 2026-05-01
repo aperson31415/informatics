@@ -124,5 +124,4 @@ CP notes which were originally for AIO, but made too long and with too many adva
 I've found that these notes are good for solving alpha/aiio problems.
 
 Closer to AIO, I might make some notes more focused on aio.
-
 Also, there is a version with no code highlighting for printing.
