@@ -8,6 +8,12 @@
         <title>{{title}}</title>
         <!--Add js & css here-->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        </style>
     </head>
     <body>
         <div id="app">
@@ -17,10 +23,15 @@
                 <div class="resources" v-bind:id="'resources_' + section.id" v-if="'resources' in section">
                     <h3>Resources</h3>
                     <table class="resource_table">
+                        <tr>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
                         <tr v-for="resource in section.resources">
-                            <th>{{resource.type}}</th>
-                            <th><a v-bind:href="resource.url">{{resource.name}}</a></th>
-                            <th>{{resource.description}}</th>
+                            <td>{{resource.type}}</td>
+                            <td><a v-bind:href="resource.url">{{resource.name}}</a></td>
+                            <td>{{resource.description}}</td>
                         </tr>
                     </table>
                 </div>
@@ -35,21 +46,31 @@
                 <div class="further_reading" v-if="'further_reading' in section">
                     <h3>Further Reading</h3>
                     <table class="further_table">
-                    <tr v-for="reading in section.further_reading">
-                        <th>{{reading.type}}</th>
-                        <th><a v-bind:href="reading.url">{{reading.name}}</a></th>
-                        <th>{{reading.description}}</th>
-                    </tr>
+                        <tr>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr v-for="reading in section.further_reading">
+                            <td>{{reading.type}}</td>
+                            <td><a v-bind:href="reading.url">{{reading.name}}</a></td>
+                            <td>{{reading.description}}</td>
+                        </tr>
                     </table>
                 </div>
                 <div class="problems" v-if="'problems' in section">
                     <h3>Practice Problems</h3>
                     <table class="problems_table">
-                    <tr v-for="problem in section.problems">
-                        <th>{{problem.source}}</th>
-                        <th><a v-bind:href="problem.url">{{problem.name}}</a></th>
-                        <th>{{problem.description}}</th>
-                    </tr>
+                        <tr>
+                            <th>Source</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr v-for="problem in section.problems">
+                            <td>{{problem.source}}</td>
+                            <td><a v-bind:href="problem.url">{{problem.name}}</a></th>
+                            <td>{{problem.description}}</td>
+                        </tr>
                     </table>
                 </div>
             </div>
