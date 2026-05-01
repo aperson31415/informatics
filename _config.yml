@@ -17,6 +17,7 @@ exclude:
   - "favicon.ico"
   - "big.cpp"
   - "big.py"
+  - "_config.yml"
 
 defaults:
   - scope:
