@@ -5,11 +5,15 @@ include:
   - "AIIO"
   - "FARIO"
   - "wayback_raw"
+  - "wayback_pdf"
   - "kactl.pdf"
   - "no highlight.pdf"
+  - "Vue test"
 
 exclude:
   - "favicon.ico"
+  - "big.cpp"
+  - "big.py"
 
 defaults:
   - scope:
