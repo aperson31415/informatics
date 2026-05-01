@@ -33,19 +33,23 @@
             </div>
             <div class="further_reading" v-if="'further_reading' in section">
                 <h3>Further Reading</h3>
+                <table class="further_table">
                 <tr v-for="reading in section.further_reading">
                     <th>{{reading.type}}</th>
                     <th><a v-bind:href="reading.url">{{reading.name}}</a></th>
                     <th>{{reading.description}}</th>
                 </tr>
+                </table>
             </div>
             <div class="problems" v-if="'problems' in section">
                 <h3>Practice Problems</h3>
+                <table class="problems_table">
                 <tr v-for="problem in section.problems">
                     <th>{{problem.source}}</th>
                     <th><a v-bind:href="problem.url">{{problem.name}}</a></th>
                     <th>{{problem.description}}</th>
                 </tr>
+                </table>
             </div>
         </div>
         <p>
