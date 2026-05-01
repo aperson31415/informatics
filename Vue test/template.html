@@ -91,10 +91,15 @@
         }
     }
 
-    const app = Vue.createApp({
+    Vue.createApp({
         data() {
-            // Return an empty object to be populated by the fetch
-            return {};
+                return {
+                    // Pre-define keys so Vue makes them reactive
+                    title: '',
+                    sections: [],
+                    author: '',
+                    date: ''
+                };
         },
         async mounted() {
             try {
@@ -109,8 +114,6 @@
                 console.error("Data fetch failed:", err);
             }
         }
-    });
-
-    app.mount('#app');
+    }).mount('#app');
 </script>
 </html>
