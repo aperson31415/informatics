@@ -1,4 +1,5 @@
-# hi there again again pls
+# hi there again again pls plsconfig
+
 include: 
   - "Starter, Training, Seln, AIC"
   - "AIO"
@@ -17,7 +18,6 @@ exclude:
   - "favicon.ico"
   - "big.cpp"
   - "big.py"
-  - "_config.yml"
 
 defaults:
   - scope:
