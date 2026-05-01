@@ -1,38 +1,39 @@
 {
-    "title":"",
-    "author":"",
-    "date":"",
+    "title":"Test Topic",
+    "author":"aperson31415",
+    "date":"1st May 2026",
     "sections": [
         {
             "title":"",
             "resources": [
                 {
-                    "type":"",
-                    "name":"",
-                    "description":"",
-                    "url":""
+                    "type":"Website",
+                    "name":"Google",
+                    "description":"A search engine",
+                    "url":"https://google.com"
                 }
             ],
             "graphic": {
-                "title":""
+                "title":"Explanation Video"
             },
             "paragraphs": [
-                ""
+                "blablabla",
+                "text here"
             ],
             "further_reading": [
                 {
-                    "type":"",
-                    "name":"",
-                    "description":"",
-                    "url":""
+                    "type":"Website",
+                    "name":"about:blank",
+                    "description":"Blank page",
+                    "url":"about:blank"
                 }
             ],
             "problems": [
                 {
-                    "source":"",
-                    "name":"",
-                    "url":"",
-                    "description":""
+                    "source":"AMT",
+                    "name":"orac2 judge",
+                    "url":"https://orac2.info",
+                    "description":"AMT Informatics Training site"
                 }
             ]
         }
