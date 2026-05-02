@@ -1,5 +1,3 @@
-<!--css needs to be added, also maybe stuff around it, or just do iframe or smth like that-->
-
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -7,129 +5,80 @@
         <meta name="viewport" content="width=device-width">
         <title>{{title}}</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <!--Add js & css here-->
+        <!--Maybe use similar style to usaco guide or orac. TODO: add markdown + latex + code support-->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <style>
-            table, th, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-        </style>
+        <link rel="stylesheet" src="internal_style.css">
+        <link rel="stylesheet" src="external_style.css">
     </head>
     <body>
         <div id="app">
-            <h1>{{title}}</h1>
-            <div class="section" v-bind:id="'section_' + section.id" v-for="section in sections">
-                <h2>{{section.title}}</h2>
-                <div class="resources" v-bind:id="'resources_' + section.id" v-if="'resources' in section">
-                    <h3>Resources</h3>
-                    <table class="resource_table">
-                        <tr>
-                            <th>Type</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                        </tr>
-                        <tr v-for="resource in section.resources">
-                            <td>{{resource.type}}</td>
-                            <td><a v-bind:href="resource.url">{{resource.name}}</a></td>
-                            <td>{{resource.description}}</td>
-                        </tr>
-                    </table>
+            <div id="loaded" v-show="loaded">
+                <h1>{{title}}</h1>
+                <div class="section" v-bind:id="'section_' + section.id" v-for="section in sections">
+                    <h2>{{section.title}}</h2>
+                    <div class="resources" v-bind:id="'resources_' + section.id" v-show="'resources' in section">
+                        <h3>Resources</h3>
+                        <table class="resource_table">
+                            <tr>
+                                <th>Type</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr v-for="resource in section.resources">
+                                <td>{{resource.type}}</td>
+                                <td><a v-bind:href="resource.url">{{resource.name}}</a></td>
+                                <td>{{resource.description}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="graphic" v-bind:id="'graphic_' + section.id" v-show="'graphic' in section">
+                        <h3>{{section.graphic.title}}</h3>
+                    </div>
+                    <div class="paragraph_container">
+                        <p v-for="paragraph in section.paragraphs" v-html="paragraph"></p>
+                    </div>
+                    <div class="further_reading" v-show="'further_reading' in section">
+                        <h3>Further Reading</h3>
+                        <table class="further_table">
+                            <tr>
+                                <th>Type</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr v-for="reading in section.further_reading">
+                                <td>{{reading.type}}</td>
+                                <td><a v-bind:href="reading.url">{{reading.name}}</a></td>
+                                <td>{{reading.description}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="problems" v-show="'problems' in section">
+                        <h3>Practice Problems</h3>
+                        <table class="problems_table">
+                            <tr>
+                                <th>Source</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr v-for="problem in section.problems">
+                                <td>{{problem.source}}</td>
+                                <td><a v-bind:href="problem.url">{{problem.name}}</a></th>
+                                <td>{{problem.description}}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="graphic" v-bind:id="'graphic_' + section.id" v-if="'graphic' in section">
-                    <h3>{{section.graphic.title}}</h3>
-                </div>
-                <div class="paragraph_container">
-                    <p v-for="paragraph in section.paragraphs" v-html="paragraph"></p>
-                </div>
-                <div class="further_reading" v-if="'further_reading' in section">
-                    <h3>Further Reading</h3>
-                    <table class="further_table">
-                        <tr>
-                            <th>Type</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                        </tr>
-                        <tr v-for="reading in section.further_reading">
-                            <td>{{reading.type}}</td>
-                            <td><a v-bind:href="reading.url">{{reading.name}}</a></td>
-                            <td>{{reading.description}}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="problems" v-if="'problems' in section">
-                    <h3>Practice Problems</h3>
-                    <table class="problems_table">
-                        <tr>
-                            <th>Source</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                        </tr>
-                        <tr v-for="problem in section.problems">
-                            <td>{{problem.source}}</td>
-                            <td><a v-bind:href="problem.url">{{problem.name}}</a></th>
-                            <td>{{problem.description}}</td>
-                        </tr>
-                    </table>
-                </div>
+                <p>
+                    <i v-show="author == '' and date != ''">Last updated on {{date}}</i>
+                    <i v-show="author != '' and date == ''">By {{author}}</i>
+                    <i v-show="author != '' and date != ''">By {{author}}, last updated on {{date}}.</i>
+                </p>
             </div>
-            <p>
-                <i>By {{author}}, last updated on {{date}}.</i>
-            </p>
+            <div id="non-loaded" v-show="not loaded">
+                Please wait for this website to load. If this persists for a long time, please contact aperson31415.
+            </div>
         </div>
     </body>
 
-    <script>
-    async function fetchRawJson(url) {
-        try {
-            const response = await fetch(url);
-
-            // Check if HTTP status is OK (200–299)
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            // Get the raw JSON text (unparsed)
-            const rawText = await response.text();
-
-            console.log("Raw JSON string:");
-            console.log(rawText);
-
-            // Optionally, parse it into an object
-            try {
-                const jsonData = JSON.parse(rawText);
-                console.log("Parsed JSON object:");
-                console.log(jsonData);
-                return jsonData;
-            } catch (parseError) {
-                console.error("Invalid JSON format:", parseError.message);
-            }
-
-        } catch (error) {
-            console.error("Error fetching JSON:", error.message);
-        }
-    }
-
-    Vue.createApp({
-        data() {
-                return {
-                    title: '',
-                    sections: [],
-                    author: '',
-                    date: ''
-                };
-        },
-        async mounted() {
-            try {
-                const data = await fetchRawJson("https://raw.githubusercontent.com/aperson31415/informatics/refs/heads/main/Vue%20test/template.json");
-                
-                if (data) {
-                    Object.assign(this.$data, data);
-                }
-            } catch (err) {
-                console.error("Data fetch failed:", err);
-            }
-        }
-    }).mount('#app');
-</script>
+    <script src="mount.js"></script>
 </html>
