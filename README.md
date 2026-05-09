@@ -12,7 +12,7 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 158 (Yay! 150)
+  Problems I've solved: 159 (Yay! 150)
   
 
 Starter
@@ -68,7 +68,7 @@ FARIO
   - P4s: None :(
 
 Selection Exams (Decided to put solutions)
-  - 2004: None :(
+  - 2004: p2
   - 2003: p1, 2, 4, 5, 6, 7
   - 1999: p1
 
