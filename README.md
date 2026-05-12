@@ -11,8 +11,8 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <details>
 <summary>Click to expand</summary>
 
-  Solutions added so far: Unknown (not bothered to count)
-  Problems I've solved: 162
+  Solutions added so far: Unknown (not bothered to count, maybe ~150)
+  Problems I've solved: 163
   
 
 Starter
@@ -58,7 +58,7 @@ Other Sets
 Alpha Contest
   - P1s: 2022, 2023, 2024
   - P2s: 2022, 2023, 2024
-  - P3s: 2023
+  - P3s: 2022, 2023
   - P4s: None :(
 
 FARIO
