@@ -12,7 +12,7 @@ Here is a list of the included problem's solutions (I've solved a few more: some
 <summary>Click to expand</summary>
 
   Solutions added so far: Unknown (not bothered to count, maybe ~150)
-  Problems I've solved: 163
+  Problems I've solved: 165
   
 
 Starter
@@ -44,7 +44,7 @@ AIO
   - AIO 2005: p1-3, 6
 
 AIIO
-  - P1s: 2025, 2024, 2012, 2010, 2009, 2007, 2006
+  - P1s: 2025, 2024, 2012, 2011, 2010, 2009, 2007, 2006
   - P2s: 2025, 2011
   - P3s: 2012
   - P4s: None :(
@@ -63,7 +63,7 @@ Alpha Contest
 
 FARIO
   - P1s: 2004, 2008, 2009, 2010, 2011, 2012
-  - P2s: None :(
+  - P2s: 2010
   - P3s: None :(
   - P4s: None :(
 
