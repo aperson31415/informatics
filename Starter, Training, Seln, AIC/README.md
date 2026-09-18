@@ -5,4 +5,4 @@ Also, training & c++ tasks are usually hidden, and you probably need my userscri
 
 AIC problems in this folder are just starter ones.
 
-I'm pretty sure you can only unlock most of the selection exam and training problems (lots more topics like interactive, dp, ds, gt etc) once you get into camp.
+I'm pretty sure you can only unlock most of the selection exam and training problems (lots more topics like interactive, dp, ds, gt etc) once you get into camp (i still dont have slugs or proper categories for publicly available training problems for this reason).
