@@ -9,7 +9,7 @@ This repo pretty much has everything i use for info in terms of australian. The 
 
 I have loads of other solutions from dmoj, cf, cses, and atcoder, but most of them already have editorials, and it would be pretty messy to put them all here.
 
-<br><br>
+<br>
 
 By the way, I recently got on the orac2.info all time leaderboard!
 
