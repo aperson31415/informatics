@@ -1,3 +1,3 @@
 # Starter Problems - Set III
 
-These are either DFS or DP/Bitmask problems, some which are quite hard to solve! - There is 1 more which I haven't solved.
+Either DFS, Bitmask DP, or Recursive Brute Force. If you complete the 2 DFS ones, you unlock another orac progression set!

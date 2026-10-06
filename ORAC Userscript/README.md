@@ -12,6 +12,8 @@ This is a cool userscript that I use for orac2.info. These are the features:
 - Adds editorials
 - Adds statements for old problems - while you can't submit, AMT sometimes reuses problems, so it's a kinda good idea to practice for idea generation or that...
 - Adds some informatics notes/reference/implementations and strategy
+- Adds more of the learn tab, to learn more advanced techniques
+- Adds a cool style to orac
 
 By the way, you **need tampermonkey** for this script to work well (now fully dependent on tampermonkey :( because using tampermonkey specific storage functions). You can adapt this, it's probably kinda easy.
 
