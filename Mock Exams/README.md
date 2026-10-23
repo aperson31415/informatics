@@ -1,6 +1,2 @@
 # Mock Exams
-A bunch of self-authored mock exams. Right now, only AIO and I might only include a few or one here.
-
-I have to add sample cases :( takes too long
-
-The best quality contest(s) right now is the one without draft (currently only Mock_aio_2026)
+A bunch of self-authored mock exams and random info problems I made. Generally, the quality increases slowly over time
