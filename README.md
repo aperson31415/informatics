@@ -2,7 +2,7 @@
 Welcome to my informatics repo!
 
 This repo pretty much has everything i use for info in terms of australian. The main features/things i have here are:
-- orac2.info solutions to most AIO, Alpha, AIIO, some Seln + FARIO
+- orac2.info solutions to most AIO, Alpha, AIIO, Seln and some FARIO (around 250 as of now)
 - old problem statements from aic/aiio and others, recovered from wayback machine not available on current orac2.info
 - different types of notes i use while practicing and in aio
 - orac2.info userscript! which has loads of features in 2k lines of code. go to the specific folder to learn more ([orac userscript download](https://greasyfork.org/en/scripts/591750-orac-extension))
